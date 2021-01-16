@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Software : i-Radiusd</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Software : i-Radiusd" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk" />
+		<meta property="og:title" content="Software : i-Radiusd" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+								<h1>iRadiusd - Overview</h1>
+								<p>
+									i-Radiusd is a streamlined RADIUS server that uses very little memory and cpu time.<br>
+									It use a single non-blocking process similar to the Squid proxy server, and is currently in
+									use serving a userbase of over one hundred thousand covering serveral NAS's.
+								</p>
+								<h2>Features</h2>
+								<p>
+									<ul>
+										<li>MySQL, UNIX system account and built-in Authentication</li>
+										<li>PAP and CHAP support</li>
+										<li>Generic and group return attribute lists.</li>
+										<li>Group limit lists, including concurrent logons.</li>
+										<li>CLI list checking.</li>
+										<li>External program execution upon accounting.</li>
+										<li>SQL Accounting.</li>
+										<li>Dynamic group attributes.</li>
+										<li>Multiple SQL authentication servers.</li>
+										<li>Multiple NAS support</li>
+										<li>Cross platform</li>
+									</ul>
+								</p>
+								<h2>Requirements</h2>
+								<p>
+									<ul>
+										<li>Linux or Solaris operating system</li>
+										<li>Perl installed</li>
+										<li>The following Perl modules:</li>
+											<ul>
+												<li>Digest::MD5</li>
+												<li>RADIUS::Dictionary (see below)</li>
+												<li>RADIUS::Packet (see below)</li>
+												<li>Net::UDP</li>
+												<li>DBI and MySQL drivers</li>
+												<li>strict (included with perl as standard)</li>
+												<li>Fcntl (included with perl as standard)</li>
+											</ul>
+										<li>Remote or local MySQL server for authentication (optional)</li>
+										<li>Remote or local MySQL server for Accounting (optional)</li>
+										<li>Local web server with CGI support for web interface (optional)</li>
+									</ul>
+								</p>
+								</section>
+<section>
+								<h1>iRadiusd - Changelog</h1>
+								<p>
+									<b>Version 4.6.2</b> (25/06/2002)
+									<dir>
+										"DebugDir" option no longer used. All output is now sent to the logs.
+									</dir>
+									<b>Version 4.6.1</b> (19/06/2002)
+									<dir>
+										Code reduction.
+										All attributes can now be passed to external attribute programs by using placeholders.
+									</dir>
+									<b>Version 4.6</b> (01/05/2002)
+									<dir>
+										Added new status code if external attribute programs fail (8).
+										Server response routines simplified.
+										Updated features to web interface.
+									</dir>
+									<b>Version 4.5.1</b> (19/04/2002)
+									<dir>
+										Fixed accounting concurrent users bug, if a start record was received after a stop packet.
+									</dir>
+									<b>Version 4.5</b> (12/04/2002)
+									<dir>
+										Updated features to web interface.
+										Radiusd now logs authentication attempts to SQL rather and a text file.
+									</dir>
+									<b>Version 4.4</b> (08/04/2002)
+									<dir>
+										Revised duplicate accounting check.
+										Added more features to web interface.
+										Altered current users SQL table.
+									</dir>
+									<b>Version 4.3</b> (20/03/2002)
+									<dir>
+										Multiple authentication servers supported.
+										A list of allowed cli numbers can now be returned from the sql query.
+										Changes made to web interface.
+									</dir>
+									<b>Version 4.2.1</b> (15/03/2002)
+									<dir>
+										Duplicate accounting packets not logged.
+									</dir>
+									<b>Version 4.2</b> (11/03/2002)
+									<dir>
+										Dynamic group attributes are now supported.
+									</dir>
+									<b>Version 4.1</b> (07/03/2002)
+									<dir>
+										Day limits now replaced by hour limits.
+										Limits can now be specified by the user's dialled number.
+										Maximum online hours can now be specified.
+									</dir>
+									<b>Version 4</b> (04/03/2002)
+									<dir>
+										Accounting database setup changed, to cope with unreliable accounting information.
+										Admin web fronted updated.
+									</dir>
+									<b>Version 3.5</b> (01/03/2002)
+									<dir>
+										More flexible CHAP authentication to support different rack types.
+									</dir>
+									<b>Version 3.4</b> (12/02/2002)
+									<dir>
+										Day limits are now supported.
+										Concurrent SQL connection info now uses the configuration file.
+									</dir>
+									<b>Version 3.3</b> (10/02/2002)
+									<dir>
+										PAP bug fixed when using 3Com racks.
+										Reduced code in Accounting server.
+									</dir>
+									<b>Version 3.2</b> (29/11/2001)
+									<dir>
+										Built in user authentication now supported
+									</dir>
+									<b>Version 3.1</b> (28/11/2001)
+									<dir>
+										Accounting server code tidy up.
+										New "Exec" option added to Accounting server.
+									</dir>
+									<b>Version 3</b> (26/11/2001)
+									<dir>
+										MySQL Authentication host and database can now be set via the configuration file.
+										SQL authentication query is also now set via the configuration file.
+									</dir>
+									<b>Version 2</b> (21/12/2000)
+									<dir>
+										Updated PAP and CHAP checking subs. SQL user detail searching is now done in a separate shared sub.
+										Also usernames now have to be alpha-numeric to stop unwanted ASCII characters from effecting SQL queries.
+									</dir>
+									<b>Version 1</b> (28/12/2000)
+									<dir>
+										Updated CLI checking sub, now user's defined CLI is obtained from the "get_details" sub. Speeding things up a bit.
+									</dir>
+								</p>
+								</section>
+<section>
+								<h1>iRadiusd - Downloads</h1>
+								<p>
+									Coming soon.<br>
+									Please <a href="http://about.me/m.terry">contact us</a> for details.
+								</p>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

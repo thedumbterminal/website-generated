@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Show cache hits for PostgreSQL queries</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2013/10/show_cache_hits_for_postgresql_queries.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Show cache hits for PostgreSQL queries" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2013/10/show_cache_hits_for_postgresql_queries.html" />
+		<meta property="og:title" content="Show cache hits for PostgreSQL queries" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Show cache hits for PostgreSQL queries</h1>
+	<p>In order to see if queries executed on your PostgreSQL database are running from memory or from disk, the following explain options can be specified:</p>
+
+<pre><code>EXPLAIN (analyze on, buffers on, verbose on) SELECT email FROM users
+</code></pre>
+
+<p>This produces the following extra information:</p>
+
+<pre><code>                                                               QUERY PLAN                                                                
+-----------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=0.00..8.32 rows=1 width=0) (actual time=0.078..0.078 rows=0 loops=1)
+   Output: (1)
+   Buffers: shared hit=4
+   -&gt;  Index Scan using index_users_on_email on public.users  (cost=0.00..8.32 rows=1 width=0) (actual time=0.065..0.065 rows=0 loops=1)
+         Output: 1
+         Index Cond: ((users.email)::text = 'name@domain'::text)
+         Buffers: shared hit=2 read=1
+ Total runtime: 0.153 ms
+(8 rows)
+</code></pre>
+
+<p>The output above shows that 2 blocks of the data was taken from a cache hit and 1 block of data was read into cache.</p>
+
+<p>If the same query was run again, all the data would be read from cache:</p>
+
+<pre><code>                                                               QUERY PLAN                                                                
+-----------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=0.00..8.32 rows=1 width=0) (actual time=0.078..0.078 rows=0 loops=1)
+   Output: (1)
+   Buffers: shared hit=4
+   -&gt;  Index Scan using index_users_on_email on public.users  (cost=0.00..8.32 rows=1 width=0) (actual time=0.065..0.065 rows=0 loops=1)
+         Output: 1
+         Index Cond: ((users.email)::text = 'name@domain'::text)
+         Buffers: shared hit=3
+ Total runtime: 0.153 ms
+(8 rows)
+</code></pre>
+
+	<p>
+		<i>Last updated: 21/10/2013</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

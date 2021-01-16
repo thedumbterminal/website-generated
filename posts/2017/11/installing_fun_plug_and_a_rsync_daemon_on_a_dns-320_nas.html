@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Installing fun plug and a rsync daemon on a DNS-320 NAS</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2017/11/installing_fun_plug_and_a_rsync_daemon_on_a_dns-320_nas.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Installing fun plug and a rsync daemon on a DNS-320 NAS" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2017/11/installing_fun_plug_and_a_rsync_daemon_on_a_dns-320_nas.html" />
+		<meta property="og:title" content="Installing fun plug and a rsync daemon on a DNS-320 NAS" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Installing fun plug and a rsync daemon on a DNS-320 NAS</h1>
+	<p>The rsync daemon can be enabled on the DNS-320 by using <a href="https://nas-tweaks.net/tutorials/">Fun_plug</a>. This offers a faster method of performing backups than the built in SMB, FTP or AFP.</p>
+
+<p>First download the <a href="/files/posts/2017/11/fun_plug_install.tar.gz">fun_plug installer</a> to your local machine.</p>
+
+<p>Extract the archive and place the <code>fun_plug</code> executable and <code>fun_plug.tgz</code> files in to the root of the <code>Volume_1</code> drive on the NAS box.</p>
+
+<p>Create a new user via the NAS's web interface if needed for the rsync/ssh access.</p>
+
+<p>Restart using the web interface.</p>
+
+<p>Connect to the NAS via telnet:</p>
+
+<pre><code>telnet yournas
+</code></pre>
+
+<p>Enable SSH and rsyncd:</p>
+
+<pre><code>chmod +x /ffp/start/sshd.sh /ffp/start/rsyncd.sh
+</code></pre>
+
+<p>Set the password for root user:</p>
+
+<pre><code>passwd
+</code></pre>
+
+<p>Test ssh by connecting to the NAS with above password as root:</p>
+
+<pre><code>ssh root@yournas
+</code></pre>
+
+<p>Disable telnet:</p>
+
+<pre><code>chmod -x /ffp/start/telnetd.sh
+</code></pre>
+
+<p>Kill the current telnet process:</p>
+
+<pre><code>killall telnet
+</code></pre>
+
+<p>Create rsyncd config:</p>
+
+<pre><code># more /ffp/etc/rsyncd.conf
+uid = nobody
+gid = nobody
+max connections = 4
+use chroot = yes
+
+#Use no spaces by the "=" on the line below
+pid file=/var/run/rsyncd.pid
+
+[Backups]
+path = /mnt/HD/HD_a2/Bob/rsync 
+comment = Backups
+read only = false
+uid = youruser
+gid = yourgroup
+</code></pre>
+
+<p>Create module/share directory:</p>
+
+<pre><code>mkdir /mnt/HD/HD_a2/Bob/rsync
+chown nobody: /mnt/HD/HD_a2/Bob/rsync
+</code></pre>
+
+<p>Start rsyncd:</p>
+
+<pre><code>/ffp/start/rsyncd.sh start
+</code></pre>
+
+<p>Test rsyncd config by listing available shares on the NAS from your local machine:</p>
+
+<pre><code>rsync yournas::
+</code></pre>
+
+	<p>
+		<i>Last updated: 23/11/2017</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

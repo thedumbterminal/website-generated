@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : How to escape quotes in SQL using XSLT</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2006/10/how_to_escape_quotes_in_sql_using_xslt.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="How to escape quotes in SQL using XSLT" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2006/10/how_to_escape_quotes_in_sql_using_xslt.html" />
+		<meta property="og:title" content="How to escape quotes in SQL using XSLT" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>How to escape quotes in SQL using XSLT</h1>
+	<p>If you are generating SQL from XML using XSLT, then you will soon be faced with the problem of unwanted quotes breaking your queries or worse; injecting unwanted data into your database.</p>
+
+<p>As a solution you can escape any quotes using a named XSLT template.</p>
+
+<p>In the example below we are escaping single quotes for use with PgSQL.</p>
+
+<p>The template:</p>
+
+<pre><code>&lt;xsl:template name="escapesinglequotes"&gt;
+  &lt;xsl:param name="arg1"/&gt;
+  &lt;xsl:variable name="apostrophe"&gt;'&lt;/xsl:variable&gt;
+  &lt;xsl:choose&gt;
+    &lt;!-- this string has at least on single quote --&gt;
+    &lt;xsl:when test="contains($arg1, $apostrophe)"&gt;
+      &lt;xsl:if test="string-length(normalize-space(substring-before($arg1, $apostrophe))) &gt; 0"&gt;&lt;xsl:value-of select="substring-before($arg1, $apostrophe)" disable-output-escaping="yes"/&gt;''&lt;/xsl:if&gt;
+       &lt;xsl:call-template name="escapesinglequotes"&gt;
+        &lt;xsl:with-param name="arg1"&gt;&lt;xsl:value-of select="substring-after($arg1, $apostrophe)" disable-output-escaping="yes"/&gt;&lt;/xsl:with-param&gt;
+      &lt;/xsl:call-template&gt;
+    &lt;/xsl:when&gt;
+    &lt;!-- no quotes found in string, just print it --&gt;
+    &lt;xsl:when test="string-length(normalize-space($arg1)) &gt; 0"&gt;&lt;xsl:value-of select="normalize-space($arg1)"/&gt;&lt;/xsl:when&gt;
+  &lt;/xsl:choose&gt;
+&lt;/xsl:template&gt;
+</code></pre>
+
+<p>This would be called as follows:</p>
+
+<pre><code>&lt;xsl:call-template name="escapesinglequotes"&gt;
+  &lt;xsl:with-param name="arg1"&gt;&lt;xsl:value-of select="."/&gt;&lt;/xsl:with-param&gt;
+&lt;/xsl:call-template&gt;
+</code></pre>
+
+	<p>
+		<i>Last updated: 27/10/2006</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

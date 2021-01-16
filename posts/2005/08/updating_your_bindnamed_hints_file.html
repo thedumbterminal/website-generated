@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Updating your bind/named hints file</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2005/08/updating_your_bindnamed_hints_file.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Updating your bind/named hints file" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2005/08/updating_your_bindnamed_hints_file.html" />
+		<meta property="og:title" content="Updating your bind/named hints file" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Updating your bind/named hints file</h1>
+	<p>You need to at least check for updates to your hints file regularly if you run a name server as otherwise you could have trouble looking up random domain names when the root servers change.</p>
+
+<p>First open your "/etc/named.conf" config file and find where your hints file is located.</p>
+
+<p>Here are some parts of the named.conf detailing where the hints file is:</p>
+
+<pre><code>options {
+        directory "/var/named";
+}
+
+zone "." IN {
+        type hint;
+        file "caching-example/named.ca";
+};
+</code></pre>
+
+<p>So our example has the hints file at:</p>
+
+<pre><code>/var/named/caching-example/named.ca
+</code></pre>
+
+<p>Now Change to the above directory and move this file out of the way:</p>
+
+<pre><code>mv named.ca named.ca_old
+</code></pre>
+
+<p>Then download the following file from the Internic ftp site using wget:</p>
+
+<pre><code>wget ftp://ftp.internic.net/domain/named.root
+</code></pre>
+
+<p>Rename the downloaded file to match the name in your config file:</p>
+
+<pre><code>mv named.root named.ca
+</code></pre>
+
+<p>Now restart named make the changes take effect:</p>
+
+<pre><code>/etc/rc.d/rc.bind stop
+/etc/rc.d/rc.bind start
+</code></pre>
+
+	<p>
+		<i>Last updated: 18/08/2005</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Installing git hooks stored in a project's repository</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2015/06/installing_git_hooks_stored_in_a_projects_repository.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Installing git hooks stored in a project's repository" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2015/06/installing_git_hooks_stored_in_a_projects_repository.html" />
+		<meta property="og:title" content="Installing git hooks stored in a project's repository" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Installing git hooks stored in a project's repository</h1>
+	<p>A project stored on a git repository might have its own useful <a href="http://git-scm.com/docs/githooks">hooks</a>. These are usually stored in <code>.git/hooks</code> and are not committed to version control.</p>
+
+<p>If these git hooks need to be shared between users then the following method can be used to ease installation for all contributors.</p>
+
+<p>Firstly create a new directory in the repository called <code>git-hooks</code> or similar.</p>
+
+<p>Then place all the git hooks specific to this project into this new directory and commit them to version control as normal.</p>
+
+<h2 id="installationscript">Installation script</h2>
+
+<p>Next, create a script somewhere such as <code>script/install_git_hooks.sh</code> to install the git hooks:</p>
+
+<pre><code>#!/bin/bash
+#Installs git hooks from repo into git dir, backing up older versions if different
+set -e
+echo "Installing git hooks..."
+RUN_DATE=`date "+%Y%m%dT%H%M%SZ"`
+DEST_DIR=".git/hooks"
+SOURCE_DIR="git-hooks"
+
+# Process all git hooks in the directory
+for SOURCE in ${SOURCE_DIR}/*; do
+SOURCE_NAME=`basename ${SOURCE}`
+DESTINATION="${DEST_DIR}/${SOURCE_NAME}"
+
+# If a hook of the same name already exists
+if [ -e ${DESTINATION} ]; then
+
+  # If the existing hook is different
+  if ! cmp -s ${SOURCE} ${DESTINATION}; then
+    DESTINATION_BACKUP="${DESTINATION}_backup_${RUN_DATE}"
+
+    # Back it up
+    mv -v ${DESTINATION} ${DESTINATION_BACKUP}
+  fi
+
+fi
+
+cp -v ${SOURCE} ${DESTINATION}
+done
+</code></pre>
+
+<p>The above script will check each file in the <code>git-hooks</code> directory and check if it is installed already for this project. If a different version of a hook is installed it will be backed up first.</p>
+
+<p>This script should be executed by an initial build task such as from <code>make</code> or even by npm as follows.</p>
+
+<h2 id="installingfromnpm">Installing from NPM</h2>
+
+<p>Using the <code>postinstall</code> script with npm we can execute our git hook install script as soon as any packages have been installed. The section of a <code>package.json</code> shown below details this:</p>
+
+<pre><code>"scripts": {
+  "postinstall": "script/install_git_hooks.sh"
+},
+</code></pre>
+
+<p>The install script will now be run after <code>npm install</code> has finished.</p>
+
+	<p>
+		<i>Last updated: 01/06/2015</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

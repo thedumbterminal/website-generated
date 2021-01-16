@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Information : File Permissions</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Information : File Permissions" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk" />
+		<meta property="og:title" content="Information : File Permissions" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+                        <h1>Permissions - Intro</h1>
+                        <p>
+                           If you are just getting into linux and upto now have only been using MS Windows operating systems
+                           you might find file permissions a bit of a nightmare. Hopefully this page will explain them for you.<br>
+                           Permissions apply to all users on a system apart from the &quot;root&quot; user (the superuser), this is
+                           one of the main reasons why you should not log in as &quot;root&quot; apart from when doing system
+                           maintenance.
+                        </p>
+                        <p>
+                           UNIX file permissions are split into the three main following sections:
+                           <ul>
+                              <li>User (owner of the file).
+                              <li>Group (everyone with the same group name as the owner).
+                              <li>Others (anyone else on the system).
+                           </ul>
+                           When a new user is created they are given a user name (what they log in with) and a group name to belong to.
+                           These groups are usually self-explantatory and aids system administration among other things.
+                        </p>
+                        <p>
+                           Within these three sections you can specify the following options shown in the table below<br>
+                           (in &quot;ls -l&quot; display order).
+                        </p>
+                        <table width="75%" align="center">
+                           <tr><th colspan="3">For the owner of the file:</th></tr>
+                           <tr align="center"><th>Char</th><th>Value</th><th>Permission</th></tr>
+                           <tr align="center"><td>r</td><td>400</td><td>Read</td></tr>
+                           <tr align="center"><td>w</td><td>200</td><td>Write</td></tr>
+                           <tr align="center"><td>x</td><td>100</td><td>Execute</td></tr>
+                           <tr colspan="3"><td> </td></tr>
+                           <tr><th colspan="3">For the owner's group:</th></tr>
+                           <tr align="center"><th>Char</th><th>Value</th><th>Permission</th></tr>
+                           <tr align="center"><td>r</td><td>40</td><td>Read</td></tr>
+                           <tr align="center"><td>w</td><td>20</td><td>Write</td></tr>
+                           <tr align="center"><td>x</td><td>10</td><td>Execute</td></tr>
+                           <tr colspan="3"><td> </td></tr>
+                           <tr><th colspan="3">For all others not in the owner's group:</th></tr>
+                           <tr><th>Char</th><th>Value</th><th>Permission</th></tr>
+                           <tr align="center"><td>r</td><td>4</td><td>Read</td></tr>
+                           <tr align="center"><td>w</td><td>2</td><td>Write</td></tr>
+                           <tr align="center"><td>x</td><td>1</td><td>Execute</td></tr>
+                        </table>
+                        <p>
+                           Here is a typical directory listing using the "ls -l" command, with a file's permissions indicated on
+                           the left.
+                        </p>
+                        <img src="/images/information/ls.gif" height="70" width="324" alt="ls -al output showing permissions">
+                        <p>
+                           If we take one of the file's permissions and split it up into it's different sections as shown in the
+                           diagram below:
+                        </p>
+                        <img src="/images/information/sections.gif" height="102" widgth="215" alt="the different permission sections">
+                        <p>
+                           As you can see, each section has the space for the three options show in the table above.
+                           Where there are &quot;-&quot; characters show that the specific permission is not set.<br>
+                           So, the above set of permissions read:
+                           <ul>
+                              <li>Read and write permissions for the user who owns the file (&quot;mark&quot; in this case).
+                              <li>Read permissions for other users in the same group as the owner (&quot;users&quot; in this case).
+                              <li>Read permissions for everyone else on the system.
+                           </ul>
+                        </p>
+                        <p>
+                           File permissions also apply to directories in the same way, but the options have a
+                           slightly different meaning.
+                           <ul>
+                              <li>Read access allows users to view a directory's contents.
+                              <li>Write access allows users to create files in the directory.
+                              <li>Execute allows users to change into the directory.
+                          </ul>
+                        </p>
+</section>
+<section>
+                        <h1>Permissions - Changing</h1>
+                        <p>
+                           Firstly, normal users can only change the permissions of a file (or directory) if they own it.
+                           The owner of a file can be found by again using the &quot;ls -l&quot; command as shown below.
+                        </p>
+                        <img src="/images/information/ls2.gif" height="70" width="333" alt="ls -al output showing file owner">
+                        <p>
+                           Changing a files permissions is done by using the &quot;chmod&quot; (change mode) command. This
+                           command is used in two ways, either using numbers or letters.
+                        </p>
+                        <h3>Using letters (symbolic codes)</h3>
+                        <p>
+                           First you have do decide what section of the permissions to set, this is done by specifying the
+                           first letter of the section, eg. &quot;g&quot; for group permissions. More than one section can
+                           given in a single command eg. typing &quot;ug&quot; will set the permissions for the file's owner
+                           and all users thier group. Not specifying a section will be that all section's permissions will
+                           be changed.
+                        </p>
+                        <p>
+                           Next you need to give the actual permissions you want to set. using a &quot;+&quot; in front of a
+                           permission bit will set it and using a &quot;-&quot; will unset it. For example &quot;+w&quot; will
+                           grant write access to the file. More than one permission bit can be given in a command along with
+                           different signs.
+                        </p>
+                        <p>
+                           Here are some examples, that show make things clearer:
+                        </p>
+                        <table width="75%" align="center">
+                               <tr><th>Current permissions</th><th>Command issued</th><th>New permissions</th></tr>
+                               <tr align="center"><td>-rw-r--r--</td><td>chmod +x filename</td><td>-rwxr-xr-x</td></tr>
+                               <tr align="center"><td>-rw-r--r--</td><td>chmod u+x filename</td><td>-rwxr--r--</td></tr>
+                               <tr align="center"><td>-rwxrwxrwx</td><td>chmod go-wx filename</td><td>-rwxr--r--</td></tr>
+                        </table>
+                        <h3>Using numbers (octal)</h3>
+                        <p>
+                           Most UNIX users find this method the quickest. All you need to do is refer to the first table on this
+                           page and look at the numbers for each permission bit. Then add together the values for the permissions
+                           you want the file to have. For example:<br>
+                           <dir>
+                              Start at 0 as old permissions get overwritten.<br>
+                              Add 400 for read access to the file's owner (you).<br>
+                              Add 200 for write access to the file's owner.<br>
+                              Add 40 for read access to all other user's in the owner's group<br>
+                              Add 4 for read access to everyone else.<br>
+                              Total = 0644 (it is best to always use four digits).
+                           </dir>
+                           This number is then used in the &quot;chmod&quot; command like this; &quot;ls 0644 filename&quot;.
+                           This file will will then have the permissions of &quot;-rw-r--r--&quot; under the
+                           &quot;ls -l&quot; output.
+                        </p>
+
+</section>
+<section>
+                        <h1>Permissions - Advanced</h1>
+                        <p>
+                           There are three extra permissions that can be set shown in the table below, these can
+                           be set and unset in the same way as the other permissions shown above.<br>
+                           Note: These permissions only effect executable files.
+                        </p>
+                        <table width="75%" align="center">
+                           <tr><th colspan="3">Special permissions:</th></tr>
+                           <tr align="center"><th>Char</th><th>Value</th><th>Permission</th></tr>
+                           <tr align="center"><td>s</td><td>4000</td><td>Set user ID on execution (SETUID)</td></tr>
+                           <tr align="center"><td>s</td><td>2000</td><td>Set group ID on execution (SETGUID)</td></tr>
+                           <tr align="center"><td>t</td><td>1000</td><td>Save text image on swap device</td></tr>
+                        </table>
+                        <p>
+                           The first two in the list are used when the file involved is a program or script, as
+                           when a program is run it normally runs as the user who ran it, eg. if user &quot;bob&quot;
+                           executed the file then the file will run under the &quot;bob&quot; user. If you
+                           set the &quot;SETUID&quot; bit then the file will run under the file's owner whichever user
+                           executes it.<br>
+                           The same applies to the &quot;SETGUID&quot; option but dealing with groups instead.
+                        </p>
+                        <p>
+                           The last option saves the program onto the system's swap device to speed up execution and
+                           run time.
+                        </p>
+                        <p>
+                           In order to set these special permissions using the symbolic mode (letter) method you
+                           must use the following commands. Note how the section (u,g,o) is defined in each.
+                        </p>
+                        <table width="75%" align="center">
+                           <tr><th colspan="3">Setting Special permissions:</th></tr>
+                           <tr align="center"><th>Command</th><th>Permission</th></tr>
+                           <tr align="center"><td>chmod u+s filename</td><td>Make file SETUID</td></tr>
+                           <tr align="center"><td>chmod g+s filename</td><td>make file SETGUID</td></tr>
+                           <tr align="center"><td>chmod o+t filename</td><td>Keep file permently on swap device</td></tr>
+                        </table>
+                        <p>
+                           If you want to use the octal way of setting these options, refer to the instructions
+                           for standard permissions.
+                        </p>				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

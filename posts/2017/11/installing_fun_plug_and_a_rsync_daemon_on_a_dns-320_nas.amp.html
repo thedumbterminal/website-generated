@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html amp lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Installing fun plug and a rsync daemon on a DNS-320 NAS</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+					
+			<link rel="canonical" href="http://www.thedumbterminal.co.uk/posts/2017/11/installing_fun_plug_and_a_rsync_daemon_on_a_dns-320_nas.html" />
+			
+				<script type="application/ld+json">
+				{
+					"@context": "http://schema.org",
+					"@type": "BlogPosting",
+					"headline": "Installing fun plug and a rsync daemon on a DNS-320 NAS",
+					"mainEntityOfPage":{
+						"@type":"WebPage",
+						"@id":"http://www.thedumbterminal.co.uk/posts/2017/11/installing_fun_plug_and_a_rsync_daemon_on_a_dns-320_nas.html"
+					},
+					"image": {
+						"@type": "ImageObject",
+						"url": "http://www.thedumbterminal.co.uk/images/top_stories_image.png",
+						"width": 696,
+						"height": 522
+					},
+					"datePublished": "2017-11-23T10:46:00Z",
+					"dateModified": "2017-11-23T10:46:00Z",
+					"author": {
+						"@type": "Person",
+						"name": "Mark Terry"
+					},
+					"publisher": {
+					"@type": "Organization",
+						"name": "The Dumb Terminal",
+						"logo": {
+							"@type": "ImageObject",
+							"url": "http://www.thedumbterminal.co.uk/images/top_stories_publisher_logo.png",
+							"width": 600,
+							"height": 60
+						}
+					},
+					"description": "The rsync daemon can be enabled on the DNS-320 by using Fun_plug . This offers a faster method of performing backups than the built in SMB, FTP or AFP...."
+				}
+				</script>
+
+			<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+			<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+			<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+
+			<script async src="https://cdn.ampproject.org/v0.js"></script>
+
+			<style amp-custom>
+				
+				*{box-sizing:border-box}html,body{height:100%;min-height:100%}body{font-family:sans-serif;background:rgba(0,0,0,1);color:#ddd;height:100%;padding-bottom:300px}a:link{color:#00ff00}a:visited{color:#00aa00}a:hover{color:#aaffaa}th{color:black;background-color:white}section{border-bottom:1px solid white}div#images div.clear{float:none;clear:both}div#images div{float:left;padding:5px;font-weight:bold;text-align:center;font-size:1.2em}pre{font-family:monospace;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}nav{font-size:1em;line-height:200%;text-align:center}aside{background:rgba(0,0,0,1);width:100%}aside img{display:block;margin:0 auto}footer{clear:both;height:140px}.nav-link{text-align:center}.container{height:100%;min-height:100%;margin-bottom:-140px}.hljs{background:#FEFFD7}ul.searchResults{display:none}@media (min-width:320px){.hide-mobile{display:none}img{max-width:100%}}@media (min-width:768px){.hide-tablet{display:none}body{background:rgba(0,0,0,1) url('/images/background.jpg') no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover}aside{position:absolute;padding-top:1em;padding-bottom:1em;border:solid thin rgba(255,255,255,1);background:rgba(0,0,0,0.9);width:175px;left:1em}section{padding:1em;border:solid thin rgba(255,255,255,1);background:rgba(0,0,0,0.9);margin-bottom:2em}.ads{position:absolute;padding:0;right:1em;border:0}main{position:absolute;right:200px;left:200px}}
+			</style>
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Installing fun plug and a rsync daemon on a DNS-320 NAS" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2017/11/installing_fun_plug_and_a_rsync_daemon_on_a_dns-320_nas.html" />
+		<meta property="og:title" content="Installing fun plug and a rsync daemon on a DNS-320 NAS" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Installing fun plug and a rsync daemon on a DNS-320 NAS</h1>
+	<p>The rsync daemon can be enabled on the DNS-320 by using <a href="https://nas-tweaks.net/tutorials/">Fun_plug</a>. This offers a faster method of performing backups than the built in SMB, FTP or AFP.</p>
+
+<p>First download the <a href="/files/posts/2017/11/fun_plug_install.tar.gz">fun_plug installer</a> to your local machine.</p>
+
+<p>Extract the archive and place the <code>fun_plug</code> executable and <code>fun_plug.tgz</code> files in to the root of the <code>Volume_1</code> drive on the NAS box.</p>
+
+<p>Create a new user via the NAS's web interface if needed for the rsync/ssh access.</p>
+
+<p>Restart using the web interface.</p>
+
+<p>Connect to the NAS via telnet:</p>
+
+<pre><code>telnet yournas
+</code></pre>
+
+<p>Enable SSH and rsyncd:</p>
+
+<pre><code>chmod +x /ffp/start/sshd.sh /ffp/start/rsyncd.sh
+</code></pre>
+
+<p>Set the password for root user:</p>
+
+<pre><code>passwd
+</code></pre>
+
+<p>Test ssh by connecting to the NAS with above password as root:</p>
+
+<pre><code>ssh root@yournas
+</code></pre>
+
+<p>Disable telnet:</p>
+
+<pre><code>chmod -x /ffp/start/telnetd.sh
+</code></pre>
+
+<p>Kill the current telnet process:</p>
+
+<pre><code>killall telnet
+</code></pre>
+
+<p>Create rsyncd config:</p>
+
+<pre><code># more /ffp/etc/rsyncd.conf
+uid = nobody
+gid = nobody
+max connections = 4
+use chroot = yes
+
+#Use no spaces by the "=" on the line below
+pid file=/var/run/rsyncd.pid
+
+[Backups]
+path = /mnt/HD/HD_a2/Bob/rsync 
+comment = Backups
+read only = false
+uid = youruser
+gid = yourgroup
+</code></pre>
+
+<p>Create module/share directory:</p>
+
+<pre><code>mkdir /mnt/HD/HD_a2/Bob/rsync
+chown nobody: /mnt/HD/HD_a2/Bob/rsync
+</code></pre>
+
+<p>Start rsyncd:</p>
+
+<pre><code>/ffp/start/rsyncd.sh start
+</code></pre>
+
+<p>Test rsyncd config by listing available shares on the NAS from your local machine:</p>
+
+<pre><code>rsync yournas::
+</code></pre>
+
+	<p>
+		<i>Last updated: 23/11/2017</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+			<aside>
+				<a href="/"><amp-img src="/images/sign.jpg" alt="Home" height="175" width="152"></amp-img></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<amp-analytics type="googleanalytics" id="analytics1">
+				<script type="application/json">
+					{
+						"vars": {
+							"account": "UA-18281947-1"
+						},
+						"triggers": {
+							"trackPageview": {
+								"on": "visible",
+								"request": "pageview"
+							}
+						}
+					}
+				</script>
+			</amp-analytics>
+			<amp-auto-ads type="adsense" data-ad-client="ca-pub-7361696162492478"></amp-auto-ads>
+		
+	</body>
+</html>
+

@@ -1,0 +1,1630 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>The Dumb Terminal's Knowledge Base</title>
+		<link>http://www.thedumbterminal.co.uk/posts/</link>
+		<description>Helpful computer knowledge</description>
+		<language>en-gb</language>
+		<lastBuildDate>Sat, 10 Oct 2020 18:05:00 +0100</lastBuildDate>
+		<docs>http://www.rssboard.org/rss-specification</docs>
+		<image>
+			<url>http://www.thedumbterminal.co.uk/images/sign.jpg</url>
+			<title>The Dumb Terminal's Knowledge Base</title>
+			<link>http://www.thedumbterminal.co.uk/posts/</link>
+		</image>
+		<category>Knowledge</category>
+		<atom:link href="http://www.thedumbterminal.co.uk/posts/feed.rss" rel="self" type="application/rss+xml" />
+		
+			
+				<item>
+					<pubDate>Sat, 10 Oct 2020 18:05:00 +0100</pubDate>
+					<title>Repairing a broken boot disk after converting to APFS</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2020/10/repairing_a_broken_boot_disk_after_converting_to_apfs.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2020/10/repairing_a_broken_boot_disk_after_converting_to_apfs.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 15 Feb 2020 14:35:00 +0100</pubDate>
+					<title>Reporting sizes of databases and tables in MySQL</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2020/02/reporting_sizes_of_databases_and_tables_in_mysql.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2020/02/reporting_sizes_of_databases_and_tables_in_mysql.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 24 Oct 2019 22:00:00 +0100</pubDate>
+					<title>Clearing all keys in a Redis cache</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2019/10/clearing_all_keys_in_a_redis_cache.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2019/10/clearing_all_keys_in_a_redis_cache.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 08 Apr 2019 23:15:00 +0100</pubDate>
+					<title>Adding colour to LS output</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2019/04/adding_colour_to_ls_output.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2019/04/adding_colour_to_ls_output.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 23 Nov 2017 10:46:00 +0100</pubDate>
+					<title>Installing fun plug and a rsync daemon on a DNS-320 NAS</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2017/11/installing_fun_plug_and_a_rsync_daemon_on_a_dns-320_nas.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2017/11/installing_fun_plug_and_a_rsync_daemon_on_a_dns-320_nas.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 17 Aug 2017 00:00:00 +0100</pubDate>
+					<title>ASCII Tables</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2017/08/ascii_tables.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2017/08/ascii_tables.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 30 May 2017 12:57:00 +0100</pubDate>
+					<title>Capturing screenshots on CI tasks using CircleCI</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2017/05/capturing_screenshots_on_ci_tasks_using_circleci.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2017/05/capturing_screenshots_on_ci_tasks_using_circleci.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 12 Nov 2016 08:27:00 +0100</pubDate>
+					<title>Simulating restarts when debugging cordova applications</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2016/11/simulating_restarts_when_debugging_cordova_applications.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2016/11/simulating_restarts_when_debugging_cordova_applications.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 26 Sep 2016 18:34:00 +0100</pubDate>
+					<title>Caching perl modules when running on Travis CI</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2016/09/caching_perl_modules_when_running_on_travis_ci.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2016/09/caching_perl_modules_when_running_on_travis_ci.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 29 Mar 2016 14:51:00 +0100</pubDate>
+					<title>Creating a signed android release using cordova version 5 and above from the CLI</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2016/03/creating_a_signed_android_release_using_cordova_version_5_and_above_from_the_cli.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2016/03/creating_a_signed_android_release_using_cordova_version_5_and_above_from_the_cli.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 10 Nov 2015 20:14:00 +0100</pubDate>
+					<title>List row counts for all tables in a database with PostgreSQL</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2015/11/list_row_counts_for_all_tables_in_a_database_with_postgresql.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2015/11/list_row_counts_for_all_tables_in_a_database_with_postgresql.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 14 Oct 2015 23:07:00 +0100</pubDate>
+					<title>Explicitly disable SSL / TLS for a host when sending email via sendmail</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2015/10/explicitly_disable_ssl__tls_for_a_host_when_sending_email_via_sendmail.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2015/10/explicitly_disable_ssl__tls_for_a_host_when_sending_email_via_sendmail.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 25 Sep 2015 20:11:00 +0100</pubDate>
+					<title>Forcing sendmail to flush its host status</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2015/09/forcing_sendmail_to_flush_its_host_status.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2015/09/forcing_sendmail_to_flush_its_host_status.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 15 Aug 2015 10:14:00 +0100</pubDate>
+					<title>Removing an entry from Squid proxy's cache</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2015/08/removing_an_entry_from_squid_proxys_cache.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2015/08/removing_an_entry_from_squid_proxys_cache.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 01 Jun 2015 23:10:00 +0100</pubDate>
+					<title>Installing git hooks stored in a project's repository</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2015/06/installing_git_hooks_stored_in_a_projects_repository.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2015/06/installing_git_hooks_stored_in_a_projects_repository.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 10 May 2015 23:04:00 +0100</pubDate>
+					<title>Firewalling ntpd with iptables</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2015/05/firewalling_ntpd_with_iptables.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2015/05/firewalling_ntpd_with_iptables.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 08 Apr 2015 22:29:00 +0100</pubDate>
+					<title>Using the command line to create a production android release for a cordova application</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2015/04/using_the_command_line_to_create_a_production_android_release_for_a_cordova_application.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2015/04/using_the_command_line_to_create_a_production_android_release_for_a_cordova_application.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 29 Mar 2015 02:25:00 +0100</pubDate>
+					<title>Backup and restore certificates in a java keystore</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2015/03/backup_and_restore_certificates_in_a_java_keystore.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2015/03/backup_and_restore_certificates_in_a_java_keystore.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 03 Mar 2015 22:52:00 +0100</pubDate>
+					<title>Correcting Bind errors due to an out of sync clock</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2015/03/correcting_bind_errors_due_to_an_out_of_sync_clock.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2015/03/correcting_bind_errors_due_to_an_out_of_sync_clock.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 25 Feb 2015 23:01:00 +0100</pubDate>
+					<title>Creating a simple game with scratch</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2015/02/creating_a_simple_game_with_scratch.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2015/02/creating_a_simple_game_with_scratch.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 18 Oct 2020 20:47:00 +0100</pubDate>
+					<title>System setup for modern perl projects</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2015/02/system_setup_for_modern_perl_projects.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2015/02/system_setup_for_modern_perl_projects.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 15 Jan 2015 23:24:00 +0100</pubDate>
+					<title>Debugging SSL problems with Cyrus IMAP</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2015/01/debugging_ssl_problems_with_cyrus_imap.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2015/01/debugging_ssl_problems_with_cyrus_imap.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 08 Dec 2014 22:41:29 +0100</pubDate>
+					<title>Speed up Android emulators with Intel HAXM</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2014/12/speed_up_android_emulators_with_intel_haxm.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2014/12/speed_up_android_emulators_with_intel_haxm.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 01 Dec 2014 21:46:21 +0100</pubDate>
+					<title>iOS compliation problems with apache cordova</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2014/12/ios_compliation_problems_with_apache_cordova.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2014/12/ios_compliation_problems_with_apache_cordova.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 02 Nov 2014 07:42:17 +0100</pubDate>
+					<title>Fatal flex error</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2014/11/fatal_flex_error.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2014/11/fatal_flex_error.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 09 Jul 2014 23:41:01 +0100</pubDate>
+					<title>Configuring Cordova to update the Android version code</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2014/07/configuring_cordova_to_update_the_android_version_code.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2014/07/configuring_cordova_to_update_the_android_version_code.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 02 Jul 2014 00:08:57 +0100</pubDate>
+					<title>How to find the minimum perl version required for a module</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2014/07/how_to_find_the_minimum_perl_version_required_for_a_module.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2014/07/how_to_find_the_minimum_perl_version_required_for_a_module.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 01 Oct 2017 13:34:00 +0100</pubDate>
+					<title>Make the keyboard repeat rate on Mac OSX even faster</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/12/make_the_keyboard_repeat_rate_on_mac_osx_even_faster.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/12/make_the_keyboard_repeat_rate_on_mac_osx_even_faster.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 06 Dec 2013 00:06:13 +0100</pubDate>
+					<title>How to remove characters from the end of a string in BASH</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/12/how_to_remove_characters_from_the_end_of_a_string_in_bash.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/12/how_to_remove_characters_from_the_end_of_a_string_in_bash.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 28 Nov 2013 16:46:39 +0100</pubDate>
+					<title>Debugging Android WebViews in Cordova hybrid applications running on kitkat</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/11/debugging_android_webviews_in_cordova_hybrid_applications_running_on_kitkat.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/11/debugging_android_webviews_in_cordova_hybrid_applications_running_on_kitkat.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 23 Nov 2013 18:28:20 +0100</pubDate>
+					<title>Merging two hash references in Perl</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/11/merging_two_hash_references_in_perl.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/11/merging_two_hash_references_in_perl.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 21 Oct 2013 19:25:06 +0100</pubDate>
+					<title>Show cache hits for PostgreSQL queries</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/10/show_cache_hits_for_postgresql_queries.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/10/show_cache_hits_for_postgresql_queries.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 29 Aug 2013 18:33:56 +0100</pubDate>
+					<title>Converting a general project to a Java project in Eclipse IDE</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/08/converting_a_general_project_to_a_java_project_in_eclipse_ide.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/08/converting_a_general_project_to_a_java_project_in_eclipse_ide.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 28 Aug 2013 19:19:35 +0100</pubDate>
+					<title>Dumping stored procedures and functions in MySQL</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/08/dumping_stored_procedures_and_functions_in_mysql.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/08/dumping_stored_procedures_and_functions_in_mysql.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 15 Aug 2013 21:59:25 +0100</pubDate>
+					<title>Transferring files with rsync using an SSH server running on a non standard port</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/08/transferring_files_with_rsync_using_an_ssh_server_running_on_a_non_standard_port.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/08/transferring_files_with_rsync_using_an_ssh_server_running_on_a_non_standard_port.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 09 Aug 2013 15:15:12 +0100</pubDate>
+					<title>Directing basic output with Ruby</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/08/directing_basic_output_with_ruby.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/08/directing_basic_output_with_ruby.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 07 Aug 2013 22:38:36 +0100</pubDate>
+					<title>Initialising a PostgreSQL database cluster for use in Great Britian</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/08/initialising_a_postgresql_database_cluster_for_use_in_great_britian.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/08/initialising_a_postgresql_database_cluster_for_use_in_great_britian.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 04 Jul 2013 00:37:34 +0100</pubDate>
+					<title>Recording Analogue PAL TV using Video4Linux</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/07/recording_analogue_pal_tv_using_video4linux.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/07/recording_analogue_pal_tv_using_video4linux.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 03 May 2013 20:42:01 +0100</pubDate>
+					<title>Greasemonkey script to hide Facebook advertisements</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/05/greasemonkey_script_to_hide_facebook_advertisements.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/05/greasemonkey_script_to_hide_facebook_advertisements.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 09 Apr 2013 18:08:23 +0100</pubDate>
+					<title>Ruby debugger-linecache install error on debian</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/04/ruby_debugger-linecache_install_error_on_debian.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/04/ruby_debugger-linecache_install_error_on_debian.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 09 Mar 2013 23:03:13 +0100</pubDate>
+					<title>Resizing a virtual disk in VirtualBox 4</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/03/resizing_a_virtual_disk_in_virtualbox_4.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/03/resizing_a_virtual_disk_in_virtualbox_4.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 20 Feb 2013 23:56:05 +0100</pubDate>
+					<title>How to change the host name and computer name in Mac OS X</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/02/how_to_change_the_host_name_and_computer_name_in_mac_os_x.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/02/how_to_change_the_host_name_and_computer_name_in_mac_os_x.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 16 Feb 2013 18:38:42 +0100</pubDate>
+					<title>How to fix BIND's journal out of sync error</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/02/how_to_fix_binds_journal_out_of_sync_error.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/02/how_to_fix_binds_journal_out_of_sync_error.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 16 Feb 2013 11:55:39 +0100</pubDate>
+					<title>How to make sendmail listen on specific network interfaces</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2013/02/how_to_make_sendmail_listen_on_specific_network_interfaces.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2013/02/how_to_make_sendmail_listen_on_specific_network_interfaces.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 17 Oct 2012 09:49:03 +0100</pubDate>
+					<title>How do I create a .tar.gz file?</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/10/how_do_i_create_a_targz_file.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/10/how_do_i_create_a_targz_file.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 25 Sep 2012 10:17:20 +0100</pubDate>
+					<title>How to convert an .ogv movie to .avi with MEncoder</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/09/how_to_convert_an_ogv_movie_to_avi_with_mencoder.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/09/how_to_convert_an_ogv_movie_to_avi_with_mencoder.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 24 Jun 2012 00:49:42 +0100</pubDate>
+					<title>Flush the DNS cache in Mac OSX</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/06/flush_the_dns_cache_in_mac_osx.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/06/flush_the_dns_cache_in_mac_osx.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 20 Jun 2012 11:26:26 +0100</pubDate>
+					<title>Setting up a transparent proxy with Squid version 3</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/06/setting_up_a_transparent_proxy_with_squid_version_3.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/06/setting_up_a_transparent_proxy_with_squid_version_3.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 25 Apr 2012 09:01:46 +0100</pubDate>
+					<title>Using firefox in Linux with multiple sound cards</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/04/using_firefox_in_linux_with_multiple_sound_cards.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/04/using_firefox_in_linux_with_multiple_sound_cards.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 02 Apr 2012 12:36:15 +0100</pubDate>
+					<title>Restoring a deleted file or directory from Subversion</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/04/restoring_a_deleted_file_or_directory_from_subversion.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/04/restoring_a_deleted_file_or_directory_from_subversion.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 18 Mar 2012 11:09:06 +0100</pubDate>
+					<title>Using PHP's mail() function in a chroot environment</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/03/using_phps_mail_function_in_a_chroot_environment.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/03/using_phps_mail_function_in_a_chroot_environment.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 21 Mar 2012 17:12:01 +0100</pubDate>
+					<title>How to capitalise the first letter of every word in Javascript </title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/03/how_to_capitalise_the_first_letter_of_every_word_in_javascript_.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/03/how_to_capitalise_the_first_letter_of_every_word_in_javascript_.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 18 Mar 2012 11:08:10 +0100</pubDate>
+					<title>Iterating over a directory's contents with BASH</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/03/iterating_over_a_directorys_contents_with_bash.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/03/iterating_over_a_directorys_contents_with_bash.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 01 Mar 2012 22:05:39 +0100</pubDate>
+					<title>How to remove MySQL binary logs</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/03/how_to_remove_mysql_binary_logs.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/03/how_to_remove_mysql_binary_logs.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 15 May 2015 22:05:03 +0100</pubDate>
+					<title>Configuring the encryption ciphers used with sendmail</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/02/configuring_the_encryption_ciphers_used_with_sendmail.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/02/configuring_the_encryption_ciphers_used_with_sendmail.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 21 Feb 2012 20:50:01 +0100</pubDate>
+					<title>Running GPG from a cron or application</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/02/running_gpg_from_a_cron_or_application.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/02/running_gpg_from_a_cron_or_application.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 19 Feb 2012 21:35:08 +0100</pubDate>
+					<title>Generating random bytes for GPG</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/02/generating_random_bytes_for_gpg.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/02/generating_random_bytes_for_gpg.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 16 Feb 2012 01:05:44 +0100</pubDate>
+					<title>How to throw an exception in Javascript</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/02/how_to_throw_an_exception_in_javascript.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/02/how_to_throw_an_exception_in_javascript.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 22 Jan 2012 12:14:10 +0100</pubDate>
+					<title>How to access the boot menu on a Mac</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/01/how_to_access_the_boot_menu_on_a_mac.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/01/how_to_access_the_boot_menu_on_a_mac.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 22 Jan 2012 11:09:31 +0100</pubDate>
+					<title>How to access the open firmware CLI on a Mac</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2012/01/how_to_access_the_open_firmware_cli_on_a_mac.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2012/01/how_to_access_the_open_firmware_cli_on_a_mac.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 23 Nov 2011 20:18:44 +0100</pubDate>
+					<title>How to remove the default route in Linux</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2011/11/how_to_remove_the_default_route_in_linux.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2011/11/how_to_remove_the_default_route_in_linux.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 21 Nov 2011 21:10:28 +0100</pubDate>
+					<title>Flushing the linux routing cache</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2011/11/flushing_the_linux_routing_cache.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2011/11/flushing_the_linux_routing_cache.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 14 Nov 2011 23:14:15 +0100</pubDate>
+					<title>How to remove border around a linked image using CSS</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2011/11/how_to_remove_border_around_a_linked_image_using_css.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2011/11/how_to_remove_border_around_a_linked_image_using_css.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 29 Sep 2011 00:22:46 +0100</pubDate>
+					<title>Example output formats of the linux date command</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2011/09/example_output_formats_of_the_linux_date_command.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2011/09/example_output_formats_of_the_linux_date_command.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 05 Jun 2011 23:46:05 +0100</pubDate>
+					<title>How to find files using a regular expression</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2011/06/how_to_find_files_using_a_regular_expression.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2011/06/how_to_find_files_using_a_regular_expression.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 29 May 2011 17:49:06 +0100</pubDate>
+					<title>Fixing COPY/MOVE when using Subversion behind a SSL reverse proxy</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2011/05/fixing_copymove_when_using_subversion_behind_a_ssl_reverse_proxy.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2011/05/fixing_copymove_when_using_subversion_behind_a_ssl_reverse_proxy.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 26 May 2011 00:55:17 +0100</pubDate>
+					<title>Configuring a VMWare guest to always start with a specific time</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2011/05/configuring_a_vmware_guest_to_always_start_with_a_specific_time.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2011/05/configuring_a_vmware_guest_to_always_start_with_a_specific_time.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 02 May 2011 11:47:32 +0100</pubDate>
+					<title>Find the version of a Subversion respository</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2011/05/find_the_version_of_a_subversion_respository.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2011/05/find_the_version_of_a_subversion_respository.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 15 Mar 2011 19:39:16 +0100</pubDate>
+					<title>How to create an SSL CSR with a 2048 bit key</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2011/03/how_to_create_an_ssl_csr_with_a_2048_bit_key.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2011/03/how_to_create_an_ssl_csr_with_a_2048_bit_key.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 20 Dec 2010 21:15:59 +0100</pubDate>
+					<title>Amarok plugin error</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2010/12/amarok_plugin_error.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2010/12/amarok_plugin_error.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 11 Dec 2010 21:53:29 +0100</pubDate>
+					<title>Force MS Internet Explorer into a specific version</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2010/12/force_ms_internet_explorer_into_a_specific_version.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2010/12/force_ms_internet_explorer_into_a_specific_version.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 22 Sep 2010 20:43:13 +0100</pubDate>
+					<title>How to run a Linux command in an unlimited loop</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2010/09/how_to_run_a_linux_command_in_an_unlimited_loop.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2010/09/how_to_run_a_linux_command_in_an_unlimited_loop.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 14 Aug 2010 22:40:48 +0100</pubDate>
+					<title>Locking problem when using mysqldump on large databases</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2010/08/locking_problem_when_using_mysqldump_on_large_databases.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2010/08/locking_problem_when_using_mysqldump_on_large_databases.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 08 Aug 2010 20:14:24 +0100</pubDate>
+					<title>Managing the routing cache with linux</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2010/08/managing_the_routing_cache_with_linux.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2010/08/managing_the_routing_cache_with_linux.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 01 Aug 2010 21:04:55 +0100</pubDate>
+					<title>Disabling PHP for specific directories with Apache</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2010/08/disabling_php_for_specific_directories_with_apache.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2010/08/disabling_php_for_specific_directories_with_apache.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 14 Jul 2010 00:47:30 +0100</pubDate>
+					<title>How to troubleshoot SELinux problems</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2010/07/how_to_troubleshoot_selinux_problems.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2010/07/how_to_troubleshoot_selinux_problems.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 25 Feb 2010 21:07:40 +0100</pubDate>
+					<title>Slackware can not find PAM libaries</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2010/02/slackware_can_not_find_pam_libaries.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2010/02/slackware_can_not_find_pam_libaries.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 25 Feb 2010 21:33:07 +0100</pubDate>
+					<title>Cursor and other keys not working in VMWare Console/Player/Workstation</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2010/02/cursor_and_other_keys_not_working_in_vmware_consoleplayerworkstation.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2010/02/cursor_and_other_keys_not_working_in_vmware_consoleplayerworkstation.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 25 Feb 2010 21:15:23 +0100</pubDate>
+					<title>Password incorrect when logging into VMWare Server on Slackware</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2010/02/password_incorrect_when_logging_into_vmware_server_on_slackware.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2010/02/password_incorrect_when_logging_into_vmware_server_on_slackware.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 03 Feb 2010 21:01:48 +0100</pubDate>
+					<title>Eclipse IDE Linux X11 startup error</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2010/02/eclipse_ide_linux_x11_startup_error.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2010/02/eclipse_ide_linux_x11_startup_error.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 03 Feb 2010 20:53:49 +0100</pubDate>
+					<title>How to disable printing completely in samba</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2010/02/how_to_disable_printing_completely_in_samba.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2010/02/how_to_disable_printing_completely_in_samba.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 03 Feb 2010 20:49:43 +0100</pubDate>
+					<title>Brief guide to using SELinux</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2010/02/brief_guide_to_using_selinux.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2010/02/brief_guide_to_using_selinux.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 12 Aug 2009 15:56:36 +0100</pubDate>
+					<title>Converting a physical disk into a VMWare virtual disk</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2009/08/converting_a_physical_disk_into_a_vmware_virtual_disk.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2009/08/converting_a_physical_disk_into_a_vmware_virtual_disk.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 06 Aug 2009 22:52:49 +0100</pubDate>
+					<title>Creating autodetectable software RAID array</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2009/08/creating_autodetectable_software_raid_array.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2009/08/creating_autodetectable_software_raid_array.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 13 Feb 2009 22:55:06 +0100</pubDate>
+					<title>BASH startup scripts</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2009/02/bash_startup_scripts.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2009/02/bash_startup_scripts.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 16 Feb 2009 00:15:51 +0100</pubDate>
+					<title>Creating the superuser account for Django</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2009/02/creating_the_superuser_account_for_django.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2009/02/creating_the_superuser_account_for_django.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 03 Jan 2009 22:05:27 +0100</pubDate>
+					<title>How to set the correct XML encoding using Sablotron</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2009/01/how_to_set_the_correct_xml_encoding_using_sablotron.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2009/01/how_to_set_the_correct_xml_encoding_using_sablotron.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 30 Sep 2008 23:59:08 +0100</pubDate>
+					<title>Setting a static MAC address on a VMWare guest</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2008/09/setting_a_static_mac_address_on_a_vmware_guest.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2008/09/setting_a_static_mac_address_on_a_vmware_guest.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 30 Sep 2008 23:55:22 +0100</pubDate>
+					<title>Creating a domain group mapping with Samba</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2008/09/creating_a_domain_group_mapping_with_samba.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2008/09/creating_a_domain_group_mapping_with_samba.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 16 Aug 2008 00:35:28 +0100</pubDate>
+					<title>MySQL error 24 when dumping data</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2008/08/mysql_error_24_when_dumping_data.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2008/08/mysql_error_24_when_dumping_data.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 24 Aug 2008 22:05:01 +0100</pubDate>
+					<title>Very simple guide to Linux software RAID</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2008/08/very_simple_guide_to_linux_software_raid.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2008/08/very_simple_guide_to_linux_software_raid.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 08 Jul 2008 22:38:18 +0100</pubDate>
+					<title>Setting up proxy auto configuration with Apache</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2008/07/setting_up_proxy_auto_configuration_with_apache.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2008/07/setting_up_proxy_auto_configuration_with_apache.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 12 Jun 2008 21:45:54 +0100</pubDate>
+					<title>How to stop a kernel module from being loaded</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2008/06/how_to_stop_a_kernel_module_from_being_loaded.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2008/06/how_to_stop_a_kernel_module_from_being_loaded.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 12 Jun 2008 21:36:16 +0100</pubDate>
+					<title>How to setup wildcard DNS entries with BIND</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2008/06/how_to_setup_wildcard_dns_entries_with_bind.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2008/06/how_to_setup_wildcard_dns_entries_with_bind.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 12 Jun 2008 21:31:59 +0100</pubDate>
+					<title>Viewing the contents of an SSL x509 Certificate</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2008/06/viewing_the_contents_of_an_ssl_x509_certificate.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2008/06/viewing_the_contents_of_an_ssl_x509_certificate.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 28 Nov 2007 15:01:59 +0100</pubDate>
+					<title>How to forward local ports using SSH</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2007/11/how_to_forward_local_ports_using_ssh.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2007/11/how_to_forward_local_ports_using_ssh.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 28 Nov 2007 14:51:52 +0100</pubDate>
+					<title>Including JavaScript in XHTML pages</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2007/11/including_javascript_in_xhtml_pages.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2007/11/including_javascript_in_xhtml_pages.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 28 Nov 2007 14:45:15 +0100</pubDate>
+					<title>Transforming to XHTML with XSLT</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2007/11/transforming_to_xhtml_with_xslt.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2007/11/transforming_to_xhtml_with_xslt.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 13 Sep 2007 17:33:44 +0100</pubDate>
+					<title>Regenerating a lost public OpenSSH key</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2007/09/regenerating_a_lost_public_openssh_key.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2007/09/regenerating_a_lost_public_openssh_key.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 12 Sep 2007 16:49:11 +0100</pubDate>
+					<title>How to open directories in the same window with Gnome</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2007/09/how_to_open_directories_in_the_same_window_with_gnome.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2007/09/how_to_open_directories_in_the_same_window_with_gnome.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 02 Sep 2007 20:29:10 +0100</pubDate>
+					<title>The quicket way to create an ISO image in linux</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2007/09/the_quicket_way_to_create_an_iso_image_in_linux.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2007/09/the_quicket_way_to_create_an_iso_image_in_linux.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 02 Sep 2007 20:27:12 +0100</pubDate>
+					<title>Emails not downloading with Windows Vista</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2007/09/emails_not_downloading_with_windows_vista.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2007/09/emails_not_downloading_with_windows_vista.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 01 Sep 2007 20:41:06 +0100</pubDate>
+					<title>Lilo device-mapper error</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2007/09/lilo_device-mapper_error.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2007/09/lilo_device-mapper_error.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 04 Aug 2007 08:56:18 +0100</pubDate>
+					<title>How to reconfigure Perl's CPAN module</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2007/08/how_to_reconfigure_perls_cpan_module.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2007/08/how_to_reconfigure_perls_cpan_module.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 13 Jul 2007 23:22:36 +0100</pubDate>
+					<title>Enabing SATA CD/DVD drives in Linux</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2007/07/enabing_sata_cddvd_drives_in_linux.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2007/07/enabing_sata_cddvd_drives_in_linux.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 10 May 2007 16:25:00 +0100</pubDate>
+					<title>Correct BlackBerry TCP options for use with T-Mobile</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2007/05/correct_blackberry_tcp_options_for_use_with_t-mobile.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2007/05/correct_blackberry_tcp_options_for_use_with_t-mobile.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 20 Mar 2007 10:24:59 +0100</pubDate>
+					<title>Accessing the BIOS on a Toshiba Portege laptop</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2007/03/accessing_the_bios_on_a_toshiba_portege_laptop.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2007/03/accessing_the_bios_on_a_toshiba_portege_laptop.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 09 Feb 2007 22:09:18 +0100</pubDate>
+					<title>Setting locale failed with Slackware</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2007/02/setting_locale_failed_with_slackware.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2007/02/setting_locale_failed_with_slackware.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 02 Feb 2007 10:20:37 +0100</pubDate>
+					<title>Showing deadlocked processes with Postgres</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2007/02/showing_deadlocked_processes_with_postgres.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2007/02/showing_deadlocked_processes_with_postgres.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 15 Feb 2007 10:53:22 +0100</pubDate>
+					<title>Arithmetic expressions in BASH</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2007/02/arithmetic_expressions_in_bash.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2007/02/arithmetic_expressions_in_bash.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 11 Nov 2006 23:50:10 +0100</pubDate>
+					<title>Creating a copy of a MySQL database server</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/11/creating_a_copy_of_a_mysql_database_server.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/11/creating_a_copy_of_a_mysql_database_server.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 04 Nov 2006 22:07:39 +0100</pubDate>
+					<title>Standard input errors from cron jobs</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/11/standard_input_errors_from_cron_jobs.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/11/standard_input_errors_from_cron_jobs.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 28 Oct 2006 23:39:24 +0100</pubDate>
+					<title>How to test if a shell is interactive</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/10/how_to_test_if_a_shell_is_interactive.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/10/how_to_test_if_a_shell_is_interactive.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 27 Oct 2006 15:54:00 +0100</pubDate>
+					<title>How to escape quotes in SQL using XSLT</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/10/how_to_escape_quotes_in_sql_using_xslt.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/10/how_to_escape_quotes_in_sql_using_xslt.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 03 Oct 2006 22:37:57 +0100</pubDate>
+					<title>How to use the testing packages with Debian</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/10/how_to_use_the_testing_packages_with_debian.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/10/how_to_use_the_testing_packages_with_debian.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 01 Oct 2006 00:23:17 +0100</pubDate>
+					<title>Software RAID devices not being automatically detected</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/10/software_raid_devices_not_being_automatically_detected.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/10/software_raid_devices_not_being_automatically_detected.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 26 Sep 2006 12:38:11 +0100</pubDate>
+					<title>How to create a simple application firewall with mod_rewrite</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/09/how_to_create_a_simple_application_firewall_with_mod_rewrite.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/09/how_to_create_a_simple_application_firewall_with_mod_rewrite.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 25 Sep 2006 15:09:00 +0100</pubDate>
+					<title>How to limit the size of a subversion repository</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/09/how_to_limit_the_size_of_a_subversion_repository.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/09/how_to_limit_the_size_of_a_subversion_repository.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 26 Aug 2006 11:37:01 +0100</pubDate>
+					<title>How to find and replace in MySQL</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/08/how_to_find_and_replace_in_mysql.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/08/how_to_find_and_replace_in_mysql.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 22 Aug 2006 19:38:27 +0100</pubDate>
+					<title>How to call an external command from a macro</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/08/how_to_call_an_external_command_from_a_macro.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/08/how_to_call_an_external_command_from_a_macro.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 09 Aug 2006 11:08:41 +0100</pubDate>
+					<title>How to mount windows shares from linux</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/08/how_to_mount_windows_shares_from_linux.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/08/how_to_mount_windows_shares_from_linux.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 04 Aug 2006 20:51:13 +0100</pubDate>
+					<title>How to add a RSS feed to your website</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/08/how_to_add_a_rss_feed_to_your_website.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/08/how_to_add_a_rss_feed_to_your_website.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 30 Jul 2006 17:23:57 +0100</pubDate>
+					<title>Compiling PHP with JPEG support</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/07/compiling_php_with_jpeg_support.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/07/compiling_php_with_jpeg_support.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 19 Jul 2006 10:06:00 +0100</pubDate>
+					<title>How to bring up an interface at boot with no IP address on Debian</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/07/how_to_bring_up_an_interface_at_boot_with_no_ip_address_on_debian.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/07/how_to_bring_up_an_interface_at_boot_with_no_ip_address_on_debian.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 13 Jul 2006 11:00:33 +0100</pubDate>
+					<title>How to reset a sequence number in Postgres</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/07/how_to_reset_a_sequence_number_in_postgres.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/07/how_to_reset_a_sequence_number_in_postgres.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 11 Jul 2006 16:03:24 +0100</pubDate>
+					<title>Where Firefox stores it's cookies</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/07/where_firefox_stores_its_cookies.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/07/where_firefox_stores_its_cookies.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 28 Jun 2006 22:15:48 +0100</pubDate>
+					<title>Using the AdvanSys SCSI driver in kernel version 2.6.16</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/06/using_the_advansys_scsi_driver_in_kernel_version_2616.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/06/using_the_advansys_scsi_driver_in_kernel_version_2616.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 21 Jun 2006 17:28:49 +0100</pubDate>
+					<title>How to convert an IPV4 address into a integer</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/06/how_to_convert_an_ipv4_address_into_a_integer.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/06/how_to_convert_an_ipv4_address_into_a_integer.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 08 Jun 2006 21:48:37 +0100</pubDate>
+					<title>Changing the colour of your xterm</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/06/changing_the_colour_of_your_xterm.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/06/changing_the_colour_of_your_xterm.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 05 Jun 2006 00:03:11 +0100</pubDate>
+					<title>How to center With CSS</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/06/how_to_center_with_css.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/06/how_to_center_with_css.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 24 May 2006 12:34:18 +0100</pubDate>
+					<title>dpkg: syntax error: unknown group `Debian-exim' in statusoverride file</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/05/dpkg_syntax_error_unknown_group_debian-exim_in_statusoverride_file.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/05/dpkg_syntax_error_unknown_group_debian-exim_in_statusoverride_file.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 24 May 2006 11:14:25 +0100</pubDate>
+					<title>How to generate host keys for OpenSSH</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/05/how_to_generate_host_keys_for_openssh.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/05/how_to_generate_host_keys_for_openssh.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 10 May 2006 14:45:11 +0100</pubDate>
+					<title>Creating symlinks in Windows</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/05/creating_symlinks_in_windows.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/05/creating_symlinks_in_windows.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 10 May 2006 12:49:33 +0100</pubDate>
+					<title>Using perl to grep</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/05/using_perl_to_grep.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/05/using_perl_to_grep.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 26 Apr 2006 00:11:16 +0100</pubDate>
+					<title>How to reduce FireFox's memory usage</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/04/how_to_reduce_firefoxs_memory_usage.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/04/how_to_reduce_firefoxs_memory_usage.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 18 Apr 2006 15:09:37 +0100</pubDate>
+					<title>VMWare guests run slowly on Linux 2.6 Host</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/04/vmware_guests_run_slowly_on_linux_26_host.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/04/vmware_guests_run_slowly_on_linux_26_host.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 06 Apr 2006 13:39:54 +0100</pubDate>
+					<title>Binding to the next available TCP port in perl</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/04/binding_to_the_next_available_tcp_port_in_perl.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/04/binding_to_the_next_available_tcp_port_in_perl.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 16 Mar 2006 11:36:10 +0100</pubDate>
+					<title>Removing an evironment variable in BASH</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/03/removing_an_evironment_variable_in_bash.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/03/removing_an_evironment_variable_in_bash.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 06 Mar 2006 07:17:30 +0100</pubDate>
+					<title>How to block TRACK and TRACE requests with Apache</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/03/how_to_block_track_and_trace_requests_with_apache.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/03/how_to_block_track_and_trace_requests_with_apache.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 04 Mar 2006 09:37:18 +0100</pubDate>
+					<title>How to create and view the contents of an SSL CSR file</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/03/how_to_create_and_view_the_contents_of_an_ssl_csr_file.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/03/how_to_create_and_view_the_contents_of_an_ssl_csr_file.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 27 Jan 2006 10:06:47 +0100</pubDate>
+					<title>How to set the console keymap on Debian</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/01/how_to_set_the_console_keymap_on_debian.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/01/how_to_set_the_console_keymap_on_debian.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 26 Jan 2006 12:30:36 +0100</pubDate>
+					<title>Module errors with kernel 2.6</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/01/module_errors_with_kernel_26.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/01/module_errors_with_kernel_26.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 04 Jan 2006 15:28:54 +0100</pubDate>
+					<title>Creating and mounting a loopback filesystem in Linux</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2006/01/creating_and_mounting_a_loopback_filesystem_in_linux.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2006/01/creating_and_mounting_a_loopback_filesystem_in_linux.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 14 Dec 2005 17:04:26 +0100</pubDate>
+					<title>How to define Win32 path names in a Tomcat Security Policy</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/12/how_to_define_win32_path_names_in_a_tomcat_security_policy.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/12/how_to_define_win32_path_names_in_a_tomcat_security_policy.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 13 Dec 2005 17:16:45 +0100</pubDate>
+					<title>Redirecting output using the Windows XP command prompt</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/12/redirecting_output_using_the_windows_xp_command_prompt.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/12/redirecting_output_using_the_windows_xp_command_prompt.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 10 Dec 2005 19:19:01 +0100</pubDate>
+					<title>rxvt error with cfdisk in Linux</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/12/rxvt_error_with_cfdisk_in_linux.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/12/rxvt_error_with_cfdisk_in_linux.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 10 Dec 2005 17:00:11 +0100</pubDate>
+					<title>Turning off DMA for drives in Linux</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/12/turning_off_dma_for_drives_in_linux.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/12/turning_off_dma_for_drives_in_linux.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 22 Dec 2005 16:47:38 +0100</pubDate>
+					<title>Using keys with SSH rather than passwords</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/12/using_keys_with_ssh_rather_than_passwords.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/12/using_keys_with_ssh_rather_than_passwords.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 29 Nov 2005 23:10:00 +0100</pubDate>
+					<title>Changing squid error pages</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/11/changing_squid_error_pages.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/11/changing_squid_error_pages.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 25 Nov 2005 13:30:44 +0100</pubDate>
+					<title>Executing PHP scripts as CGI scripts without using a "sh-bang" line</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/11/executing_php_scripts_as_cgi_scripts_without_using_a_sh-bang_line.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/11/executing_php_scripts_as_cgi_scripts_without_using_a_sh-bang_line.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 25 Nov 2005 00:05:32 +0100</pubDate>
+					<title>Setting PHP as A CGI with Apache and SUEXEC</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/11/setting_php_as_a_cgi_with_apache_and_suexec.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/11/setting_php_as_a_cgi_with_apache_and_suexec.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 16 Nov 2005 09:25:16 +0100</pubDate>
+					<title>How to disable the framebuffer when booting linux</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/11/how_to_disable_the_framebuffer_when_booting_linux.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/11/how_to_disable_the_framebuffer_when_booting_linux.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 07 Nov 2005 21:23:11 +0100</pubDate>
+					<title>Limiting the amount of idle connections on your MySQL server</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/11/limiting_the_amount_of_idle_connections_on_your_mysql_server.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/11/limiting_the_amount_of_idle_connections_on_your_mysql_server.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 07 Nov 2005 13:57:25 +0100</pubDate>
+					<title>Hiding your BIND version</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/11/hiding_your_bind_version.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/11/hiding_your_bind_version.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 22 Oct 2005 10:30:22 +0100</pubDate>
+					<title>Blocking access to sites when using Squid</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/10/blocking_access_to_sites_when_using_squid.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/10/blocking_access_to_sites_when_using_squid.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 13 Oct 2005 10:52:37 +0100</pubDate>
+					<title>Piping data into Perl scripts from a MS DOS command line</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/10/piping_data_into_perl_scripts_from_a_ms_dos_command_line.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/10/piping_data_into_perl_scripts_from_a_ms_dos_command_line.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 06 Oct 2005 13:29:39 +0100</pubDate>
+					<title>Finding out what is making your Perl code slow with profiling</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/10/finding_out_what_is_making_your_perl_code_slow_with_profiling.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/10/finding_out_what_is_making_your_perl_code_slow_with_profiling.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 28 Sep 2005 11:36:32 +0100</pubDate>
+					<title>Turning on trace messages for Perl DBI</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/09/turning_on_trace_messages_for_perl_dbi.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/09/turning_on_trace_messages_for_perl_dbi.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 18 Sep 2005 21:10:19 +0100</pubDate>
+					<title>How to enable compression with MySQL and Perl</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/09/how_to_enable_compression_with_mysql_and_perl.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/09/how_to_enable_compression_with_mysql_and_perl.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 15 Sep 2005 17:20:39 +0100</pubDate>
+					<title>Using agent forwarding with SSH</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/09/using_agent_forwarding_with_ssh.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/09/using_agent_forwarding_with_ssh.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 14 Sep 2005 13:58:00 +0100</pubDate>
+					<title>Changing the advertised hostname with Sendmail</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/09/changing_the_advertised_hostname_with_sendmail.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/09/changing_the_advertised_hostname_with_sendmail.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 18 Aug 2005 23:02:20 +0100</pubDate>
+					<title>Updating your bind/named hints file</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/08/updating_your_bindnamed_hints_file.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/08/updating_your_bindnamed_hints_file.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 25 Jul 2005 23:58:39 +0100</pubDate>
+					<title>Compiling cdrtools/cdrecord with kernel 2.6</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/07/compiling_cdrtoolscdrecord_with_kernel_26.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/07/compiling_cdrtoolscdrecord_with_kernel_26.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 11 Jul 2005 21:46:26 +0100</pubDate>
+					<title>libgcc_s.so.1 must be installed for pthread_cancel to work</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/07/libgcc_sso1_must_be_installed_for_pthread_cancel_to_work.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/07/libgcc_sso1_must_be_installed_for_pthread_cancel_to_work.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 11 Jul 2005 21:27:09 +0100</pubDate>
+					<title>Find and replace with sed</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/07/find_and_replace_with_sed.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/07/find_and_replace_with_sed.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 11 Jul 2005 21:07:42 +0100</pubDate>
+					<title>Creating a patch file</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/07/creating_a_patch_file.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/07/creating_a_patch_file.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 25 Jun 2005 22:23:02 +0100</pubDate>
+					<title>Kmail problem after slackware upgrade</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/06/kmail_problem_after_slackware_upgrade.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/06/kmail_problem_after_slackware_upgrade.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 25 Jun 2005 22:31:09 +0100</pubDate>
+					<title>Stopping an application from logging to syslog</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/06/stopping_an_application_from_logging_to_syslog.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/06/stopping_an_application_from_logging_to_syslog.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 25 Jun 2005 22:30:44 +0100</pubDate>
+					<title>Changing your BASH prompt</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/06/changing_your_bash_prompt.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/06/changing_your_bash_prompt.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 07 Jun 2005 21:05:11 +0100</pubDate>
+					<title>Redirecting STDERR to STDOUT</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/06/redirecting_stderr_to_stdout.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/06/redirecting_stderr_to_stdout.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 07 Jun 2005 06:36:02 +0100</pubDate>
+					<title>Using a different editor to change your crontab</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/06/using_a_different_editor_to_change_your_crontab.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/06/using_a_different_editor_to_change_your_crontab.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 25 Jun 2005 22:30:19 +0100</pubDate>
+					<title>Changing the identification of Apache 2</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/06/changing_the_identification_of_apache_2.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/06/changing_the_identification_of_apache_2.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 25 Jun 2005 22:31:27 +0100</pubDate>
+					<title>Setting the time and date in linux</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/06/setting_the_time_and_date_in_linux.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/06/setting_the_time_and_date_in_linux.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 25 Jun 2005 22:31:34 +0100</pubDate>
+					<title>Sorting hashes in perl</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/06/sorting_hashes_in_perl.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/06/sorting_hashes_in_perl.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 20 May 2005 13:02:46 +0100</pubDate>
+					<title>500 server error when browsing Apache sites with a Blackberry</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/05/500_server_error_when_browsing_apache_sites_with_a_blackberry.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/05/500_server_error_when_browsing_apache_sites_with_a_blackberry.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 18 May 2005 09:36:08 +0100</pubDate>
+					<title>Stopping your terminal from blanking</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/05/stopping_your_terminal_from_blanking.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/05/stopping_your_terminal_from_blanking.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 08 May 2005 16:32:38 +0100</pubDate>
+					<title>Centering a table with CSS</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/05/centering_a_table_with_css.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/05/centering_a_table_with_css.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Fri, 06 May 2005 18:16:14 +0100</pubDate>
+					<title>Burning windows .bin/.cue files in linux</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/05/burning_windows_bincue_files_in_linux.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/05/burning_windows_bincue_files_in_linux.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 02 May 2005 21:52:26 +0100</pubDate>
+					<title>Removing stuck print jobs with Windows XP</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/05/removing_stuck_print_jobs_with_windows_xp.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/05/removing_stuck_print_jobs_with_windows_xp.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 16 Apr 2005 12:39:12 +0100</pubDate>
+					<title>nslookup, dig and other commands giving a Segmentation fault with RedHat</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/04/nslookup_dig_and_other_commands_giving_a_segmentation_fault_with_redhat.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/04/nslookup_dig_and_other_commands_giving_a_segmentation_fault_with_redhat.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 16 Apr 2005 11:53:56 +0100</pubDate>
+					<title>RPM command hanging</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/04/rpm_command_hanging.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/04/rpm_command_hanging.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 16 Apr 2005 11:51:50 +0100</pubDate>
+					<title>How to stop sendmail from taking down the system</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/04/how_to_stop_sendmail_from_taking_down_the_system.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/04/how_to_stop_sendmail_from_taking_down_the_system.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 16 Apr 2005 11:42:47 +0100</pubDate>
+					<title>Resizing an ext2/ext3 filesystem</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/04/resizing_an_ext2ext3_filesystem.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/04/resizing_an_ext2ext3_filesystem.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 11 Apr 2005 19:51:27 +0100</pubDate>
+					<title>Quickly filter mail using Qmail's .qmail files</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/04/quickly_filter_mail_using_qmails_qmail_files.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/04/quickly_filter_mail_using_qmails_qmail_files.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 11 Apr 2005 19:28:57 +0100</pubDate>
+					<title>Sendmail access database info</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/04/sendmail_access_database_info.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/04/sendmail_access_database_info.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 09 Apr 2005 13:31:17 +0100</pubDate>
+					<title>No default TTL set using SOA minimum instead</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/04/no_default_ttl_set_using_soa_minimum_instead.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/04/no_default_ttl_set_using_soa_minimum_instead.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 09 Apr 2005 13:26:10 +0100</pubDate>
+					<title>SAMBA Roaming profiles not updating with NVIDIA drivers</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/04/samba_roaming_profiles_not_updating_with_nvidia_drivers.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/04/samba_roaming_profiles_not_updating_with_nvidia_drivers.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sat, 09 Apr 2005 13:03:59 +0100</pubDate>
+					<title>Users can't chmod with proftpd</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/04/users_cant_chmod_with_proftpd.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/04/users_cant_chmod_with_proftpd.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 08 Mar 2005 12:38:18 +0100</pubDate>
+					<title>Quickly generate a crypted password</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/03/quickly_generate_a_crypted_password.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/03/quickly_generate_a_crypted_password.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 22 Feb 2005 21:26:19 +0100</pubDate>
+					<title>RPM database error</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/02/rpm_database_error.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/02/rpm_database_error.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 13 Feb 2005 17:06:53 +0100</pubDate>
+					<title>Custom server error pages</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/02/custom_server_error_pages.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/02/custom_server_error_pages.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 13 Feb 2005 17:05:09 +0100</pubDate>
+					<title>Terminal problem with joe</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/02/terminal_problem_with_joe.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/02/terminal_problem_with_joe.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 13 Feb 2005 16:58:44 +0100</pubDate>
+					<title>Removing your bash history</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/02/removing_your_bash_history.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/02/removing_your_bash_history.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Sun, 13 Feb 2005 12:37:38 +0100</pubDate>
+					<title>Stop X11 from listening for network connections</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/02/stop_x11_from_listening_for_network_connections.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/02/stop_x11_from_listening_for_network_connections.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 10 Feb 2005 21:06:05 +0100</pubDate>
+					<title>Changing AGP speeds in X</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/02/changing_agp_speeds_in_x.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/02/changing_agp_speeds_in_x.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 10 Feb 2005 20:41:06 +0100</pubDate>
+					<title>Directory Size Lister/Sorter</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/02/directory_size_listersorter.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/02/directory_size_listersorter.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 23 Feb 2005 20:58:46 +0100</pubDate>
+					<title>Slackware package contents listing</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/02/slackware_package_contents_listing.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/02/slackware_package_contents_listing.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Wed, 23 Feb 2005 20:56:27 +0100</pubDate>
+					<title>mail: command not found</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/02/mail_command_not_found.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/02/mail_command_not_found.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Tue, 22 Feb 2005 21:28:47 +0100</pubDate>
+					<title>Installing RPM without RPM</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/02/installing_rpm_without_rpm.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/02/installing_rpm_without_rpm.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Thu, 10 Feb 2005 19:48:39 +0100</pubDate>
+					<title>How do convert my root file system from ext2 to ext3 without rebooting?</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/02/how_do_convert_my_root_file_system_from_ext2_to_ext3_without_rebooting.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/02/how_do_convert_my_root_file_system_from_ext2_to_ext3_without_rebooting.html</guid>
+				</item>
+			
+				<item>
+					<pubDate>Mon, 03 Jan 2005 00:00:00 +0100</pubDate>
+					<title>POP3 Commands</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2005/01/pop3_commands.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2005/01/pop3_commands.html</guid>
+				</item>
+					
+		
+	</channel>
+</rss>
+		

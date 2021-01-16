@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Repairing a broken boot disk after converting to APFS</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2020/10/repairing_a_broken_boot_disk_after_converting_to_apfs.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Repairing a broken boot disk after converting to APFS" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2020/10/repairing_a_broken_boot_disk_after_converting_to_apfs.html" />
+		<meta property="og:title" content="Repairing a broken boot disk after converting to APFS" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Repairing a broken boot disk after converting to APFS</h1>
+	<p>Later versions of Mac OSX require you to be running APFS, amongst other benefits it improves performance.</p>
+
+<p>The general guidance is to use boot into recovery mode and use the disk utility to convert the disk. This process will convert fine for non boot disks. But if converting your boot drive then it will not create a preboot volume which is required for a successful boot.</p>
+
+<p>After converting your boot disk to AFPS, follow this guide to make it bootable.</p>
+
+<p>First, boot into recovery using Command + R at startup.</p>
+
+<p>Go to <code>Utilities</code> > <code>Terminal</code>.</p>
+
+<p><em>Please note: all the commands below should run without an errors, check each command's output for error messages before continuing.</em></p>
+
+<p>Run <code>diskutil apfs list</code> to check partitions and disk numbers, you will see the following output, but with different disk numbers and UUIDs.</p>
+
+<pre><code>APFS Container (1 found)
+|
++-- Container disk1 B9426095-BD76-4E33-A1BB-717B053AB1C6
+    ====================================================
+    APFS Container Reference:     disk1
+    Size (Capacity Ceiling):      250790436864 B (250.8 GB)
+    Minimum Size:                 250790436864 B (250.8 GB)
+    Capacity In Use By Volumes:   190566731776 B (190.6 GB) (76.0% used)
+    Capacity Not Allocated:       60223705088 B (60.2 GB) (24.0% free)
+    |
+    +-&lt; Physical Store disk0s2 0000749D-7A9D-0000-B943-0000BF490000
+    |   -----------------------------------------------------------
+    |   APFS Physical Store Disk:   disk0s2
+    |   Size:                       250790436864 B (250.8 GB)
+    |
+    +-&gt; Volume disk1s1 5D784072-B7D6-3DBC-94C1-E8C8FB8ED111
+    |   ---------------------------------------------------
+    |   APFS Volume Disk (Role):   disk1s1 (No specific role)
+    |   Name:                      Macintosh HD (Case-insensitive)
+    |   Mount Point:               /
+    |   Capacity Consumed:         186672766976 B (186.7 GB)
+    |   FileVault:                 No
+    |
+</code></pre>
+
+<p>Notice the absence of a preboot volume above.</p>
+
+<p>Next, we will create a preboot volume from the terminal using the following command:</p>
+
+<pre><code>diskutil apfs addVolume disk1 apfs Preboot -role B
+</code></pre>
+
+<p>Please use the correct disk number (disk1 in the example above), based on the output from the list command above.</p>
+
+<p>A new volume will have been created on the disk and mounted.</p>
+
+<p>Create a new directory ready for the preboot files:</p>
+
+<pre><code>mkdir -p /Volumes/Preboot/5D784072-B7D6-3DBC-94C1-E8C8FB8ED111/System/Library/CoreServices
+</code></pre>
+
+<p>Please use the correct UUID in the command above that matches your Mac boot volume (in our case <code>Macintosh HD</code>)</p>
+
+<p>Now we copy the required files to the new partition:</p>
+
+<pre><code>cp -RP /Volumes/MACINTOSH HD/System/Library/CoreServices /Volumes/Preboot/5D784072-B7D6-3DBC-94C1-E8C8FB8ED111/System/Library/CoreServices
+</code></pre>
+
+<p>Please use the same UUID as in the previous command rather than the one from our example.</p>
+
+<p>Next, we need to update the main mac volume with info about the new preboot volume:</p>
+
+<p>Run this command to update the preboot. Replace disk2s1 with your mac os disk (not preboot):</p>
+
+<pre><code>diskutil apfs updatepreboot disk1s1
+</code></pre>
+
+<p>Make sure to use the correct disk number of your Mac boot volume (in our case <code>Macintosh HD</code>).</p>
+
+<p>Then we can run the bless utility to set boot options:</p>
+
+<pre><code>bless --folder /Volumes/Macintosh HD/System/Library/CoreServices --bootefi --verbose
+</code></pre>
+
+<p>We can do is a final check of the volumes with <code>diskutil apfs list</code> again:</p>
+
+<pre><code>APFS Container (1 found)
+|
++-- Container disk1 B9426095-BD76-4E33-A1BB-717B053AB1C6
+    ====================================================
+    APFS Container Reference:     disk1
+    Size (Capacity Ceiling):      250790436864 B (250.8 GB)
+    Minimum Size:                 250790436864 B (250.8 GB)
+    Capacity In Use By Volumes:   190566731776 B (190.6 GB) (76.0% used)
+    Capacity Not Allocated:       60223705088 B (60.2 GB) (24.0% free)
+    |
+    +-&lt; Physical Store disk0s2 0000749D-7A9D-0000-B943-0000BF490000
+    |   -----------------------------------------------------------
+    |   APFS Physical Store Disk:   disk0s2
+    |   Size:                       250790436864 B (250.8 GB)
+    |
+    +-&gt; Volume disk1s1 5D784072-B7D6-3DBC-94C1-E8C8FB8ED111
+    |   ---------------------------------------------------
+    |   APFS Volume Disk (Role):   disk1s1 (No specific role)
+    |   Name:                      Macintosh HD (Case-insensitive)
+    |   Mount Point:               /
+    |   Capacity Consumed:         186672766976 B (186.7 GB)
+    |   FileVault:                 No
+    |
+    +-&gt; Volume disk1s2 4BD14D43-3EBB-4499-9C71-1CFCD1260A06
+    |   ---------------------------------------------------
+    |   APFS Volume Disk (Role):   disk1s2 (Preboot)
+    |   Name:                      Preboot (Case-insensitive)
+    |   Mount Point:               Not Mounted
+    |   Capacity Consumed:         19595264 B (19.6 MB)
+    |   FileVault:                 No
+</code></pre>
+
+<p>You'll see the new preboot container listed.</p>
+
+<p>The last thing to do is reboot, and if all went well your Mac should now boot correctly.</p>
+
+	<p>
+		<i>Last updated: 10/10/2020</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

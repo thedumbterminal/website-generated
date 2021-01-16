@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Software : Perlsendmail</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Software : Perlsendmail" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk" />
+		<meta property="og:title" content="Software : Perlsendmail" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+	<h1>PerlSendmail - Overview</h1>
+                        <p>
+									If you have scripts that require <a href="http://www.sendmail.org" target="_blank">SendMail</a> for sending emails, but do not want to install sendmail on your
+									server then you can use this wrapper instead.
+	                     </p>
+								<p>
+									This simple Perl script will send email by connecting to a user specified SMTP server directly. This means that
+									no queue directories or daemons are needed.
+								</p>
+								<p>
+									If the SMTP server can not be reached then the email will be discarded. 
+								</p>
+                        <h2>Features</h2>
+                        <p>
+                           <ul>
+                              <li>Suitable for use in a chroot environment</li>
+                              <li>Supports the following sendmail command line options:</li>
+										<ul>
+											<li>-f</li>
+											<li>-F</li>
+											<li>-t</li>
+										</ul>
+                              <li>Simple installation</li>
+                              <li>Simple configuration</li>
+									</ul>
+                        </p>
+                        <h2>Requirements</h2>
+                        <p>
+                           <ul>
+                              <li>Perl installed with the following modules installed</li>
+										<ul>
+											<li>Net::SMTP</li>
+											<li>Getopt::Std</li>
+											<li>Email::Simple</li>
+										</ul>
+                              <li>SMTP server access</li>
+                           </ul>
+                        </p>
+</section>
+<section>	
+<h1>PerlSendmail - Changelog</h1>							
+                        <p>
+									<b>Version 2.1</b>&nbsp;&nbsp;&nbsp;(20th April 2006)
+									<dir>
+										Bugfix: If no Cc header was found an additional message would be sent to an empty email address.
+									</dir>
+                        </p>
+                        <p>
+									<b>Version 2.0</b>&nbsp;&nbsp;&nbsp;(20th February 2006)
+									<dir>
+										Now supports Cc headers.
+									</dir>
+                        </p>
+                        <p>
+									<b>Version 1.0</b>&nbsp;&nbsp;&nbsp;(18th February 2006)
+									<dir>
+										Public release.
+									</dir>
+                        </p>
+</section>
+<section>
+<h1>PerlSendmail - Downloads</h1>								
+                        <table summary="downloads" width="100%">
+									<tr bgcolor="#CCCCCC"><th>Version</th><th>Size</th><th>Date</th><th>Notes</th></tr>
+									<tr><td><a href="/files/software/perlsendmail-2.1.tar.gz">2.1</a></td><td>2.2k</td><td>20/04/2006</td><td></td></tr>
+									<tr><td><a href="/files/software/perlsendmail-2.0.tar.gz">2.0</a></td><td>2.2k</td><td>20/02/2006</td><td></td></tr>
+									<tr><td><a href="/files/software/perlsendmail-1.0.tar.gz">1.0</a></td><td>2.0k</td><td>18/02/2006</td><td></td></tr>
+								</table>
+								<br>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

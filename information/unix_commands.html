@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Information : UNIX Commands</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Information : UNIX Commands" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk" />
+		<meta property="og:title" content="Information : UNIX Commands" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+                        <h1>Basic Unix Commands</h1>
+                        <table width="100%">
+                           <tr><td width="15%" valign="top">!</td><td width="85%">Repeats commands</td></tr>
+                           <tr><td width="15%" valign="top">alias</td><td width="85%">This allows the user view the current aliases</td></tr>
+    								<tr><td width="15%" valign="top">awk</td><td width="85%">This allows the user to search for a pattern within a file</td></tr>
+    								<tr><td width="15%" valign="top">cal</td><td width="85%">Displays a calendar</td></tr>
+    								<tr><td width="15%" valign="top">cat</td><td width="85%">Concatenate and prints files</td></tr>
+    								<tr><td width="15%" valign="top">cc</td><td width="85%">c compiler</td></tr>
+    								<tr><td width="15%" valign="top">cd</td><td width="85%">Changes directories</td></tr>
+    								<tr><td width="15%" valign="top">chgrp</td><td width="85%">Change group ownership for a file</td></tr>
+    								<tr><td width="15%" valign="top">chmod</td><td width="85%">Change file access permissions</td></tr>
+    								<tr><td width="15%" valign="top">chown</td><td width="85%">Change file owner and group</td></tr>
+    								<tr><td width="15%" valign="top">cmp</td><td width="85%">Compares two files</td></tr>
+    								<tr><td width="15%" valign="top">comm</td><td width="85%">Compares two files so as to determine which lines are common to both</td></tr>
+    								<tr><td width="15%" valign="top">cp</td><td width="85%">Copies file to another location</td></tr>
+    								<tr><td width="15%" valign="top">date</td><td width="85%">Print or set the system date and time</td></tr>
+    								<tr><td width="15%" valign="top">df</td><td width="85%">Report filesystem disk space usage</td></tr>
+    								<tr><td width="15%" valign="top">diff</td><td width="85%">Find differences between two files</td></tr>
+    								<tr><td width="15%" valign="top">du</td><td width="85%">Estimate file space usage</td></tr>
+    								<tr><td width="15%" valign="top">echo</td><td width="85%">Display a line of text</td></tr>
+    								<tr><td width="15%" valign="top">env</td><td width="85%">Lists the current environment variables</td></tr>
+    								<tr><td width="15%" valign="top">ex</td><td width="85%">Another text editor</td></tr>
+    								<tr><td width="15%" valign="top">expr</td><td width="85%">Evaluate expressions</td></tr>
+    								<tr><td width="15%" valign="top">file</td><td width="85%">Determine file type</td></tr>
+    								<tr><td width="15%" valign="top">find</td><td width="85%">Search for files in a directory</td></tr>
+    								<tr><td width="15%" valign="top">grep</td><td width="85%">Searches for a pattern within a file</td></tr>
+    								<tr><td width="15%" valign="top">help</td><td width="85%">Gives help</td></tr>
+    								<tr><td width="15%" valign="top">kill</td><td width="85%">Terminate a process</td></tr>
+    								<tr><td width="15%" valign="top">last</td><td width="85%">Show listing of last logged in users</td></tr>
+    								<tr><td width="15%" valign="top">ln</td><td width="85%">Make links between files</td></tr>
+    								<tr><td width="15%" valign="top">lpr</td><td width="85%">copies the file to the line printer</td></tr>
+    								<tr><td width="15%" valign="top">ls</td><td width="85%">List directory contents</td></tr>
+    								<tr><td width="15%" valign="top">mail</td><td width="85%">Allows the user to send/receive mail</td></tr>
+    								<tr><td width="15%" valign="top">mkdir</td><td width="85%">Make directories</td></tr>
+    								<tr><td width="15%" valign="top">more</td><td width="85%">Displays a file to the screen</td></tr>
+    								<tr><td width="15%" valign="top">mv</td><td width="85%">Used to move or rename files</td></tr>
+    								<tr><td width="15%" valign="top">nohup</td><td width="85%">Allows a command to continue running even when you log out</td></tr>
+    								<tr><td width="15%" valign="top">nroff</td><td width="85%">Used to format text</td></tr>
+    								<tr><td width="15%" valign="top">passwd</td><td width="85%">Change user password</td></tr>
+    								<tr><td width="15%" valign="top">ps</td><td width="85%">Lists the current processes running</td></tr>
+    								<tr><td width="15%" valign="top">pwd</td><td width="85%">Print name of current/working directory</td></tr>
+    								<tr><td width="15%" valign="top">reset</td><td width="85%">Reset the terminal</td></tr>
+    								<tr><td width="15%" valign="top">rm</td><td width="85%">Remove files or directories</td></tr>
+    								<tr><td width="15%" valign="top">rmdir</td><td width="85%">Remove empty directories</td></tr>
+    								<tr><td width="15%" valign="top">sed</td><td width="85%">A stream editer for filtering output</td></tr>
+    								<tr><td width="15%" valign="top">set</td><td width="85%">Lists all the variables in the current shell</td></tr>
+    								<tr><td width="15%" valign="top">setenv</td><td width="85%">Change or add an environment variable</td></tr>
+    								<tr><td width="15%" valign="top">sleep</td><td width="85%">Delay for a specified amount of time</td></tr>
+    								<tr><td width="15%" valign="top">sort</td><td width="85%">Sort lines of text files</td></tr>
+    								<tr><td width="15%" valign="top">source</td><td width="85%">Allows the user to execute a file and update any changed values in that file</td></tr>
+    								<tr><td width="15%" valign="top">split</td><td width="85%">Split a file into pieces</td></tr>
+    								<tr><td width="15%" valign="top">stty</td><td width="85%">Change and print terminal line settings</td></tr>
+    								<tr><td width="15%" valign="top">tail</td><td width="85%">Output the last part of files</td></tr>
+    								<tr><td width="15%" valign="top">talk</td><td width="85%">Talk to another user</td></tr>
+    								<tr><td width="15%" valign="top">tar</td><td width="85%">Copies all specified files into one</td></tr>
+    								<tr><td width="15%" valign="top">tee</td><td width="85%">Read from standard input and write to standard output and files</td></tr>
+    								<tr><td width="15%" valign="top">top</td><td width="85%">Display top CPU processes</td></tr>
+    								<tr><td width="15%" valign="top">touch</td><td width="85%">Creates an empty file or updates the time/date stamp on a file</td></tr>
+    								<tr><td width="15%" valign="top">troff</td><td width="85%">Format documents</td></tr>
+    								<tr><td width="15%" valign="top">tset</td><td width="85%">Sets the terminal type</td></tr>
+    								<tr><td width="15%" valign="top">umask</td><td width="85%">Specify a new creation mask</td></tr>
+    								<tr><td width="15%" valign="top">uniq</td><td width="85%">Remove duplicate lines from a sorted file</td></tr>
+    								<tr><td width="15%" valign="top">uptime</td><td width="85%">Tell how long the system has been running.</td></tr>
+    								<tr><td width="15%" valign="top">uucp</td><td width="85%">Unix to unix file copy</td></tr>
+    								<tr><td width="15%" valign="top">vi</td><td width="85%">Full screen editor</td></tr>
+    								<tr><td width="15%" valign="top">wc</td><td width="85%">Print the number of bytes, words, and lines in file.</td></tr>
+    								<tr><td width="15%" valign="top">who</td><td width="85%">Show who is logged on</td></tr>
+    								<tr><td width="15%" valign="top">write</td><td width="85%">Send a message to another user</td></tr>
+                        </table>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

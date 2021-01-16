@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Software : Sniff</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Software : Sniff" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk" />
+		<meta property="og:title" content="Software : Sniff" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<h1>Sniff - Overview</h1>
+                        <p>
+									Makes output from the <a href="http://www.tcpdump.org">tcpdump</a> program easier to read and parse.
+                        </p>
+								<p>
+									This software is now redundant as ASCII support as since been added to tcpdump in version 3.8.
+								</p>
+                        <h2>Features</h2>
+                        <p>
+                           <ul>
+                              <li>Coloured console output</li>
+                              <li>Directly accepts tcpdump options (including parsing from packet files)</li>
+                              <li>Fully customisable output</li>
+                           </ul>
+                        </p>
+                        <h2>Requirements</h2>
+                        <p>
+                           <ul>
+                              <li>Linux operating system</li>
+                              <li>Perl installed</li>
+                              <li>tcpdump program installed</li>
+                              <li>Privileges in order to run tcpdump</li>
+                           </ul>
+                        </p>
+
+</section>
+<section>
+<h1>Sniff - Help</h1>
+
+                        <p>
+									Run the following command for help.
+									<pre>./sniff -h</pre>
+									Sniff options should be placed before the double dash (--) and tcpdump
+									options should be placed after. Here are some examples of how to use sniff.
+								</p>
+								<p>
+									<b>Capture all incoming FTP packets on eth1 without using colour</b><br>
+									As you can see any options after the double-dash &quot;--&quot; are standard tcpdump options.
+									<pre>./sniff -c -- -i eth1 tcp port 21</pre>
+								</p>
+								<p>
+									<b>Real time logging to a CSV file</b><br>
+									The example below uses the following options:
+									<dir>
+										Enclose data with &quot; character (-e\&quot;)<br>
+										Separator lines with the , character (-n,)<br>
+										Print the separator once only (-t0)<br>
+										Dont use colour (-c)
+									</dir>
+									<pre>./sniff -e\" -n, -s -t0 -c > /tmp/dump.csv</pre>
+                        </p>
+								<p>
+									<b>Converting a tcpdump dumb file into CSV format</b><br>
+									First use tcpdump to make the dump file, you must use the &quot;-lx -s 1024&quot; options
+									at least. For example:
+									<pre>tcpdump -lx -s 1024 -w /tmp/dump.txt</pre>
+									Then run sniff with the required options, note the tcpdump options stating to read from
+									the previously created file.
+									<pre>./sniff -e\" -n, -s -t0 -c -- -r /tmp/dump.txt > /tmp/dump.csv</pre>
+								</p>
+
+</section>
+<section>
+<h1>Sniff - Changelog</h1>
+
+                        <p>
+									<b>Version 2.3</b>&nbsp;&nbsp;&nbsp;(18th March 2004)
+									<dir>
+										Tcpdump -n option no longer used as default, to use option just specify it on the command line
+										with your other tcpdump options.										
+									</dir>
+									<b>Version 2.2</b>&nbsp;&nbsp;&nbsp;(19th November 2001)
+									<dir>
+										Tcpdump option handling bug fixed.<br>
+										Now supports more tcpdump options.
+									</dir>
+									<b>Version 2.1</b>&nbsp;&nbsp;&nbsp;(10th October 2001)
+									<dir>
+										Parsing command line options fixed.<br>
+										Version option added.
+									</dir>
+									<b>Version 2</b>&nbsp;&nbsp;&nbsp;(6th October 2001)
+									<dir>
+										Initial public release.
+									</dir>
+                        </p>
+
+</section>
+<section>
+<h1>Sniff - Downloads</h1>
+
+                        <table summary="downloads" width="100%">
+									<tr bgcolor="#CCCCCC"><th>Version</th><th>Format</th><th>Size</th><th>Date</th><th>Notes</th></tr>
+									<tr><td><a href="/files/software/sniff-2.3.tar.bz2">2.3</a></td><td>Bzip2</td><td>313k</td><td>18/04/2004</td><td>(Latest)</td></tr>
+									<tr><td><a href="ftp://ftp.webtrek.com/pub/rpms/sniff-2.3-1.i386.rpm">2.3</a></td><td>RPM</td><td>326k</td><td>18/04/2004</td><td>Built by Joe Klemmer</td></tr>
+									<tr><td><a href="/files/software/sniff-2.2.tar.gz">2.2</a></td><td>Gzip</td><td>313k</td><td>19/11/2001</td><td></td></tr>
+								</table>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Setting up a transparent proxy with Squid version 3</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2012/06/setting_up_a_transparent_proxy_with_squid_version_3.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Setting up a transparent proxy with Squid version 3" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2012/06/setting_up_a_transparent_proxy_with_squid_version_3.html" />
+		<meta property="og:title" content="Setting up a transparent proxy with Squid version 3" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Setting up a transparent proxy with Squid version 3</h1>
+	<p>Here is how to setup a transparent proxy on your network using <a href="http://www.squid-cache.org/">Squid 3</a>.</p>
+
+<p>Prerequisites:</p>
+
+<ul>
+<li>Router is running Linux with IP forwarding enabled</li>
+<li>Squid is installed on router</li>
+<li>Internal network range is 10.0.0.0/24</li>
+<li>Router's internal network interface is eth0</li>
+</ul>
+
+<p>First the Squid configuration, The lines below are the minimum setup required, please refer to the Squid documentation for any options.</p>
+
+<pre><code>#only run the proxy on this ip/port and in transparent mode
+http_port 10.0.0.1:3128 transparent
+
+#setup the ACl's we need
+acl localhost src 127.0.0.1/32 ::1
+acl localnet src 10.0.0.0/24
+
+#state which ACL's can connect to the proxy
+http_access allow localnet
+http_access allow localhost
+http_access deny all
+</code></pre>
+
+<p>Once Squid has been restarted you can test the operation from your browser by setting your proxy to the router's internal IP and to port 3128. Once this works
+the following iptables rule can be setup to automatically forward all HTTP traffic on port 80 through the proxy.</p>
+
+<pre><code>iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3128
+</code></pre>
+
+<p>Using transparent proxy allows all network clients including mobile devices to receive the speed benefit without any configuration.</p>
+
+	<p>
+		<i>Last updated: 20/06/2012</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

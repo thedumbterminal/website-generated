@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : System setup for modern perl projects</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2015/02/system_setup_for_modern_perl_projects.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="System setup for modern perl projects" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2015/02/system_setup_for_modern_perl_projects.html" />
+		<meta property="og:title" content="System setup for modern perl projects" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>System setup for modern perl projects</h1>
+	<p>Some helpful tips in making your perl projects more portable.</p>
+
+<h2 id="installingperl">Installing perl</h2>
+
+<p>Don't use the system perl installed with your operating system, instead the latest stable perl via <a href="https://github.com/tokuhirom/plenv">plenv</a>:</p>
+
+<p>Once installed, create a <code>.perl-version</code> in the root of your project containing just the version number of the perl you require, for example:</p>
+
+<pre><code>echo '5.22.0' &gt; .perl-version
+</code></pre>
+
+<p>Then install that version, as follows:</p>
+
+<pre><code>plenv install 5.22.0
+</code></pre>
+
+<h2 id="installingmodules">Installing modules</h2>
+
+<h3 id="app::cpanminus">App::cpanminus</h3>
+
+<p>The standard  <code>cpan</code> command is fine, but does use a fair amount of memory, this can be a problem if running from small virtual machines. I recommend that <a href="https://metacpan.org/pod/distribution/App-cpanminus/bin/cpanm">cpanm</a> is used instead for its simplicity.</p>
+
+<p>This can be installed in one command from plenv as follows (after a perl version has been installed):</p>
+
+<pre><code>plenv install-cpanm
+</code></pre>
+
+<p>This should only be used to install the <code>Carton</code> module mentioned below as any modules installed with <code>cpanm</code> will be installed globally to the running perl version.</p>
+
+<h3 id="carton">Carton</h3>
+
+<p>Use <a href="https://metacpan.org/pod/Carton">Carton</a> for application dependencies, it also ensures that the same version of modules are installed consistently with its snapshot feature. Modules installed using this tool will be installed in a directory called <code>local</code> inside the correct project, so will not be available globally. To remove all the installed modules the <code>local</code> directory can simply be deleted.</p>
+
+<p>To install:</p>
+
+<pre><code>cpanm Carton
+</code></pre>
+
+<p>Create an example dependency list:</p>
+
+<pre><code>echo "requires 'Acme::Time::Baby';" &gt;&gt; cpanfile
+</code></pre>
+
+<p>Install modules listed in <code>cpanfile</code>:</p>
+
+<pre><code>carton install
+</code></pre>
+
+<h2 id="documentation">Documentation</h2>
+
+<p>Link to <a href="https://metacpan.org/">meta::cpan</a> rather than <a href="http://search.cpan.org/">CPAN</a> as module pages on meta::cpan do not use the module version, so less chance of broken links in the future.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>To find the dependencies that <code>carton</code> has installed please use the following at the top of your scripts:</p>
+
+<pre><code>use FindBin qw/$Bin/;
+use local::lib "$Bin/local";
+</code></pre>
+
+<p>You may also wish to use the following line to find your project libraries:</p>
+
+<pre><code>use lib 'lib';
+</code></pre>
+
+	<p>
+		<i>Last updated: 18/10/2020</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

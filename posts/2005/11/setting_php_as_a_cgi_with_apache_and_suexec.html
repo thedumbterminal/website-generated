@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Setting PHP as A CGI with Apache and SUEXEC</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2005/11/setting_php_as_a_cgi_with_apache_and_suexec.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Setting PHP as A CGI with Apache and SUEXEC" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2005/11/setting_php_as_a_cgi_with_apache_and_suexec.html" />
+		<meta property="og:title" content="Setting PHP as A CGI with Apache and SUEXEC" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Setting PHP as A CGI with Apache and SUEXEC</h1>
+	To setup PHP to run as a CGI for extra security on apache using SUEXEC you will need to follow the steps below:<br />
+
+<ul>
+<li>Setup apache with SUEXEC and make sure it works (See the apache site for details).</li>
+<li>Setup your apache site/vhosts for CGI from a <code>/cgi-bin</code> directory</li>
+<li><p>Install PHP from source and compile with the <code>--enable-force-cgi-redirect</code> option eg:</p>
+
+<p>./configure -enable-force-cgi-redirect</p></li>
+<li><p>Setup your vhost/site as follows:</p>
+
+<p><Directory "/usr/local/apache2/htdocs">
+   Options +ExecCGI
+   Action php-script /cgi-bin/php
+   AddHandler php-script .php
+</Directory></p></li>
+</ul>
+
+<p>This will make all files ending in <code>.php</code> will be passed through our own PHP script in the /cgi-bin</p>
+
+<ul>
+<li><p>Create the following <code>/cgi-bin/php</code> file with just one line:</p>
+
+<h1 id="pathphp">!<path>/php</h1></li>
+</ul>
+
+<p>eg:</p>
+
+<pre><code>#!/usr/bin/php
+</code></pre>
+
+<p>Change the permissions on this file to 0755 like any other CGI script</p>
+
+<ul>
+<li><p>Create an example PHP script as <code>/htdocs/test.php</code>:</p>
+
+<?php
+   phpinfo();
+?></li>
+<li><p>Test by browsing to: <code>/test.php</code> in your browser.</p></li>
+</ul>
+
+	<p>
+		<i>Last updated: 25/11/2005</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

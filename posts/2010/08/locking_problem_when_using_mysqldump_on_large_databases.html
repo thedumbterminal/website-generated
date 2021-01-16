@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Locking problem when using mysqldump on large databases</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2010/08/locking_problem_when_using_mysqldump_on_large_databases.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Locking problem when using mysqldump on large databases" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2010/08/locking_problem_when_using_mysqldump_on_large_databases.html" />
+		<meta property="og:title" content="Locking problem when using mysqldump on large databases" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Locking problem when using mysqldump on large databases</h1>
+	<p>Mysqldump will lock all the tables (in all the databases) as required by default, this will use up a lot of file descriptors and can run out.</p>
+
+<p>You will get the following error message when trying to dump your MySQL database(s) using the mysqldump utility with many databases / tables.</p>
+
+<pre><code>mysqldump: Got error: 1016: Can't open file: './some_database/some_table.frm' (errno: 24) when using LOCK TABLES
+</code></pre>
+
+<p>To resolve this MySQL's <code>open_files_limit</code> setting can be increased
+or use mysqldump's <code>--skip-lock-table</code> to not lock the tables in the first place (if no other processes are
+writing to the databases while the dump is performed).</p>
+
+<p>The SQL query below will show your server's current open files setting:</p>
+
+<pre><code>mysql&gt; SHOW VARIABLES LIKE 'open_files_limit';
++------------------+-------+
+| Variable_name    | Value |
++------------------+-------+
+| open_files_limit | 1024  |
++------------------+-------+
+1 row in set (0.00 sec)
+</code></pre>
+
+<p>To increase the setting, add the following to your MySQL config file <code>/etc/my.cnf</code>:</p>
+
+<pre><code># The MySQL server
+[mysqld]
+open_files_limit = 4096
+</code></pre>
+
+<p>After restarting the MySQL server the new setting should take effect.</p>
+
+	<p>
+		<i>Last updated: 14/08/2010</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

@@ -1,0 +1,87 @@
+body{
+	font-family: sans-serif;
+}
+
+div#log table{
+	border-collapse:collapse;
+	margin-bottom: 1em;
+}
+
+div#log table:nth-child(odd){
+	background-color: #8888ff;
+}
+
+div#log table:nth-child(even){
+	background-color: #6666ee;
+}
+
+div#log table tr th{
+	text-align: left;
+	vertical-align: text-top;
+}
+
+div#log table tr td, div#log table tr th{
+	padding: 1em;
+}
+
+div#log table tr td{
+	font-family: monospace;
+	font-size: 2em;
+}
+
+div#log table tr th{
+	width: 3.8em;
+	font-size: 1.8em;
+}
+
+div#left{
+	padding: 1em;
+	width: 22em;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0; 
+	left: 0;
+}
+
+div#right{
+	padding: 1em;
+	position: fixed;
+	top: 0; 
+	left: 24em; /*Set left value to WidthOfFrameDiv*/
+	right: 0;
+	bottom: 0;
+	height: 100%;
+}
+
+form#generater{
+	background-color: #bbbbff;
+}
+
+form#generater fieldset{
+	border: 0;
+}
+
+form#generater fieldset label{
+	width: 4em;
+	display: block;
+	float: left;
+}
+
+form#generater fieldset input#runButton{
+	margin-top: 2em;
+}
+
+form#generator fieldset textarea#string{
+	overflow: auto;
+}
+
+p#note{
+	font-size: 0.8em;
+	font-style: italic;
+}
+
+p#tech{
+	display: none;
+	margin-top: 5em;
+}

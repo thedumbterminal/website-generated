@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Changing your BASH prompt</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2005/06/changing_your_bash_prompt.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Changing your BASH prompt" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2005/06/changing_your_bash_prompt.html" />
+		<meta property="og:title" content="Changing your BASH prompt" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Changing your BASH prompt</h1>
+	<p>Your BASH prompt is defined by the $PS1 environment variable. You can view the current setting by running the following command:</p>
+
+<pre><code>echo $PS1
+</code></pre>
+
+<p>This will ouput a string such as:</p>
+
+<pre><code>\\u@\\h:\\w\\$
+</code></pre>
+
+<p>Here is a list of the most commonly used escape characters:</p>
+
+<pre><code> \\h     the hostname up to the first `.'
+ \\H     the hostname
+ \\s     the  name  of  the shell, the basename of $0
+        (the portion following the final slash)
+ \\u     the username of the current user
+ \\w     the current working directory
+ \\W     the  basename  of the current working directory
+ \\!     the history number of this command
+ \\$     if the effective UID is 0, a #, otherwise  a $
+</code></pre>
+
+<p>(Please check the BASH man page for the complete list)</p>
+
+<p>To set a new prompt string you can just export a new value of $PS1 using the following command:</p>
+
+<pre><code>export PS1="\\u@\\h:\\w\\$ "
+</code></pre>
+
+<p>To make this permanent you will need to add the above command to a global startup file or your ~/.bashrc</p>
+
+<p>To use colours in your prompt you will need to use the following escape sequence:</p>
+
+<pre><code>\\033[1;31m\\]
+</code></pre>
+
+<p>This will set all proceeding text to light red. You will need to use a similar escape sequence to set the colour back otherwise all your terminal text will be in light read,like so:</p>
+
+<pre><code>\\033[0m\\]
+</code></pre>
+
+<p>Here is a the list of available colours:</p>
+
+<pre><code>Black       0;30     Dark Gray     1;30
+Blue        0;34     Light Blue    1;34
+Green       0;32     Light Green   1;32
+Cyan        0;36     Light Cyan    1;36
+Red         0;31     Light Red     1;31
+Purple      0;35     Light Purple  1;35
+Brown       0;33     Yellow        1;33
+Light Gray  0;37     White         1;37
+</code></pre>
+
+<p>So a final example of a prompt string is:</p>
+
+<pre><code>export PS1="\\033[1;31m\\]\\u@\\h:\\w\\$\\033[0m\\] "
+</code></pre>
+
+<p>which would give you a prompt of:</p>
+
+<pre><code>user@host:/tmp$ 
+</code></pre>
+
+<p>With a red "$"</p>
+
+	<p>
+		<i>Last updated: 25/06/2005</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Software : Qmail PCI Compliant</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Software : Qmail PCI Compliant" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk" />
+		<meta property="og:title" content="Software : Qmail PCI Compliant" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+								<h1>Qmail PCI compliant patch: Overview</h1>
+                        <p>
+									There is a great composite patch for the qmail mail server that enables SMTP Auth with SSL/TLS. The patch detailed on this page
+									Is small improvement to this patch by improving some security settings required for <a href="https://www.pcisecuritystandards.org/security_standards/index.php" target="_blank">PCI compliance</a>.
+                        </p>
+						<p>
+							The original SMTP/TLS patch is no longer maintained so with the consent of the previous maintainer I have included it here, please read the top section of this
+							patch as it credits the original authors.
+						</p>
+                        <h2>Improvements</h2>
+                        
+                           <ul>
+										<li>No support for SSL version 2</li>
+										<li>Only support PLAIN and LOGIN authentication mechanisms under SSLv3/TLS</li>
+                           </ul>
+                        
+                        <h2>Requirements</h2>
+                        
+                           <ul>
+                              <li><a href="http://mirror.tje.me.uk/pub/mirrors/www.qmail.org/netqmail/">Netqmail v1.06</a> (other versions untested)</li>
+                           </ul>
+                        
+								</section>
+<section>
+                     	<h1>Installation</h1>
+                        
+									<ol>
+										<li>Download and extract netqmail v1.06 as normal.</li>
+										<li>Download the two patches below to a temporary directory.</li>
+										<li>Change into the extracted netqmail directory.</li>
+										<li>
+											Apply the original composite patch:
+											<pre>patch &lt;/tmp/netqmail-1.05-tls-smtpauth-20070417.patch</pre>
+										</li>
+										<li>
+											Apply the PCI patch:
+											<pre>patch &lt;/tmp/netqmail-1.06_tls_auth_high_sec.patch</pre>
+										</li>
+										<li>Build and install qmail as usual.</li>
+										<li>
+											Configure server cipher list (excluding low quality ciphers):
+											<pre>echo &quot;ALL:!aNULL:!ADH:!eNULL:!LOW:!EXP:RC4+RSA:+HIGH:+MEDIUM&quot; &gt; /var/qmail/control/tlsserverciphers</pre>
+										</li>
+										<li>
+											Configure client cipher list (excluding low quality ciphers):
+											<pre>echo &quot;ALL:!aNULL:!ADH:!eNULL:!LOW:!EXP:RC4+RSA:+HIGH:+MEDIUM&quot; &gt; /var/qmail/control/tlsclientciphers</pre>
+										</li>
+									</ol>
+                        
+								</section>
+<section>
+                     	<h1>Downloads</h1>
+                        <table summary="downloads" width="100%">
+									<tr bgcolor="#CCCCCC"><th>Patch</th><th>Notes</th></tr>
+									<tr><td><a href="/files/software/3rdparty/netqmail-1.05-tls-smtpauth-20070417.patch">netqmail-1.05-tls-smtpauth-20070417.patch</a></td><td>Original composite patch</td></tr>
+									<tr><td><a href="/files/software/netqmail-1.06_tls_auth_high_sec.patch">netqmail-1.06_tls_auth_high_sec.patch</a></td><td>PCI Patch</td></tr>
+								</table>
+
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

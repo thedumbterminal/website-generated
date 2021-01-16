@@ -1,0 +1,595 @@
+Binary files open-flash-chart/open-flash-chart.swf and open-flash-chart_patched/open-flash-chart.swf differ
+diff -ruN open-flash-chart/php5-ofc-library/examples/scatter-line-chart.php open-flash-chart_patched/php5-ofc-library/examples/scatter-line-chart.php
+--- open-flash-chart/php5-ofc-library/examples/scatter-line-chart.php	1970-01-01 01:00:00.000000000 +0100
++++ open-flash-chart_patched/php5-ofc-library/examples/scatter-line-chart.php	2010-06-16 10:01:09.000000000 +0100
+@@ -0,0 +1,80 @@
++<?php
++
++require_once('OFC/OFC_Chart.php');
++
++/**
++example of a scatter line chart
++
++this uses most of the new features i've added to the php5 code base
++
++*/
++
++//setup 3 points, all with different javascript on click events
++$data = array();
++$value = new OFC_Charts_Scatter_Value(10, 20);
++$value->on_click("alert('point1')");
++array_push($data, $value);
++$value = new OFC_Charts_Scatter_Value(20, 40);
++$value->on_click("alert('point2')");
++array_push($data, $value);
++$value = new OFC_Charts_Scatter_Value(30, 50);
++$value->on_click("alert('point3')");
++array_push($data, $value);
++		
++$chart = new OFC_Chart();
++$chart->set_bg_colour('#FFFFFF');
++$chart->set_number_format(0, false, false, true);
++
++//title
++$title = new OFC_Elements_Title("");	//blank title
++$chart->set_title($title);
++
++//scatter data
++$scatter = new OFC_Charts_Scatter_Line('#ffa551', 10);
++//setup tool tip for all points
++$dot = new OFC_Dot("hollow-dot");
++$dot->set_dot_size(3);
++$dot->set_halo_size(2);
++$dot->set_tip("Detail:<br>Distance: #x#km<br>Weight: #y#kg");
++$scatter->set_default_dot_style($dot);
++$scatter->set_values($data);
++
++//add scatter data to the chart
++$chart->add_element($scatter);
++
++//y axis
++$y = new OFC_Elements_Axis_Y();
++$y->set_range(0, 50, 10);
++$y->set_grid_colour('#CCCCCC');
++$chart->set_y_axis($y);
++
++//x axis
++$x = new OFC_Elements_Axis_X();
++$x->set_range(0, 30, 5);
++$x->set_grid_colour('#CCCCCC');
++$x->set_offset(true);
++$chart->set_x_axis($x);
++
++//tooltip style for whole chart
++$t = new OFC_Elements_Tooltip();
++$t->set_shadow(true);
++$t->set_stroke(5);
++$t->set_colour("#F0F8FF");
++$t->set_background_colour("#FFFFFF");
++$t->set_title_style("{font-size: 12px; font-weight: bold; color: #0D628B;}");
++$t->set_body_style("{font-size: 10px; color: #000000;}");
++$t->set_hover();
++$chart->set_tooltip($t);
++
++//legends
++$xLeg = new OFC_Elements_Legend_X("Distance");
++$xLeg->set_style('{font-size: 10px;');
++$chart->set_x_legend($xLeg);
++$yLeg = new OFC_Elements_Legend_Y("Weight");
++$yLeg->set_style('{font-size: 10px;');
++$chart->set_y_legend($yLeg);
++
++echo $chart->toPrettyString();
++
++?>
++
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/Charts/Bar/OFC_Charts_Bar_Horizontal.php open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/Bar/OFC_Charts_Bar_Horizontal.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/Charts/Bar/OFC_Charts_Bar_Horizontal.php	2008-07-11 23:22:26.000000000 +0100
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/Bar/OFC_Charts_Bar_Horizontal.php	2010-07-06 14:28:25.000000000 +0100
+@@ -27,23 +27,26 @@
+ 		$this->left = $left;
+ 		$this->right = $right;
+ 	}
++
++	public function on_click($value){	
++		$prop = "on-click";     //to work around properties with hyphens
++		$this->$prop = $value;
++	}
++
++    public function set_tooltip($tip){
++        $this->tip = $tip;
++    }
++
+ }
+ 
+-class OFC_Charts_Bar_Horizontal
++class OFC_Charts_Bar_Horizontal extends OFC_Charts_Bar
+ {
+ 
+-	function OFC_Charts_Bar_Horizontal()
+-    {
++	public function __construct()
++    	{
++		parent::OFC_Charts_Bar();
+ 		$this->type      = "hbar";
+-		$this->colour    = "#9933CC";
+-		$this->text      = "Page views";;
+-		$this->{'font-size'} = 10;
+-		$this->values    = array();
+ 	}
+ 
+-	function append_value( $v )
+-    {
+-		$this->values[] = $v;
+-	}
+ }
+ 
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/Charts/Bar/OFC_Charts_Bar_Stack.php open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/Bar/OFC_Charts_Bar_Stack.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/Charts/Bar/OFC_Charts_Bar_Stack.php	2008-07-11 23:25:26.000000000 +0100
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/Bar/OFC_Charts_Bar_Stack.php	2010-11-18 10:04:29.000000000 +0000
+@@ -27,6 +27,11 @@
+ 		$this->val = $val;
+ 		$this->colour = $colour;
+ 	}
++	
++	public function set_tooltip($tip){
++    	$this->tip = $tip;
++    }
++
+ }
+ 
+ class OFC_Charts_Bar_Stack extends OFC_Charts_Bar
+@@ -36,11 +41,17 @@
+ 		parent::OFC_Charts_Bar();
+ 
+ 		$this->type      = 'bar_stack';
++			
+ 	}
+ 
+ 	function append_stack( $v )
+     {
+ 		$this->append_value( $v );
+ 	}
++	
++	
++		
++	
++	
+ }
+ 
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/Charts/Bar/OFC_Charts_Bar_Value.php open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/Bar/OFC_Charts_Bar_Value.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/Charts/Bar/OFC_Charts_Bar_Value.php	2008-07-13 19:20:32.000000000 +0100
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/Bar/OFC_Charts_Bar_Value.php	1970-01-01 01:00:00.000000000 +0100
+@@ -1,45 +0,0 @@
+-<?php
+-/**
+- * PHP Integration of Open Flash Chart
+- * Copyright (C) 2008 John Glazebrook <open-flash-chart@teethgrinder.co.uk>
+- *
+- * This library is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU Lesser General Public
+- * License as published by the Free Software Foundation; either
+- * version 2.1 of the License, or (at your option) any later version.
+- *
+- * This library is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * Lesser General Public License for more details.
+- *
+- * You should have received a copy of the GNU Lesser General Public
+- * License along with this library; if not, write to the Free Software
+- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+- */
+-
+-require_once('OFC/Charts/OFC_Charts_Bar.php');
+-
+-class OFC_Charts_Bar_Value
+-{
+-        function OFC_Charts_Bar_Value( $top, $bottom=null )
+-        {
+-                $this->top = $top;
+-
+-                if( isset( $bottom ) )
+-                {
+-                        $this->bottom = $bottom;
+-                }
+-        }
+-
+-        function set_colour( $colour )
+-        {
+-                $this->colour = $colour;
+-        }
+-
+-        function set_tooltip( $tip )
+-        {
+-                $this->tip = $tip;
+-        }
+-}
+-
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Bar.php open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Bar.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Bar.php	2008-07-13 19:43:18.000000000 +0100
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Bar.php	2010-10-19 10:22:01.000000000 +0100
+@@ -41,6 +41,12 @@
+     {
+         $this->tip = $tip;
+     }
++    	
++	public function on_click($value){	
++			$prop = "on-click";     //to work around properties with hyphens
++			$this->$prop = $value;
++		}
++    
+ }
+ 
+ class OFC_Charts_Bar extends OFC_Charts_Base
+@@ -77,10 +83,5 @@
+     {
+ 		$this->alpha = $alpha;
+ 	}
+-
+-    function set_tooltip( $tip )
+-    {
+-            $this->tip = $tip;
+-    }
+ }
+ 
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Base.php open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Base.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Base.php	2008-07-11 13:52:48.000000000 +0100
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Base.php	2010-06-16 10:25:57.000000000 +0100
+@@ -23,5 +23,11 @@
+     function OFC_Charts_Base()
+     {
+     }
++
++    function set_tooltip( $tip )
++    {
++            $this->tip = $tip;
++    }
++
+ }
+ 
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Line.php open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Line.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Line.php	2008-07-13 19:31:04.000000000 +0100
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Line.php	2010-06-16 11:37:29.000000000 +0100
+@@ -59,5 +59,16 @@
+ 		$this->text = $text;
+ 		$this->{'font-size'} = $font_size;
+ 	}
++
++	public function set_default_dot_style( $dot)
++    {
++		$this->{'dot-style'} = $dot;
++	}
++
++	public function set_line_style($style){
++		$prop = "line-style";	//work around for naming convention
++		$this->$prop = $style;
++	}
++
+ }
+ 
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Pie.php open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Pie.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Pie.php	2008-07-11 22:57:36.000000000 +0100
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Pie.php	2010-11-11 11:12:49.000000000 +0000
+@@ -22,11 +22,19 @@
+ 
+ class OFC_Charts_Pie_Value
+ {
+-	function OFC_Charts_Pie_Value( $value, $text )
+-    {
++	function __construct($value, $label){
+ 		$this->value = $value;
+-		$this->text = $text;
++		$this->label = $label;
++	}
++	
++	/**
++	 * Set the tooltip for the value
++	 * @param string
++	 */
++	public function set_tooltip($tip){
++		$this->tip = $tip;
+ 	}
++	
+ }
+ 
+ class OFC_Charts_Pie extends OFC_Charts_Base
+@@ -53,5 +61,22 @@
+     {
+ 		$this->{'start-angle'} = $angle;
+ 	}
++	
++	/**
++	* By default each label is the same colour as the slice,
++	* but you can ovveride that behaviour using this method.
++	*
++	* @param $label_colour as string HEX colour;
++	*/
++	public function set_label_colour($label_colour){
++		$tmp = 'label-colour';
++		$this->$tmp = $label_colour;
++	}
++	
++	public function set_gradient_fill(){
++		$tmp = 'gradient-fill';
++		$this->$tmp = true;
++	}
++	
+ }
+ 
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Scatter.php open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Scatter.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Scatter.php	2008-07-11 22:56:42.000000000 +0100
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/OFC_Charts_Scatter.php	2010-06-16 10:25:57.000000000 +0100
+@@ -32,6 +32,17 @@
+ 			$this->{'dot-size'} = $dot_size;
+ 		}
+ 	}
++
++    public function set_tooltip( $tip )
++    {
++        $this->tip = $tip;
++    }
++
++	public function on_click($value){	
++		$prop = "on-click";     //to work around properties with hyphens
++		$this->$prop = $value;
++	}
++
+ }
+ 
+ class OFC_Charts_Scatter extends OFC_Charts_Base
+@@ -42,7 +53,7 @@
+ 
+ 		$this->type      = 'scatter';
+ 		$this->set_colour( $colour );
+-		$this->set_dot_size( $dot_size );
++		//$this->set_dot_size( $dot_size );
+ 	}
+ 
+ 	function set_colour( $colour )
+@@ -50,9 +61,9 @@
+ 		$this->colour = $colour;
+ 	}
+ 
+-	function set_dot_size( $dot_size )
++	function set_default_dot_style( $dot)
+     {
+-		$this->{'dot-size'} = $dot_size;
++		$this->{'dot-style'} = $dot;
+ 	}
+ 
+ 	function set_values( $values )
+@@ -60,4 +71,3 @@
+ 		$this->values = $values;
+ 	}
+ }
+-
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/Charts/Scatter/OFC_Scatter_Line.php open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/Scatter/OFC_Scatter_Line.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/Charts/Scatter/OFC_Scatter_Line.php	2008-11-01 20:40:46.000000000 +0000
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/Charts/Scatter/OFC_Scatter_Line.php	2010-07-07 12:20:47.000000000 +0100
+@@ -1,4 +1,4 @@
+-    <?php
++<?php
+     /**
+     * PHP Integration of Open Flash Chart
+     * Copyright (C) 2008 John Glazebrook <open-flash-chart@teethgrinder.co.uk>
+@@ -28,4 +28,9 @@
+ 
+           $this->type      = 'scatter_line';
+        }
++	function set_width( $width )
++    {
++		$this->width = $width;
++	}
++
+     }
+\ No newline at end of file
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/Elements/Axis/OFC_Elements_Axis_X_Label.php open-flash-chart_patched/php5-ofc-library/lib/OFC/Elements/Axis/OFC_Elements_Axis_X_Label.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/Elements/Axis/OFC_Elements_Axis_X_Label.php	2008-07-11 15:06:54.000000000 +0100
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/Elements/Axis/OFC_Elements_Axis_X_Label.php	2010-06-16 14:18:32.000000000 +0100
+@@ -59,5 +59,14 @@
+ 	{
+ 		$this->visible = true;
+ 	}
++
++	public function set_steps($steps){
++		$this->steps = $steps;
++	}
++
++	public function set_visible_steps($steps){
++		$prop = "visible-steps";
++		$this->$prop = $steps;
++	}
+ }
+ 
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/Elements/OFC_Elements_Axis.php open-flash-chart_patched/php5-ofc-library/lib/OFC/Elements/OFC_Elements_Axis.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/Elements/OFC_Elements_Axis.php	2008-11-04 22:09:16.000000000 +0000
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/Elements/OFC_Elements_Axis.php	2010-06-16 09:39:19.000000000 +0100
+@@ -47,5 +47,13 @@
+ 	{
+ 		$this->steps = $steps;
+ 	}
++	
++	/**
++	 * @param $o is a boolean. If true, the X axis start half a step in
++	 * This defaults to True
++	 */
++	function set_offset($o){
++		$this->offset = $o ? true : false;
++	}
+ }
+ 
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/Elements/OFC_Elements_Tooltip.php open-flash-chart_patched/php5-ofc-library/lib/OFC/Elements/OFC_Elements_Tooltip.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/Elements/OFC_Elements_Tooltip.php	1970-01-01 01:00:00.000000000 +0100
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/Elements/OFC_Elements_Tooltip.php	2010-06-16 09:39:19.000000000 +0100
+@@ -0,0 +1,40 @@
++<?php
++
++require_once 'OFC/Elements/OFC_Elements_Base.php';
++
++class OFC_Elements_Tooltip extends OFC_Elements_Base
++{
++	public function __construct(){
++        	parent::OFC_Elements_Base();
++	}
++
++	public function set_shadow($value){
++		$this->shadow = $value;
++	}
++
++	public function set_stroke($value){
++		$this->stroke = $value;
++	}
++
++	public function set_colour($value){
++		$this->colour = $value;
++	}
++
++	public function set_background_colour($value){
++		$this->background = $value;
++	}
++
++	public function set_title_style($value){
++		$this->title = $value;
++	}
++
++	public function set_body_style($value){
++		$this->body = $value;
++	}
++
++	public function set_hover(){
++		$this->mouse = 2;	//FIXME magic number
++	}
++}
++
++?>
+\ No newline at end of file
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/OFC_Chart.php open-flash-chart_patched/php5-ofc-library/lib/OFC/OFC_Chart.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/OFC_Chart.php	2008-12-19 21:38:28.000000000 +0000
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/OFC_Chart.php	2010-06-16 11:37:29.000000000 +0100
+@@ -27,6 +27,9 @@
+ 
+ require_once('OFC/OFC_Elements.php');
+ 
++require_once('OFC/OFC_Dot.php');
++require_once('OFC/OFC_Line_Style.php');
++
+ require_once('OFC/Charts/OFC_Charts_Area.php');
+ require_once('OFC/Charts/OFC_Charts_Bar.php');
+ require_once('OFC/Charts/OFC_Charts_Line.php');
+@@ -41,6 +44,7 @@
+ require_once('OFC/Charts/Bar/OFC_Charts_Bar_Stack.php');
+ require_once('OFC/Charts/Line/OFC_Charts_Line_Dot.php');
+ require_once('OFC/Charts/Line/OFC_Charts_Line_Hollow.php');
++require_once('OFC/Charts/Scatter/OFC_Scatter_Line.php');
+ 
+ class OFC_Chart
+ {
+@@ -95,6 +99,10 @@
+ 		$this->bg_colour = $colour;
+ 	}
+ 
++	public function set_tooltip($tip){
++		$this->tooltip = $tip;
++	}
++
+ 	function toString()
+ 	{
+ 		if (function_exists('json_encode'))
+@@ -112,5 +120,24 @@
+ 	{
+ 		return json_format( $this->toString() );
+ 	}
++
++	/**
++	 * This is a bit funky :(
++	 *
++	 * @param $num_decimals as integer. Truncate the decimals to $num_decimals, e.g. set it
++	 * to 5 and 3.333333333 will display as 3.33333. 2.0 will display as 2 (or 2.00000 - see below)
++	 * @param $is_fixed_num_decimals_forced as boolean. If true it will pad the decimals.
++	 * @param $is_decimal_separator_comma as boolean
++	 * @param $is_thousand_separator_disabled as boolean
++	 *
++	 * This needs a bit of love and attention
++	 */
++	function set_number_format($num_decimals, $is_fixed_num_decimals_forced, $is_decimal_separator_comma, $is_thousand_separator_disabled ){
++		$this->num_decimals = $num_decimals;
++		$this->is_fixed_num_decimals_forced = $is_fixed_num_decimals_forced;
++		$this->is_decimal_separator_comma = $is_decimal_separator_comma;
++		$this->is_thousand_separator_disabled = $is_thousand_separator_disabled;
++	}
++
+ }
+ 
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/OFC_Dot.php open-flash-chart_patched/php5-ofc-library/lib/OFC/OFC_Dot.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/OFC_Dot.php	1970-01-01 01:00:00.000000000 +0100
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/OFC_Dot.php	2010-06-16 09:39:19.000000000 +0100
+@@ -0,0 +1,27 @@
++<?php
++
++class OFC_Dot{
++	public function __construct($type){
++		$this->type = $type;
++	}
++
++	public function set_dot_size($size){
++		$this->dot_size = $size;
++	}
++
++	public function set_halo_size($size){
++		$this->halo_size = $size;
++	}
++
++	public function set_tip($tip){
++		$this->tip = $tip;
++	}
++
++	public function on_click($value){
++		$prop = "on-click";	//to work around properties with hyphens
++		$this->$prop = $value;
++	}
++
++}
++
++?>
+\ No newline at end of file
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/OFC_Elements.php open-flash-chart_patched/php5-ofc-library/lib/OFC/OFC_Elements.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/OFC_Elements.php	2008-07-11 16:44:28.000000000 +0100
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/OFC_Elements.php	2010-06-16 09:39:19.000000000 +0100
+@@ -28,4 +28,4 @@
+ require_once('OFC/Elements/Legend/OFC_Elements_Legend_X.php');
+ require_once('OFC/Elements/Legend/OFC_Elements_Legend_Y.php');
+ require_once('OFC/Elements/OFC_Elements_Title.php');
+-
++require_once('OFC/Elements/OFC_Elements_Tooltip.php');
+diff -ruN open-flash-chart/php5-ofc-library/lib/OFC/OFC_Line_Style.php open-flash-chart_patched/php5-ofc-library/lib/OFC/OFC_Line_Style.php
+--- open-flash-chart/php5-ofc-library/lib/OFC/OFC_Line_Style.php	1970-01-01 01:00:00.000000000 +0100
++++ open-flash-chart_patched/php5-ofc-library/lib/OFC/OFC_Line_Style.php	2010-06-16 11:37:29.000000000 +0100
+@@ -0,0 +1,11 @@
++<?php
++
++class OFC_Line_Style{
++	public function __construct($on, $off){
++		$this->style = "dash";
++		$this->on = $on;
++		$this->off = $off;
++	}
++}
++
++?>
+\ No newline at end of file
+diff -ruN open-flash-chart/php-ofc-library/ofc_scatter.php open-flash-chart_patched/php-ofc-library/ofc_scatter.php
+--- open-flash-chart/php-ofc-library/ofc_scatter.php	2009-03-20 01:00:30.000000000 +0000
++++ open-flash-chart_patched/php-ofc-library/ofc_scatter.php	2010-10-19 10:22:01.000000000 +0100
+@@ -13,6 +13,11 @@
+ 			$this->$tmp = $dot_size;
+ 		}
+ 	}
++	
++	function set_tooltip($tip)
++	{
++		$this->tip=$tip;
++	}
+ }
+ 
+ class scatter

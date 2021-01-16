@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : </title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk" />
+		<meta property="og:title" content="" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+<h1>Using hdparm - Intro</h1>
+                        <p>
+									If you have an IDE hard disk that is less than a couple of years old and a controller to match, then most likely
+									the manufacturers will boast about how quick the data transfer rates are.You may get near these figures on a windows
+									system, but by default linux distributions will not use the fast PIO modes or any of the other setting to boost disk
+									performance. The reason for this is due to the variety of hardware available each requiring different settings.
+                        </p>
+								<p>
+									Before you proceed, please switch your box into single user mode (init 1) as specifing the wrong settings can
+									cause data loss or for your machine to hang. Any commands listed below need to be ran as root.
+								</p>
+
+</section>
+<section>
+<h1>Using hdparm - Getting Info</h1>
+
+                        <p>
+									The first thing to do is find out what settings your drive supports, this is done by using the following command:
+								</p>
+								<pre>hdparm -i /dev/hdb</pre>
+								<p>
+									Settings are specified per drive so if you have more than one in your system it is best to one at a time. This gives
+									us the all the information we need about the drive before any settings are changed:
+								</p>
+								<pre>
+/dev/hdb:
+
+ Model=IBM-DJNA-352500, FwRev=J51OA30K, SerialNo=GW0GWF05809
+ Config={ HardSect NotMFM HdSw>15uSec Fixed DTR>10Mbs }
+ RawCHS=16383/16/63, TrkSize=0, SectSize=0, ECCbytes=34
+ BuffType=3(DualPortCache), BuffSize=1966kB, MaxMultSect=16, MultSect=16
+ DblWordIO=no, OldPIO=2, DMA=yes, OldDMA=2
+ CurCHS=16383/16/63, CurSects=16514064, LBA=yes, LBAsects=49981680
+ tDMA={min:120,rec:120}, DMA modes: mword0 mword1 mword2
+ IORDY=on/off, tPIO={min:240,w/IORDY:120}, PIO modes: mode3 mode4
+ UDMA modes: mode0 mode1 *mode2 mode3 mode4
+ Drive Supports : ATA/ATAPI-4 T13 1153D revision 17 : ATA-1 ATA-2 ATA-3 ATA-4</pre>
+
+</section>
+<section>
+<h1>Using hdparm - Speed Test</h1>
+
+                        <p>
+									Before any of your drive's settings are changed a speed test should be done, so we can refer to it later
+									to make sure that the drive's speed has been increased and we are not just wasting our time.<br>
+									To do this hdparm can perform two benchmarks:
+								</p>
+								<ol>
+									<li>The speed of reading directly from the Linux buffer cache without disk access. (-t option)</li>
+									<li>The speed of reading through the buffer cache to the disk without any prior caching of data. (-T option)</li>
+								</ol>
+                        <p>
+									The first shows us an indication of the throughput of the processor, cache, and memory of the system under test.
+									The second measures how fast the drive can sustain sequential data reads, without any filesystem overhead.It is
+									best to run these tests together as the second results are corrected for the first. It is also as usual to run
+									these a couple of times to get accurate results. Here is the command you need to use:
+								</p>
+								<pre>hdparm -Tt /dev/hdb</pre>
+								<p>You should some results similar to these below (results from PII 350Mhz with year old hard disk):</p>
+								<pre>
+/dev/hdb:
+ Timing buffer-cache reads:   128 MB in  1.25 seconds =102.40 MB/sec
+ Timing buffered disk reads:  64 MB in 16.70 seconds =  3.83 MB/sec</pre>
+
+</section>
+<section>
+<h1>Using hdparm - Settings explained</h1>
+
+                        <p>
+									To list the current settings being used for your drive use the command:
+								</p>
+								<pre>hdparm /dev/hdb</pre>
+								<p>This should produce the following output showingthe defualt (lowest) settings:</p>
+								<pre>
+/dev/hdb:
+ multcount    =  0 (off)
+ I/O support  =  0 (default 16-bit)
+ unmaskirq    =  0 (off)
+ using_dma    =  0 (off)
+ keepsettings =  0 (off)
+ nowerr       =  0 (off)
+ readonly     =  0 (off)
+ readahead    =  8 (on)
+ geometry     = 49585/16/63, sectors = 49981680, start = 0</pre>
+								<p>Only the most supported options are listed below. Please view the man page for the more dangerous settings.</p>
+								<p>
+									<b>multcount</b> (-m)<br>
+									Permits the transfer of multiple sectors per I/O interrupt rather than the defualt of one.
+									Check your &quot;MaxMultSect&quot; setting from your drive's information (above) to find the maximum value.
+									A setting of 16 is a good value to try first, unless you have a Western Digital drive then should try a setting
+									of 4 to 8.
+								</p>
+								<p>
+									<b>I/O support</b> (-c)<br>
+									IDE 32-bit I/O support. One of the following numbers are used to enable/disable 32-bit  I/O support:<br>
+									0 to disable 32-bit I/O support<br>
+									1 to enable 32-bit data transfers<br>
+									3 to enable 32-bit data transfers with a special sync sequence<br>
+									Note: IDE drives still have only a 16-bit connection over the ribbon cable from the interface card.
+								</p>
+								<p>
+									<b>unmaskirq</b> (-u)<br>
+									Interrupt-unmask flag for the drive. A setting of 1 permits the driver to unmask other interrupts
+									(eg. one from a network card) during processing of a disk interrupt, this show improve overall system
+									response time.<br>
+									Note: Use this feature with caution: some drives and controllers do not tolerate the increased I/O latencies
+              					possible when this feature is enabled, resulting in massive filesystem corruption.
+								</p>
+								<p>
+									<b>using_dma</b> (-d)<br>
+									Disable/enable the Use of DMA operations for the drive. This option only works with a few combinations of drives
+									and interfaces which support DMA and which are known to the IDE driver (eg. Intel's Triton chipset).<br>
+									Best used with the "IDE transfer mode" option.
+								</p>
+								<p>
+									<b>IDE transfer mode</b> (-X)<br>
+									This is used in combination with the &quot;-d1&quot; option to enable DMA for the drive. Two settings can be used here:<br>
+									34 is used to select multiword DMA mode2 transfers<br>
+									66 is used to select UltraDMA mode2 transfers (for systems which support UltraDMA burst timings)<br>
+                           68 is used to select UltraDMA mode4 transfers (for systems which support UltraDMA burst timings)<br>
+									Note: An incorrect setting may cause your system to hang.
+								</p>
+
+</section>
+<section>
+<h1>Using hdparm - Changing Settings</h1>
+
+                        <p>
+									Changing the drive's settings is simple, you just specify each new setting in a row with spaces in between,
+									followed by the drive as follows:
+								</p>
+									<pre>hdparm -X66 -d1 -u1 -m16 -c3 /dev/hdb</pre>
+								<p>
+									If your system locks up at this point then one of the setttings you changed is not supported, try only specifying
+									one them one at a time to find the problem. After each setting change use hdparm's speed test to make sure that
+									the drive's performance has improved. Here is the results of a speed test using the above settings:
+                        </p>
+									<pre>
+/dev/hdb:
+ Timing buffer-cache reads:   128 MB in  1.24 seconds =103.23 MB/sec
+ Timing buffered disk reads:  64 MB in  4.31 seconds = 14.85 MB/sec</pre>
+								<p>
+									Once the new settings have been chosen and tested it's best to put this line in one of your start up files such
+									as &quot;boot.local&quot;, this file can reside in the directories below depending on which distribution you
+									are using:
+								</p>
+								<ul>
+									<li>/etc/init.d/boot.local</li>
+									<li>/sbin/init.d/boot.local</li>
+									<li>/etc/rc.d/boot.local</li>
+								</ul>
+								<p>
+									These new settings should now be activated at every boot.
+								</p>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

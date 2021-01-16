@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Firewalling ntpd with iptables</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2015/05/firewalling_ntpd_with_iptables.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Firewalling ntpd with iptables" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2015/05/firewalling_ntpd_with_iptables.html" />
+		<meta property="og:title" content="Firewalling ntpd with iptables" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Firewalling ntpd with iptables</h1>
+	<p>By default ntpd listens on all network interfaces, it requires to listen on an external interface in order to contact upstream NTP servers, if this is disabled then time syncing will be affected.</p>
+
+<p>Unless a system is being used as a NTP server for other clients, only the client functionality of the ntpd daemon is needed.</p>
+
+<p>Blocking NTP with a firewall is made more tricky as it uses the same source and destination port when communicating over UDP, unlike other server software.</p>
+
+<p>To allow the NTP daemon to function on a system as a client only to upstream NTP servers, the following iptables firewall rules can be used:</p>
+
+<pre><code>iptables -A INPUT -i lo -p udp --destination-port 123 -j ACCEPT
+iptables -A INPUT -p udp --source-port 123:123 -m state --state ESTABLISHED -j ACCEPT
+
+iptables -A OUTPUT -o lo -p udp --source-port 123 -j ACCEPT
+iptables -A OUTPUT -p udp --destination-port 123:123 -m state --state NEW,ESTABLISHED -j ACCEPT
+</code></pre>
+
+<p>DROP should be the default rule for firewalls, if not then add the following additional rule:</p>
+
+<pre><code>iptables -A INPUT -p udp --destination-port 123 -j DROP
+</code></pre>
+
+<p>With the above rules in place the system should be able to sync time with other NTP servers but not allow other hosts to connect to itself.</p>
+
+<h2 id="testing">Testing</h2>
+
+<p>First restart ntpd (slackware):</p>
+
+<pre><code>/etc/rc.d/rc.ntpd stop
+/etc/rc.d/rc.ntpd start
+</code></pre>
+
+<p>Then check the operation with the command:</p>
+
+<pre><code>ntpd -c peers
+
+     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+*foxtrot.zq1.de  161.62.157.173   3 u    1   64    1   37.252   -0.068   0.120
+ ntp0.as34288.ne 85.158.25.72     2 u    2   64    1   41.909   -0.655   0.065
+ localnet        .BCST.          16 u    -   64    0    0.000    0.000   0.002
+</code></pre>
+
+<p>From the output above you can see in the <code>when</code> column how many seconds since the last data from a upstream NTP server was received.</p>
+
+	<p>
+		<i>Last updated: 10/05/2015</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

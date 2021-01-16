@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Sendmail access database info</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2005/04/sendmail_access_database_info.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Sendmail access database info" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2005/04/sendmail_access_database_info.html" />
+		<meta property="og:title" content="Sendmail access database info" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Sendmail access database info</h1>
+	<p>The access database (normally in /etc/mail/access) allows a mail 
+administrator to administratively allow access to the mail server by 
+individual domains. Each database entry consists of a domain name or 
+network number as the key and an action as the value.</p>
+
+<p>Keys can be a fully or partly qualified host or domain name such as 
+host.subdomain.domain.com, subdomain.domain.com, or domain.com. The last 
+two forms match any host or subdomain under the specified domain. (If 
+FEATURE(relay_hosts_only) is set, only the first form works.) Keys can 
+also be a network address or subnetwork, e.g., 205.199.2.250, 205.199.2, 
+or 205.199. The latter two forms match any host in the indicated 
+subnetwork. Lastly, keys can be user@host.domain to reject mail from a 
+specific user.</p>
+
+<p>Values can be REJECT to refuse connections from this host, DISCARD to 
+accept the message but silently discard it (the sender will think it has 
+been accepted), OK to allow access (overriding other built-in checks), 
+RELAY to allow access including relaying SMTP through your machine, or 
+an arbitrary message to reject the mail with the customized message.</p>
+
+<p>For example, a database might contain:</p>
+
+<pre><code>cyberpromo.com REJECT
+sendmail.org RELAY
+spam@buyme.com 550 Spammers shan't see sunlight here
+</code></pre>
+
+<p>to reject all mail from any host in the cyberpromo.com domain, allow any 
+relaying to or from any host in the sendmail.org domain, and reject mail 
+from spam@buyme.com with a specific message.</p>
+
+<p>Note that the access database is a map and just as with all maps, the 
+database must be generated using makemap. For example:</p>
+
+<pre><code>makemap hash /etc/mail/access &lt; /etc/mail/access
+</code></pre>
+
+	<p>
+		<i>Last updated: 11/04/2005</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

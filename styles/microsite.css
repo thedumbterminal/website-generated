@@ -1,0 +1,72 @@
+BODY{
+	font-family: sans-serif;
+	background: rgba(0,0,0,1);
+	color:#ddd;
+	height:100%;
+	padding-bottom:300px;
+	background: rgba(0,0,0,1) url('http://www.thedumbterminal.co.uk/images/background.jpg') no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+a:link{
+	color: #00ff00;
+}
+
+a:visited{
+	color: #00aa00;
+}
+
+a:hover{
+	color: #aaffaa;
+}
+
+h2{
+	padding-top: 15px;
+}
+
+th{
+	color:	#000000;
+	background-color: #ffffff;
+}
+
+pre{
+	font-family: monospace;
+}
+
+a img{
+	border: 0;
+}
+
+div.termBorder{
+	background-color: black;
+	background-color: rgba(0, 0, 0, 0.9);
+    border-color: #FFFFFF;
+   	border-style: solid;
+    border-width: thin;
+	padding: 10px;
+}
+
+#main{
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#home{
+	margin-top: 15px;
+	overflow: hidden;
+	width: 310px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#home div{
+	float: left;
+}
+
+#home h2{
+	margin-left: 10px;
+}

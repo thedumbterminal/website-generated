@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : How to limit the size of a subversion repository</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2006/09/how_to_limit_the_size_of_a_subversion_repository.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="How to limit the size of a subversion repository" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2006/09/how_to_limit_the_size_of_a_subversion_repository.html" />
+		<meta property="og:title" content="How to limit the size of a subversion repository" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>How to limit the size of a subversion repository</h1>
+	<p>Subversion allows you to run a script before a commit is made (pre-commit). If this script exits with a non-zero exit status then the commit is not allowed.</p>
+
+<p>If our repository was located here:</p>
+
+<pre><code>/var/lib/svn/repos
+</code></pre>
+
+<p>Then we need to create a pre-commit hook file here:</p>
+
+<pre><code>/var/lib/svn/repos/hooks/pre-commit
+</code></pre>
+
+<p>This file needs to be executable and readable by the subversion (or apache user if using webDAV).</p>
+
+<p>Any message that the script prints to STDERR will sent to the client committing.</p>
+
+<p>The first argument passed to the script is the location of the repository.</p>
+
+<p>The second is the revision number.</p>
+
+<p>Here is an example script that will limit a repository size to 100 Megs:</p>
+
+<pre><code>#!/bin/bash
+#commit hook to limit the size of a repos
+REPOS="$1"
+TXN="$2"
+
+#max size for repos
+QUOTA="100"
+
+MEGS=`du -sm $REPOS | sed -r "s/^([0-9\\.]+).+/\\1/"`
+
+if [ "$MEGS" -gt "$QUOTA" ]; then
+        #send error message to stderr
+        echo "Repository is over ${QUOTA}M in size" 1&gt;&amp;2
+        exit 1;
+fi
+exit 0;
+</code></pre>
+
+	<p>
+		<i>Last updated: 25/09/2006</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

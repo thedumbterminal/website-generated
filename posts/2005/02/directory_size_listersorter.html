@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Directory Size Lister/Sorter</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2005/02/directory_size_listersorter.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Directory Size Lister/Sorter" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2005/02/directory_size_listersorter.html" />
+		<meta property="og:title" content="Directory Size Lister/Sorter" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Directory Size Lister/Sorter</h1>
+	<p>Have you ever wondered which directories and trees take up all the 
+diskspace? Questions like this come during pruning/archiving, backup, 
+and numerous other activities. Make the following oneliner script (I 
+call it dirsizes) to find out:</p>
+
+<pre><code>du -sm $(find $1 -type d -maxdepth 1 -xdev) | sort -g
+</code></pre>
+
+<p>The preceding shellscript prints every directory below the one called as 
+an argument, together with its size, sorted with the largest at the 
+bottom. We sort largest at bottom so there's no necessity to pipe it 
+toless. Instead, you can see the largest 24 on the screen after the command.</p>
+
+<p>If you find a large tree, but can't delete the whole thing, you can 
+explore just that tree by using its directory as the argument, and 
+you'll see all its subtrees and how much space they take.</p>
+
+<p>But let's say you want to see ALL directories in the tree, instantly 
+zeroing in on big diskspace directories. Make the following shell script, 
+which I call alldirsizes:</p>
+
+<pre><code>find $1 -type d | xargs du -sm | sort -g
+</code></pre>
+
+<p>Both these scripts do more than just add filesizes. They take into 
+account inodes, so they reveal the space that would be recovered if the 
+directories were deleted.</p>
+
+<p>Both of these scripts are most accurate when run as root, but they're 
+pretty informative run as just a normal user.</p>
+
+	<p>
+		<i>Last updated: 10/02/2005</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

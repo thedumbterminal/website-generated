@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Software : Findview</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Software : Findview" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk" />
+		<meta property="og:title" content="Software : Findview" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+	<h1>Findview - Overview</h1>
+                        <p>
+									This is a simple bash script that will save the results of file search in a directory.
+	                     </p>
+                        <h2>Features</h2>
+								<ul>
+									<li>Supports all the same search criteria as the find command</li>
+									<li>Previous searches can be updated without needing to remember the criteria used</li>
+									<li>Symlinks used for results, so minimal disk space used</li>
+								</ul>
+                        <h2>Requirements</h2>
+								<ul>
+									<li>BASH installed</li>
+									<li>The following shell utilities
+										<ul>
+											<li>find</li>
+											<li>sed</li>
+											<li>which</li>
+											<li>pwd</li>
+										</ul>
+									</li>
+								</ul>
+</section>
+<section>
+<h1>Findview - Help</h1>
+
+                        <p>
+									Run the following command for help.
+								</p>
+								<pre>./findview.sh -h</pre>
+								<p>
+									findview options should be placed before the double dash (--) and the find
+									criteria should be placed after. Here are some examples of how to use findview.
+								</p>
+								<p>
+									<b>Find all .pl files in your home dir</b><br/>
+									As you can see any options after the double-dash &quot;--&quot; are standard find command options.
+									The results of the find will be placed in &quot;/tmp/view1&quot;
+								</p>
+								<pre>./findview.sh /tmp/view1 -- ~/ -name "*.pl"</pre>
+								<p>
+									<b>Updating a previous search's results</b><br/>
+									This will prompt you if you want to remove all the files from the current directory and use the criteria
+									found in &quot;.findview_search&quot; to run the search again.
+								</p>
+									<pre>cd /tmp/view1
+./findview.sh -u</pre>
+</section>
+<section>	
+<h1>Findview - Changelog</h1>							
+                        <p>
+									<b>Version 1.2</b>&nbsp;&nbsp;&nbsp;(2oth May 2007)
+                        </p>
+								<div class="indent">
+									Filenames with spaces are now supported. Relative find paths are now made absolute.
+								</div>
+                       	<p>
+									<b>Version 1.1</b>&nbsp;&nbsp;&nbsp;(2nd March 2007)
+                        </p>
+								<div class="indent">
+									Update function bug fixed, if findview was being used from an arbitary location rather than from
+									your PATH, then the location of the findview script could not be found.
+								</div>
+                        <p>
+									<b>Version 1.0</b>&nbsp;&nbsp;&nbsp;(24th February 2007)
+                        </p>
+								<div class="indent">
+									Public release.
+								</div>
+</section>
+<section>
+<h1>Findview - Downloads</h1>								
+                        <table summary="downloads" width="100%">
+									<tr bgcolor="#CCCCCC"><th>Version</th><th>Size</th><th>Date</th><th>Notes</th></tr>
+									<tr><td><a href="/files/software/findview-1.2.sh.bz2">1.2</a></td><td>1.5k</td><td>20/05/2007</td><td>Filenames with spaces supported</td></tr>
+									<tr><td><a href="/files/software/findview-1.1.sh.bz2">1.1</a></td><td>1.2k</td><td>02/03/2007</td><td>Update function fixed</td></tr>
+									<tr><td><a href="/files/software/findview-1.0.sh.bz2">1.0</a></td><td>1.1k</td><td>24/02/2007</td><td></td></tr>
+								</table>
+								<br>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

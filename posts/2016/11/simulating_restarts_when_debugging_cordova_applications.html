@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Simulating restarts when debugging cordova applications</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2016/11/simulating_restarts_when_debugging_cordova_applications.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Simulating restarts when debugging cordova applications" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2016/11/simulating_restarts_when_debugging_cordova_applications.html" />
+		<meta property="og:title" content="Simulating restarts when debugging cordova applications" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Simulating restarts when debugging cordova applications</h1>
+	<p>Debugging <a href="http://cordova.apache.org/">Cordova</a> applications can be performed
+using browser based debuggers (Chrome for Android, Safari for iOS), whether
+running in the Cordova browser platform, simulator or from a real device connected
+via USB.</p>
+
+<p>Often during debugging the application will need to be restarted, which when
+running from a simulator or a real device would mean that the currently running
+browser debugger will detach when the app on the device is stopped and will
+need to be reconnected manually.</p>
+
+<p>As an app on a simulator or device needs to be running <em>before</em> it can be debugged,
+re-attaching the debugger can make it hard to debug application start up events
+or code. This is especially true when working with iOS as Safari will not remember
+items such as <code>console.log()</code> before the debugger was opened.</p>
+
+<p>To allow for a Cordova application to be restarted without leaving a browser
+debugger use the following javascript in the console:</p>
+
+<pre><code>window.location.href = '?d=' + (new Date()).getTime();
+</code></pre>
+
+<p>This will reload the page (the Cordova webview file URL) to the same page with an
+addition of a <code>d</code> parameter, for example "?d=1478957654794". This extra parameter
+ is to prevent the page from being cached and forcing a page load.</p>
+
+<p>With this method you will now see any start up debugging in place even with iOS 
+and Safari.</p>
+
+<p>The above method can be used with any query string or hash parameters needed in
+put the application in the state required for a specific debugging task.</p>
+
+	<p>
+		<i>Last updated: 12/11/2016</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html amp lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Caching perl modules when running on Travis CI</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+					
+			<link rel="canonical" href="http://www.thedumbterminal.co.uk/posts/2016/09/caching_perl_modules_when_running_on_travis_ci.html" />
+			
+				<script type="application/ld+json">
+				{
+					"@context": "http://schema.org",
+					"@type": "BlogPosting",
+					"headline": "Caching perl modules when running on Travis CI",
+					"mainEntityOfPage":{
+						"@type":"WebPage",
+						"@id":"http://www.thedumbterminal.co.uk/posts/2016/09/caching_perl_modules_when_running_on_travis_ci.html"
+					},
+					"image": {
+						"@type": "ImageObject",
+						"url": "http://www.thedumbterminal.co.uk/images/top_stories_image.png",
+						"width": 696,
+						"height": 522
+					},
+					"datePublished": "2016-09-26T18:34:00Z",
+					"dateModified": "2016-09-26T18:34:00Z",
+					"author": {
+						"@type": "Person",
+						"name": "Mark Terry"
+					},
+					"publisher": {
+					"@type": "Organization",
+						"name": "The Dumb Terminal",
+						"logo": {
+							"@type": "ImageObject",
+							"url": "http://www.thedumbterminal.co.uk/images/top_stories_publisher_logo.png",
+							"width": 600,
+							"height": 60
+						}
+					},
+					"description": "The more dependencies a perl project has the longer the duration of each Travis CI job. Travis supports caching of defined directories to speed up builds...."
+				}
+				</script>
+
+			<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+			<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+			<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+
+			<script async src="https://cdn.ampproject.org/v0.js"></script>
+
+			<style amp-custom>
+				
+				*{box-sizing:border-box}html,body{height:100%;min-height:100%}body{font-family:sans-serif;background:rgba(0,0,0,1);color:#ddd;height:100%;padding-bottom:300px}a:link{color:#00ff00}a:visited{color:#00aa00}a:hover{color:#aaffaa}th{color:black;background-color:white}section{border-bottom:1px solid white}div#images div.clear{float:none;clear:both}div#images div{float:left;padding:5px;font-weight:bold;text-align:center;font-size:1.2em}pre{font-family:monospace;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}nav{font-size:1em;line-height:200%;text-align:center}aside{background:rgba(0,0,0,1);width:100%}aside img{display:block;margin:0 auto}footer{clear:both;height:140px}.nav-link{text-align:center}.container{height:100%;min-height:100%;margin-bottom:-140px}.hljs{background:#FEFFD7}ul.searchResults{display:none}@media (min-width:320px){.hide-mobile{display:none}img{max-width:100%}}@media (min-width:768px){.hide-tablet{display:none}body{background:rgba(0,0,0,1) url('/images/background.jpg') no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover}aside{position:absolute;padding-top:1em;padding-bottom:1em;border:solid thin rgba(255,255,255,1);background:rgba(0,0,0,0.9);width:175px;left:1em}section{padding:1em;border:solid thin rgba(255,255,255,1);background:rgba(0,0,0,0.9);margin-bottom:2em}.ads{position:absolute;padding:0;right:1em;border:0}main{position:absolute;right:200px;left:200px}}
+			</style>
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Caching perl modules when running on Travis CI" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2016/09/caching_perl_modules_when_running_on_travis_ci.html" />
+		<meta property="og:title" content="Caching perl modules when running on Travis CI" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Caching perl modules when running on Travis CI</h1>
+	<p>The more dependencies a perl project has the longer the duration of each Travis CI job. Travis supports <a href="https://docs.travis-ci.com/user/caching/">caching</a> of defined directories to speed up builds.</p>
+
+<p>To improve the build time we can use the <a href="https://metacpan.org/pod/local::lib">local::lib</a> perl module to create a new directory where all dependencies for the project will be installed. Then this directory can be specified in the Travis configuration to be cached.</p>
+
+<p>Here is an example <code>travis.yml</code> file:</p>
+
+<pre><code>sudo: false
+language: perl
+cache:
+  directories:
+  - perl_modules
+before_install:
+- cpanm local::lib
+- eval "$(perl -Mlocal::lib=${PWD}/perl_modules)"
+</code></pre>
+
+<p>Other than the changes above, the travis defaults can still be used for the builds steps that are not specified.</p>
+
+<p>Once the perl project has been configured as above any subsequent builds will be quicker.</p>
+
+	<p>
+		<i>Last updated: 26/09/2016</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+			<aside>
+				<a href="/"><amp-img src="/images/sign.jpg" alt="Home" height="175" width="152"></amp-img></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<amp-analytics type="googleanalytics" id="analytics1">
+				<script type="application/json">
+					{
+						"vars": {
+							"account": "UA-18281947-1"
+						},
+						"triggers": {
+							"trackPageview": {
+								"on": "visible",
+								"request": "pageview"
+							}
+						}
+					}
+				</script>
+			</amp-analytics>
+			<amp-auto-ads type="adsense" data-ad-client="ca-pub-7361696162492478"></amp-auto-ads>
+		
+	</body>
+</html>
+

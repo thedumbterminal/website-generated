@@ -1,0 +1,44 @@
+--- qmail-smtpd.c_orig	2011-04-27 23:48:50.228277116 +0100
++++ extracted/netqmail-1.06_tls_auth/qmail-smtpd.c	2011-04-28 00:38:49.766907080 +0100
+@@ -354,9 +354,17 @@
+   out("\r\n250-PIPELINING\r\n250-8BITMIME\r\n");
+   out("250-SIZE "); out(size); out("\r\n");
+ #ifdef CRAM_MD5
+-  out("250 AUTH LOGIN PLAIN CRAM-MD5\r\n");
++  //-mt only allow plain auth on ssl
++  if(ssl){
++    out("250 AUTH LOGIN PLAIN CRAM-MD5\r\n");
++  }
++  else{
++    out("250 AUTH CRAM-MD5\r\n");  
++  }
+ #else
+-  out("250 AUTH LOGIN PLAIN\r\n");
++  if(ssl){	//plain auth only on ssl
++    out("250 AUTH LOGIN PLAIN\r\n");
++  }
+ #endif
+   seenmail = 0; dohelo(arg);
+ }
+@@ -919,6 +927,9 @@
+   ctx = SSL_CTX_new(SSLv23_server_method());
+   if (!ctx) { tls_err("unable to initialize ctx"); return; }
+ 
++  //-mt use only tlsv1/sslv3
++  SSL_CTX_set_options(ctx, SSL_OP_NO_SSLv2);  
++
+   if (!SSL_CTX_use_certificate_chain_file(ctx, SERVERCERT))
+     { SSL_CTX_free(ctx); tls_err("missing certificate"); return; }
+   SSL_CTX_load_verify_locations(ctx, CLIENTCA, NULL);
+--- qmail-remote.c_orig	2011-04-28 00:14:31.143225580 +0100
++++ extracted/netqmail-1.06_tls_auth/qmail-remote.c	2011-04-28 00:37:45.564679557 +0100
+@@ -401,6 +401,9 @@
+     tls_quit_error("ZTLS error initializing ctx");
+   }
+ 
++  //-mt use only tlsv1/sslv3
++  SSL_CTX_set_options(ctx, SSL_OP_NO_SSLv2);
++  
+   if (servercert) {
+     if (!SSL_CTX_load_verify_locations(ctx, servercert, NULL)) {
+       SSL_CTX_free(ctx);

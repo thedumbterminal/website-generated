@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Vulnerabilities : Hacker Guardian</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Vulnerabilities : Hacker Guardian" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk" />
+		<meta property="og:title" content="Vulnerabilities : Hacker Guardian" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+								<h1>Hacker Guardian arbitrary host scanning - Overview</h1>
+			         		<p>
+                        	Comodo <a href="http://www.hackerguardian.com" target="_blank">Hacker Guardian</a> provides internet security scanning with a front page that quotes:
+								</p>
+								<p>
+									<i>
+										"It provides for daily audits to run on one IP address and an unspoofable TrustLogo you can place on your web site indicating you are safe from hackers."
+									</i>	
+								</p>
+								<p>
+									They offer a free scan so visitors can test their own server. The <a href="http://www.hackerguardian.com/faq.html">FAQ</a> states:
+								</p>
+								<p>
+									<i>
+										"HackerGuardian Free Scan - available to website owners, network operators and home users free of charge. Registering for the service enables users to run a HackerGuardian vulnerability audit on a single IP to identify potential security threats. The Free service is limited to 3 scans per license on a single IP and is non user customizable."
+									</i>
+								</p>
+								<p>
+									Unfortunately you can scan any host you choose and register for more than 3 scans, see below for details.
+								</p>
+</section>
+<section>
+								<h1>Hacker Guardian arbitrary host scanning - Timeline</h1>
+								<table>
+									<tr>
+										<th>Date found</th>
+										<td>06/03/2006</td>
+									</tr>
+									<tr>
+										<th>Date reported to vendor</th>
+										<td>16/03/2006</td>
+									</tr>
+									<tr>
+										<th>Date reported to public</th>
+										<td>17/03/2006</td>
+									</tr>
+									<tr>
+										<th>Date vendor responded</th>
+										<td>27/03/2006</td>
+									</tr>
+									<tr>
+										<th>Date fixed</th>
+										<td>27/03/2006</td>
+									</tr>
+									<tr>
+										<th>Credit</th>
+										<td>MacGyveR</td>
+									</tr>
+								</table>
+</section>
+<section>
+								<h1>Hacker Guardian arbitrary host scanning - Screenshots</h1>
+								<p>
+									The screen below shows that you can signup for more than 3 free scans:
+								</p>
+								<img src="/images/vulns/hackerguardian/numfreescans.jpg">
+								<br><br>
+								<p>
+									This is the screen you see when you start scanning, your own IP address is in a &quot;read only&quot;
+									text box: 
+								</p>
+								<img src="/images/vulns/hackerguardian/startscanning.jpg">
+								<br><br>
+								<p>
+									Using Firefox's Web Developer extension, you can change the IP address in the text box to anything you want:
+								</p>
+								<img src="/images/vulns/hackerguardian/startscanningalter.jpg">
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

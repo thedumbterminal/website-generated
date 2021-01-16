@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Creating a simple game with scratch</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2015/02/creating_a_simple_game_with_scratch.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Creating a simple game with scratch" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2015/02/creating_a_simple_game_with_scratch.html" />
+		<meta property="og:title" content="Creating a simple game with scratch" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Creating a simple game with scratch</h1>
+	<p>Here is a how to create a simple game of tag using the <a href="http://scratch.mit.edu/">scratch programming language</a>.</p>
+
+<p>To see a finished example of the game below, have a look at <a href="https://scratch.mit.edu/projects/42681040/">Dinosaur Chase</a>.</p>
+
+<h2 id="playercharacter">Player character</h2>
+
+<p>First create a new sprite:</p>
+
+<p><img src="/images/posts/2015/02/02/create_sprite.jpg" alt="Create sprite" title="Create sprite" id="createsprite" height="87px" width="154px" /></p>
+
+<p>Then select the image you would like for the player character.</p>
+
+<p>Then resize it to make it a bit smaller, by clicking on the shrink button at the top of the screen then click on your player character until it is small enough:</p>
+
+<p><img src="/images/posts/2015/02/02/shrink.jpg" alt="Shrink" title="Shrink" id="shrink" height="97px" width="179px" /></p>
+
+<h3 id="controls">Controls</h3>
+
+<p>We now need to make our player move when we press keys on the keyboard. For this example we will use the cursor (arrow) keys to move the player in the various directions.</p>
+
+<p>First click on your player character, you will see a blank area of the screen on the right where you can add code blocks.</p>
+
+<p>In the middle of the screen there is a "scripts" section, to move our character we will be using code blocks from the <strong>Events</strong> and <strong>Motion</strong> sections.</p>
+
+<p>To move the player in a single direction requires three code blocks to do the following:</p>
+
+<ol>
+<li>Check what key is pressed.</li>
+<li>Turn the character in the correct direction.</li>
+<li>Move the character in forward in the new direction.</li>
+</ol>
+
+<p>The following code will be used to move the player to the left:</p>
+
+<p><img src="/images/posts/2015/02/02/move_left.jpg" alt="Move left" title="Shrink" id="moveleft" height="102px" width="191px" /></p>
+
+<p>Make sure you select the correct key to check for in the first code block, and the correct direction is selected in the second code block.</p>
+
+<p>Repeat this process for the three other directions.</p>
+
+<p>Once this has been done the player can now be moved around the screen using the cursor (arrow) keys.</p>
+
+<h2 id="badguy">Bad guy</h2>
+
+<p>Create a new sprite the same way as the player character.</p>
+
+<p>Again, make the bad guy smaller the same way as before.</p>
+
+<p>Make sure you click on the bad guy before adding the code below, you will notice that the right hand part of the screen goes blank as there is no code written for this sprite yet.</p>
+
+<h3 id="talking">Talking</h3>
+
+<p>When the game starts we will have the bad guy say something after a short delay. We use a delay so the player gets a head start and it does not matter where the player and bad guy start on the screen.</p>
+
+<p>To get our bad guy talking we will be using code blocks from the <strong>Events</strong>, <strong>Control</strong> and <strong>Looks</strong> sections.</p>
+
+<p>Getting our bad guy to talk is done in three parts:</p>
+
+<ol>
+<li>Check if the game has started.</li>
+<li>Wait 5 seconds.</li>
+<li>Say our message.</li>
+</ol>
+
+<p>The following code will be used to enable our bad guy to talk:</p>
+
+<p><img src="/images/posts/2015/02/02/talk.jpg" alt="Talk" title="Talk" id="talk" height="100px" width="154px" /></p>
+
+<p>You can type any message into the say code block to customise your game.</p>
+
+<h3 id="chasingtheplayer">Chasing the player</h3>
+
+<p>The next thing we need to do is get our bad guy to chase the player character.</p>
+
+<p>To get our bad guy chasing we will be using code blocks from the <strong>Control</strong> and <strong>Motion</strong> sections.</p>
+
+<p>This is done in four parts:</p>
+
+<ol>
+<li>Wait for a small amount of time. (to slow the bad guy down).</li>
+<li>Point towards the player character.</li>
+<li>Move forward in the new direction.</li>
+<li>Repeat steps 1 and 2 forever.</li>
+</ol>
+
+<p>For this we will need a loop, to repeat actions over and over.</p>
+
+<p>The following code will be used to enable the bad guy to chase the player:</p>
+
+<p><img src="/images/posts/2015/02/02/chase.jpg" alt="Chase" title="Chase" id="chase" height="120px" width="166px" /></p>
+
+<p>You will notice that the code blocks to the first two parts of the chase process are inside the "forever" code block loop.</p>
+
+<p>The longer the wait time the slower the bad guy will move.</p>
+
+<p>The above code should be placed connected underneath the code blocks for the talking, as follows:</p>
+
+<p><img src="/images/posts/2015/02/02/chase_combined.jpg" alt="Chase combined" title="Chase combined" id="chasecombined" height="201px" width="164px" /></p>
+
+<p>This will make the bad guy talk first then start chasing the player.</p>
+
+<h3 id="endingthegame">Ending the game</h3>
+
+<p>To get our bad guy chasing we will be using code blocks from the <strong>Control</strong>, <strong>Looks</strong> and <strong>Sensing</strong> sections.</p>
+
+<p>We will decide that the game will end once the bad guy touches the player character just like in the game of tag.</p>
+
+<p>This is done in three steps:</p>
+
+<ol>
+<li>Check if the bad guy is touching the player character.</li>
+<li>Say a message.</li>
+<li>End the game.</li>
+</ol>
+
+<p>In order for us to test if something has happened we will need to use an "if" code block. The thing that we will be checking for will be the blue diamond shaped code block that sits inside the "if" block.</p>
+
+<p>The following code will be used to end the game if the player has been caught:</p>
+
+<p><img src="/images/posts/2015/02/02/end.jpg" alt="End" title="End" id="end" height="103px" width="204px" /></p>
+
+<p>Once you have added the "if" block you will then have to add the blue diamond block inside it's empty diamond space.</p>
+
+<p>Notice how the "if" block wraps the other blocks, the blocks inside the "if" will only get run if the check has happened.</p>
+
+<p>You can type any message into the say code block to customise your game.</p>
+
+<p>The above code should be placed inside the "forever" loop code block underneath the movement code blocks as shown below:</p>
+
+<p><img src="/images/posts/2015/02/02/end_combined.jpg" alt="End combined" title="End combined" id="endcombined" height="290px" width="221px" /></p>
+
+<p>Now the game should end once the player has been caught.</p>
+
+<h2 id="score">Score</h2>
+
+<p>Our score will be a timer that counts up every second.</p>
+
+<p>To create our timer we first need to create a variable. A variable is a part of a computer program that holds some data, in our case a number.</p>
+
+<p>First click on the <strong>Data</strong> section in the middle of the screen.</p>
+
+<p>Then click the "Make a Variable" button, this will pop up a small window as shown below:</p>
+
+<p><img src="/images/posts/2015/02/02/new_variable.jpg" alt="New variable" title="New variable" id="newvariable" height="203px" width="292px" /></p>
+
+<p>Enter the name of "time", then click the <strong>OK</strong> button.</p>
+
+<p>Our timer is going to work in the following way:</p>
+
+<ol>
+<li>Set the time to zero.</li>
+<li>Wait one second.</li>
+<li>Add one to the current time.</li>
+<li>Repeat steps 2 and 3 forever.</li>
+</ol>
+
+<p>Use the following code blocks to create the timer:</p>
+
+<p><img src="/images/posts/2015/02/02/timer.jpg" alt="Timer" title="Timer" id="timer" height="152px" width="147px" /></p>
+
+<p>A forever loop is used here to allow the timer to keep increasing every second.</p>
+
+<p>If you start the game you should now see the timer increase.</p>
+
+<h2 id="background">Background</h2>
+
+<p>An often asked question, how do we change the background?</p>
+
+<p>To do this click on the first <strong>New backdrop:</strong> icon on the right hand side of the screen as shown below:</p>
+
+<p><img src="/images/posts/2015/02/02/backdrop.jpg" alt="Backdrop" title="Backdrop" id="backdrop" height="109px" width="97px" /></p>
+
+<p>This will bring up the background selection window, select the background you want then click the <strong>OK</strong> button, and your background should then change.</p>
+
+	<p>
+		<i>Last updated: 25/02/2015</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html amp lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Capturing screenshots on CI tasks using CircleCI</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+					
+			<link rel="canonical" href="http://www.thedumbterminal.co.uk/posts/2017/05/capturing_screenshots_on_ci_tasks_using_circleci.html" />
+			
+				<script type="application/ld+json">
+				{
+					"@context": "http://schema.org",
+					"@type": "BlogPosting",
+					"headline": "Capturing screenshots on CI tasks using CircleCI",
+					"mainEntityOfPage":{
+						"@type":"WebPage",
+						"@id":"http://www.thedumbterminal.co.uk/posts/2017/05/capturing_screenshots_on_ci_tasks_using_circleci.html"
+					},
+					"image": {
+						"@type": "ImageObject",
+						"url": "http://www.thedumbterminal.co.uk/images/top_stories_image.png",
+						"width": 696,
+						"height": 522
+					},
+					"datePublished": "2017-05-30T12:57:00Z",
+					"dateModified": "2017-05-30T12:57:00Z",
+					"author": {
+						"@type": "Person",
+						"name": "Mark Terry"
+					},
+					"publisher": {
+					"@type": "Organization",
+						"name": "The Dumb Terminal",
+						"logo": {
+							"@type": "ImageObject",
+							"url": "http://www.thedumbterminal.co.uk/images/top_stories_publisher_logo.png",
+							"width": 600,
+							"height": 60
+						}
+					},
+					"description": "When running continuous build tasks it can be useful to include screenshots of any GUI apps so that they maybe be saved as assets along with any other build results...."
+				}
+				</script>
+
+			<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+			<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+			<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+
+			<script async src="https://cdn.ampproject.org/v0.js"></script>
+
+			<style amp-custom>
+				
+				*{box-sizing:border-box}html,body{height:100%;min-height:100%}body{font-family:sans-serif;background:rgba(0,0,0,1);color:#ddd;height:100%;padding-bottom:300px}a:link{color:#00ff00}a:visited{color:#00aa00}a:hover{color:#aaffaa}th{color:black;background-color:white}section{border-bottom:1px solid white}div#images div.clear{float:none;clear:both}div#images div{float:left;padding:5px;font-weight:bold;text-align:center;font-size:1.2em}pre{font-family:monospace;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}nav{font-size:1em;line-height:200%;text-align:center}aside{background:rgba(0,0,0,1);width:100%}aside img{display:block;margin:0 auto}footer{clear:both;height:140px}.nav-link{text-align:center}.container{height:100%;min-height:100%;margin-bottom:-140px}.hljs{background:#FEFFD7}ul.searchResults{display:none}@media (min-width:320px){.hide-mobile{display:none}img{max-width:100%}}@media (min-width:768px){.hide-tablet{display:none}body{background:rgba(0,0,0,1) url('/images/background.jpg') no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover}aside{position:absolute;padding-top:1em;padding-bottom:1em;border:solid thin rgba(255,255,255,1);background:rgba(0,0,0,0.9);width:175px;left:1em}section{padding:1em;border:solid thin rgba(255,255,255,1);background:rgba(0,0,0,0.9);margin-bottom:2em}.ads{position:absolute;padding:0;right:1em;border:0}main{position:absolute;right:200px;left:200px}}
+			</style>
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Capturing screenshots on CI tasks using CircleCI" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2017/05/capturing_screenshots_on_ci_tasks_using_circleci.html" />
+		<meta property="og:title" content="Capturing screenshots on CI tasks using CircleCI" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Capturing screenshots on CI tasks using CircleCI</h1>
+	<p>When running continuous build tasks it can be useful to include screenshots of any GUI apps so that they maybe be saved as assets along with any other build results.</p>
+
+<p>The information below uses <a href="https://circleci.com/">CircleCI</a>, but requirements and setup should be similar for other CI providers.</p>
+
+<p>First the <code>circle.yml</code> config file will need some additions, add the contents of the sections below into any configuration that exists already.</p>
+
+<pre><code>dependencies:
+  override:
+    - sudo apt-get update &amp;&amp; sudo apt-get install wmctrl fluxbox x11-apps
+    - sudo /usr/bin/killall Xvfb
+    - sudo /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_1.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 4000x1800x24
+    - fluxbox &gt; /dev/null 2&gt;&amp;1:
+        background: true
+test:
+  override:
+    - ./screenshotExample.sh
+</code></pre>
+
+<p>The lines above perform the following tasks:</p>
+
+<ul>
+<li>Get the latest update sites for debian.</li>
+<li>Install the wmctrl, fluxbox and x11-apps packages (x11-apps is only required for example below).</li>
+<li>Stop the current framebuffer server.</li>
+<li>Start a new framebuffer server with the require config.</li>
+<li>Start the fluxbox window manager in the background.</li>
+<li>Run the example script to take the screenshot.</li>
+</ul>
+
+<p>The fluxbox window manager was chosen as it is small and quick to install, some even smaller window managers do not allow you to manage windows using <code>wmctrl</code>. The CircleCI background option is used here to stop a warning being shown.</p>
+
+<p>We start a new framebuffer server as then the screen dimensions can be specified, as this is in memory only the resolution can be as large as you need.</p>
+
+<p>Next, a script is needed to run all the required tasks to take a screen shot.</p>
+
+<pre><code>#/bin/bash
+set -e
+
+echo "Example screenshot script..."
+
+xeyes &amp;
+
+BACKGROUND_PID=$!
+sleep 10
+if ! ps -p ${BACKGROUND_PID} ; then
+  echo "Problem with GUI app, see error above."
+  exit 1
+fi
+
+xwininfo -tree -root
+WIN_IDENT="feh"
+RESOURCE_ID=`xwininfo -tree -root | grep ${WIN_IDENT} | cut -f 1 -d '"' | sed "s/ //g"`
+echo "Got window Resource ID of: ${RESOURCE_ID}"
+wmctrl -i -r ${RESOURCE_ID} -b toggle,maximized_vert,maximized_horz
+
+echo "Taking screenshot of window..."
+xwd -id ${RESOURCE_ID} | convert xwd:- ${CIRCLE_ARTIFACTS}/dag_screenshot.png
+
+echo "Killing PID: ${BACKGROUND_PID}..."
+kill -HUP $!
+
+echo "...Done"
+</code></pre>
+
+<p>The above script does the following:</p>
+
+<ul>
+<li>Starts the GUI app in the background.</li>
+<li>Captures the PID of the app so it can be killed later.</li>
+<li>Waits 10 seconds then checks if the app has started up.</li>
+<li>Displays all the window manager resource info for debugging (see below).</li>
+<li>Gets the resource ID for the correct window currently being displayed.</li>
+<li>Maximise the window.</li>
+<li>Take a screenshot of the window and convert it to a PNG.</li>
+<li>Kill the GUI app.</li>
+</ul>
+
+<p>The tricky part is finding out the value for the <code>WIN_IDENT</code> variable. Using the output from the <code>xwininfo -tree -root</code> command all the windows displayed on the framebuffer will be detailed, fluxbox gives them all quit short identifiers, but there should only be a few to choose from.</p>
+
+<p>The resulting screenshot is saved in the <code>CIRCLE_ARTIFACTS</code> directory so it can be found above the console output after the build has finished.</p>
+
+	<p>
+		<i>Last updated: 30/05/2017</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+			<aside>
+				<a href="/"><amp-img src="/images/sign.jpg" alt="Home" height="175" width="152"></amp-img></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<amp-analytics type="googleanalytics" id="analytics1">
+				<script type="application/json">
+					{
+						"vars": {
+							"account": "UA-18281947-1"
+						},
+						"triggers": {
+							"trackPageview": {
+								"on": "visible",
+								"request": "pageview"
+							}
+						}
+					}
+				</script>
+			</amp-analytics>
+			<amp-auto-ads type="adsense" data-ad-client="ca-pub-7361696162492478"></amp-auto-ads>
+		
+	</body>
+</html>
+

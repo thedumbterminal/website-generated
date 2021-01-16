@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Removing an entry from Squid proxy's cache</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2015/08/removing_an_entry_from_squid_proxys_cache.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Removing an entry from Squid proxy's cache" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2015/08/removing_an_entry_from_squid_proxys_cache.html" />
+		<meta property="og:title" content="Removing an entry from Squid proxy's cache" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Removing an entry from Squid proxy's cache</h1>
+	<p>Sometimes there is a need to delete a file that squid proxy has already downloaded and stored in its cache.</p>
+
+<p>For this example we are using the following URL, an iPhoto update which I had problems downloading:</p>
+
+<pre><code>http://swcdn.apple.com/content/downloads/55/52/041-7956/icd6dyhgzn9kpvhrdx5ugyhgrejdymf2du/iPhoto9.4.3Update.pkg
+</code></pre>
+
+<p>When this file is requested by a client the following entry is created in the access log showing the client receiving the version stored in the cache (cache hit):</p>
+
+<pre><code>==&gt; /var/log/squid/access.log &lt;==
+1436637066.764 246801 10.10.10.153 TCP_REFRESH_HIT/200 555236637 GET http://swcdn.apple.com/content/downloads/55/52/041-7956/icd6dyhgzn9kpvhrdx5ugyhgrejdymf2du/iPhoto9.4.3Update.pkg - DIRECT/17.253.35.203 application/octet-stream
+</code></pre>
+
+<p>The store log will also show this file being found:</p>
+
+<pre><code>==&gt; /var/log/squid/store.log &lt;==
+1436637066.764 RELEASE 00 00000A43 0252C4D00A906FB95B4C1EAB5D1CB063  200 1436636820 1365769909 1436651220 application/octet-stream 555236214/-490 GET http://swcdn.apple.com/content/downloads/55/52/041-7956/icd6dyhgzn9kpvhrdx5ugyhgrejdymf2du/iPhoto9.4.3Update.pkg
+</code></pre>
+
+<p>The easiest way to remove entries from squid's cache is to use the <a href="http://wiki.squid-cache.org/SquidClientTool">squidclient</a> utility, to install on debian just run the following command (Other linux distributions may vary):</p>
+
+<pre><code>$ sudo apt-get install squidclient
+</code></pre>
+
+<p>Once installed we can send a <code>PURGE</code> command to squid running on localhost:</p>
+
+<pre><code>$ squidclient -m PURGE http://swcdn.apple.com/content/downloads/55/52/041-7956/icd6dyhgzn9kpvhrdx5ugyhgrejdymf2du/iPhoto9.4.3Update.pkg
+HTTP/1.0 200 OK
+Server: squid/2.7.STABLE9
+Date: Sat, 11 Jul 2015 17:52:43 GMT
+Content-Length: 0
+Expires: Sat, 11 Jul 2015 17:52:43 GMT
+X-Cache: MISS from rigby
+X-Cache-Lookup: NONE from rigby:3128
+Connection: close
+</code></pre>
+
+<p>After this command has been run, when a client requests the file again for the first time the access log will show a cache miss, resulting in a fresh version of the file being downloaded:</p>
+
+<pre><code>==&gt; /var/log/squid/access.log &lt;==
+436637462.137 285349 10.10.10.153 TCP_MISS/200 555236653 GET http://swcdn.apple.com/content/downloads/55/52/041-7956/icd6dyhgzn9kpvhrdx5ugyhgrejdymf2du/iPhoto9.4.3Update.pkg - DIRECT/17.253.35.203 application/octet-stream
+</code></pre>
+
+	<p>
+		<i>Last updated: 15/08/2015</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

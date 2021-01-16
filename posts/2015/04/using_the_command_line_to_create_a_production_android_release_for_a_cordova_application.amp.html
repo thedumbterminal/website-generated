@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html amp lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Using the command line to create a production android release for a cordova application</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+					
+			<link rel="canonical" href="http://www.thedumbterminal.co.uk/posts/2015/04/using_the_command_line_to_create_a_production_android_release_for_a_cordova_application.html" />
+			
+				<script type="application/ld+json">
+				{
+					"@context": "http://schema.org",
+					"@type": "BlogPosting",
+					"headline": "Using the command line to create a production android release for a cordova application",
+					"mainEntityOfPage":{
+						"@type":"WebPage",
+						"@id":"http://www.thedumbterminal.co.uk/posts/2015/04/using_the_command_line_to_create_a_production_android_release_for_a_cordova_application.html"
+					},
+					"image": {
+						"@type": "ImageObject",
+						"url": "http://www.thedumbterminal.co.uk/images/top_stories_image.png",
+						"width": 696,
+						"height": 522
+					},
+					"datePublished": "2015-04-08T22:29:00Z",
+					"dateModified": "2015-04-08T22:29:00Z",
+					"author": {
+						"@type": "Person",
+						"name": "Mark Terry"
+					},
+					"publisher": {
+					"@type": "Organization",
+						"name": "The Dumb Terminal",
+						"logo": {
+							"@type": "ImageObject",
+							"url": "http://www.thedumbterminal.co.uk/images/top_stories_publisher_logo.png",
+							"width": 600,
+							"height": 60
+						}
+					},
+					"description": "Creating a signed production android release or APK for your application is normally be done by using Google's Android Studio or with Eclipse and ADT. It seems a inefficient to fire up a..."
+				}
+				</script>
+
+			<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+			<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+			<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+
+			<script async src="https://cdn.ampproject.org/v0.js"></script>
+
+			<style amp-custom>
+				
+				*{box-sizing:border-box}html,body{height:100%;min-height:100%}body{font-family:sans-serif;background:rgba(0,0,0,1);color:#ddd;height:100%;padding-bottom:300px}a:link{color:#00ff00}a:visited{color:#00aa00}a:hover{color:#aaffaa}th{color:black;background-color:white}section{border-bottom:1px solid white}div#images div.clear{float:none;clear:both}div#images div{float:left;padding:5px;font-weight:bold;text-align:center;font-size:1.2em}pre{font-family:monospace;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}nav{font-size:1em;line-height:200%;text-align:center}aside{background:rgba(0,0,0,1);width:100%}aside img{display:block;margin:0 auto}footer{clear:both;height:140px}.nav-link{text-align:center}.container{height:100%;min-height:100%;margin-bottom:-140px}.hljs{background:#FEFFD7}ul.searchResults{display:none}@media (min-width:320px){.hide-mobile{display:none}img{max-width:100%}}@media (min-width:768px){.hide-tablet{display:none}body{background:rgba(0,0,0,1) url('/images/background.jpg') no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover}aside{position:absolute;padding-top:1em;padding-bottom:1em;border:solid thin rgba(255,255,255,1);background:rgba(0,0,0,0.9);width:175px;left:1em}section{padding:1em;border:solid thin rgba(255,255,255,1);background:rgba(0,0,0,0.9);margin-bottom:2em}.ads{position:absolute;padding:0;right:1em;border:0}main{position:absolute;right:200px;left:200px}}
+			</style>
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Using the command line to create a production android release for a cordova application" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2015/04/using_the_command_line_to_create_a_production_android_release_for_a_cordova_application.html" />
+		<meta property="og:title" content="Using the command line to create a production android release for a cordova application" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Using the command line to create a production android release for a cordova application</h1>
+	<p>Creating a signed production android release or APK for your application is normally be done by using Google's Android Studio or with Eclipse and ADT. It seems a inefficient to fire up a
+whole IDE just to build a release for an application as cordova applications are normally created using other web development editors, so this guide will detail how to go about this task using only the command line.</p>
+
+<p><em>This guide presumes you have a running android cordova application.</em></p>
+
+<p>First build your application as usual:</p>
+
+<pre><code>cordova build android
+</code></pre>
+
+<p>This will build a unsigned APK which can be uploaded to emulators or devices via ADB or similar for initial testing.</p>
+
+<p>You will need to create a new java keystore if you do not have one already (maybe for other java projects). This keystore
+will contain the private key and certificate that will be used to sign your application and ensure future versions are from the same author.</p>
+
+<h2 id="creatinganewprivatekeyandcertificate">Creating a new private key and certificate</h2>
+
+<p><strong>Warning</strong> Don't forget the password entered below, otherwise you will be no longer able to update your application in the play store.</p>
+
+<p>Use the command below to create a new keystore and certificate, the alias used is generally the name of your application.</p>
+
+<pre><code>keytool -genkey -v -keystore android_app.keystore -alias myname -keyalg RSA -keysize 2048 -validity 10000
+Enter keystore password:  
+Re-enter new password: 
+What is your first and last name?
+  [Unknown]:  Bob Jones
+What is the name of your organizational unit?
+  [Unknown]:  Development
+What is the name of your organization?
+  [Unknown]:  The Dumb Terminal
+What is the name of your City or Locality?
+  [Unknown]:  Some Town
+What is the name of your State or Province?
+  [Unknown]:  Some State
+What is the two-letter country code for this unit?
+  [Unknown]:  GB
+Is CN=Bob Jones, OU=Development, O=The Dumb Terminal, L=Some Town, ST=Some State, C=GB correct?
+  [no]:  yes
+
+Generating 2,048 bit RSA key pair and self-signed certificate (SHA1withRSA) with a validity of 10,000 days
+    for: CN=Bob Jones, OU=Development, O=The Dumb Terminal, L=Some Town, ST=Some State, C=GB
+Enter key password for &lt;myname&gt;
+    (RETURN if same as keystore password):  
+[Storing android_app.keystore]
+</code></pre>
+
+<h2 id="updatebuildsettings">Update build settings</h2>
+
+<p>Next, append the keystore details to your android platform ant properties, as shown in the example below:</p>
+
+<pre><code>more platforms/android/ant.properties 
+key.store=/Users/bob/myname/android_app.keystore
+key.alias=myname
+</code></pre>
+
+<p>Increase the version number in <code>www/config.xml</code>, see <a href="/posts/2014/07/configuring_cordova_to_update_the_android_version_code.html">Configuring Cordova to update the Android version code</a> for details.</p>
+
+<p>Adjust any android manifest details first in <code>platforms/android/AndroidManifest.xml</code>, settings such as <code>android:allowBackup</code> or any specific screen size requirements.</p>
+
+<h2 id="buildtheproductionrelease">Build the production release</h2>
+
+<p>Now to build the signed release APK ready for the play store:</p>
+
+<pre><code>cordova build android --release
+
+....
+
+-post-package:
+
+-release-prompt-for-password:
+    [input] Please enter keystore password (store:/Users/bob/myname/android_app.keystore):
+droid-store
+    [input] Please enter password for alias 'myname':
+droid-store
+
+-release-nosign:
+
+-release-sign:
+     [echo] Signing final apk...
+ [zipalign] Running zip align on final apk...
+     [echo] Release Package: /Users/bob/myname/platforms/android/ant-build/CordovaApp-release.apk
+[propertyfile] Updating property file: /Users/bob/myname/platforms/android/ant-build/build.prop
+[propertyfile] Updating property file: /Users/bob/myname/platforms/android/ant-build/build.prop
+[propertyfile] Updating property file: /Users/bob/myname/platforms/android/ant-build/build.prop
+[propertyfile] Updating property file: /Users/bob/myname/platforms/android/ant-build/build.prop
+
+-post-build:
+     [move] Moving 1 file to /Users/bob/myname/platforms/android/ant-build
+     [move] Moving 1 file to /Users/bob/myname/platforms/android/CordovaLib/ant-build
+
+release:
+
+BUILD SUCCESSFUL
+Total time: 47 seconds
+Built the following apk(s):
+    /Users/bob/myname/platforms/android/ant-build/CordovaApp-release.apk
+    /Users/bob/myname/platforms/android/ant-build/CordovaApp-release-unsigned.apk
+</code></pre>
+
+<h2 id="testing">Testing</h2>
+
+<p>Before uploading to the play store, its best to test the new APK in real devices once it has been connected via USB.</p>
+
+<p>First remove any previous development versions of your application from the device, otherwise you will receive a certificate error upon installation of the new signed APK.</p>
+
+<p>Next install the new signed APK to the device by uploading it with the following command:</p>
+
+<pre><code>adb install platforms/android/ant-build/CordovaApp-release.apk  
+</code></pre>
+
+	<p>
+		<i>Last updated: 08/04/2015</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+			<aside>
+				<a href="/"><amp-img src="/images/sign.jpg" alt="Home" height="175" width="152"></amp-img></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<amp-analytics type="googleanalytics" id="analytics1">
+				<script type="application/json">
+					{
+						"vars": {
+							"account": "UA-18281947-1"
+						},
+						"triggers": {
+							"trackPageview": {
+								"on": "visible",
+								"request": "pageview"
+							}
+						}
+					}
+				</script>
+			</amp-analytics>
+			<amp-auto-ads type="adsense" data-ad-client="ca-pub-7361696162492478"></amp-auto-ads>
+		
+	</body>
+</html>
+

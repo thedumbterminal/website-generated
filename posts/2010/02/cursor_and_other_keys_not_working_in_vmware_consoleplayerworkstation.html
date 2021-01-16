@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Cursor and other keys not working in VMWare Console/Player/Workstation</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2010/02/cursor_and_other_keys_not_working_in_vmware_consoleplayerworkstation.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Cursor and other keys not working in VMWare Console/Player/Workstation" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2010/02/cursor_and_other_keys_not_working_in_vmware_consoleplayerworkstation.html" />
+		<meta property="og:title" content="Cursor and other keys not working in VMWare Console/Player/Workstation" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Cursor and other keys not working in VMWare Console/Player/Workstation</h1>
+	<p>If your cursor keys and maybe others are not working correctly when using the VMWare remote console, Player or Workstation, you will need to added the following lines to <code>~/.vmware/config</code>:</p>
+
+<pre><code>xkeymap.keycode.108 = 0x138 # Alt_R
+xkeymap.keycode.106 = 0x135 # KP_Divide
+xkeymap.keycode.104 = 0x11c # KP_Enter
+xkeymap.keycode.111 = 0x148 # Up
+xkeymap.keycode.116 = 0x150 # Down
+xkeymap.keycode.113 = 0x14b # Left
+xkeymap.keycode.114 = 0x14d # Right
+xkeymap.keycode.105 = 0x11d # Control_R
+xkeymap.keycode.118 = 0x152 # Insert
+xkeymap.keycode.119 = 0x153 # Delete
+xkeymap.keycode.110 = 0x147 # Home
+xkeymap.keycode.115 = 0x14f # End
+xkeymap.keycode.112 = 0x149 # Prior
+xkeymap.keycode.117 = 0x151 # Next
+xkeymap.keycode.78 = 0x46 # Scroll_Lock
+xkeymap.keycode.127 = 0x100 # Pause
+xkeymap.keycode.133 = 0x15b # Meta_L
+xkeymap.keycode.134 = 0x15c # Meta_R
+xkeymap.keycode.135 = 0x15d # Menu
+</code></pre>
+
+<p>Once this has been done, restart the Console/Player/Workstation and the keys should work as normal.</p>
+
+	<p>
+		<i>Last updated: 25/02/2010</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : How to add a RSS feed to your website</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2006/08/how_to_add_a_rss_feed_to_your_website.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="How to add a RSS feed to your website" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2006/08/how_to_add_a_rss_feed_to_your_website.html" />
+		<meta property="og:title" content="How to add a RSS feed to your website" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>How to add a RSS feed to your website</h1>
+	<p>To create a RSS feed for your website you will first need to create the actual feed file. This has the format of:</p>
+
+<pre><code>&lt;?xml version="1.0"?&gt;
+&lt;rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://my.netscape.com/rdf/simple/0.9/"&gt;
+   &lt;channel&gt;
+      &lt;title&gt;The feed's title&lt;/title&gt;
+      &lt;description&gt;The feed's description&lt;/description&gt;
+      &lt;link&gt;The feed's webpage&lt;/link&gt;
+   &lt;/channel&gt;
+   &lt;item&gt;
+      &lt;title&gt;The title of an item&lt;/title&gt;
+      &lt;description&gt;The description of an item&lt;/description&gt;
+      &lt;link&gt;The item's webpage&lt;/link&gt;
+   &lt;/item&gt;
+   .... (other items) ...
+</code></pre>
+
+<p></rdf:RDF></p>
+
+<p>You can have many item tags in your feed.</p>
+
+<p>To enable the visitor's browser to see this file you will need to add the following tag to the head of your HTML page:</p>
+
+<pre><code>&lt;link rel="alternate" type="application/rss+xml" title="RSS Feed" href="yourfeed.rdf"/&gt;
+</code></pre>
+
+<p>The file extension in the code above is not important, so you can have a script generate the feed for you etc..</p>
+
+	<p>
+		<i>Last updated: 04/08/2006</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

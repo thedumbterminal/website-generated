@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Correcting Bind errors due to an out of sync clock</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2015/03/correcting_bind_errors_due_to_an_out_of_sync_clock.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Correcting Bind errors due to an out of sync clock" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2015/03/correcting_bind_errors_due_to_an_out_of_sync_clock.html" />
+		<meta property="og:title" content="Correcting Bind errors due to an out of sync clock" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Correcting Bind errors due to an out of sync clock</h1>
+	<p>If your system's name server has ceased to perform recursive lookups, first check your logs. These are normally located at <code>/var/log/syslog</code>, there maybe be errors similar to the following:</p>
+
+<pre><code>Feb 28 09:47:59 server named[2480]: error (no valid KEY) resolving './DNSKEY/IN': 192.228.79.201#53
+Feb 28 09:48:00 server named[2480]: validating @0xb7f4d5f0: . DNSKEY: verify failed due to bad signature (keyid=19036): RRSIG validity period has not begun
+Feb 28 09:48:00 server named[2480]: validating @0xb7f4d5f0: . DNSKEY: unable to find a DNSKEY which verifies the DNSKEY RRset and also matches a trusted key for '.'
+Feb 28 09:48:00 server named[2480]: validating @0xb7f4d5f0: . DNSKEY: please check the 'trusted-keys' for '.' in named.conf.
+Feb 28 09:48:00 server named[2480]: error (no valid KEY) resolving './DNSKEY/IN': 193.0.14.129#53
+Feb 28 09:48:00 server named[2480]: error (broken trust chain) resolving './NS/IN': 192.112.36.4#53
+Feb 28 09:48:00 server named[2480]: error (broken trust chain) resolving 'www.apple.com/A/IN': 17.171.63.30#53
+Feb 28 09:48:00 server named[2480]: error (broken trust chain) resolving 'apple.com/A/IN': 17.171.63.30#53
+Feb 28 09:48:00 server named[2480]: error (broken trust chain) resolving 'apple-mobile.query.yahooapis.com/A/IN': 68.142.255.16#53
+Feb 28 09:48:00 server named[2480]: error (broken trust chain) resolving 'api.mixpanel.com/A/IN': 208.94.148.4#53
+Feb 28 09:48:01 server named[2480]:   validating @0xb7cf9ff8: com DS: bad cache hit (./DNSKEY)
+Feb 28 09:48:01 server named[2480]: error (broken trust chain) resolving 'init-p01st.push.apple.com/A/IN': 17.112.144.50#53
+Feb 28 09:48:01 server named[2480]:   validating @0xb7cf9ff8: com DS: bad cache hit (./DNSKEY)
+Feb 28 09:48:01 server named[2480]: error (broken trust chain) resolving '7-courier.push.apple.com/A/IN': 17.171.63.40#53
+</code></pre>
+
+<p>These type of errors are due to the system having an incorrect date.</p>
+
+<p>This problem can occur if the real time clock (RTC) of a system has not kept the time correctly during a reboot or whilst being offline.
+Systems using NTP can still be affected as bind will start up before the NTP server and DNS names are usually used in the NTP server config.</p>
+
+<p>To resolve this issue first stop bind and NTP with a commands such as:</p>
+
+<pre><code>/etc/init.d/ntp stop
+/etc/init.d/bind9 stop
+</code></pre>
+
+<p>Then lookup an IP of NTP server that is near to you (UK server used in this example), a Google name server can be used here as their IP's are easy to remember:</p>
+
+<pre><code>nslookup 0.uk.pool.ntp.org 8.8.8.8
+Server:     8.8.8.8
+Address:    8.8.8.8#53
+
+Non-authoritative answer:
+Name:   0.uk.pool.ntp.org
+Address: 176.74.25.228
+Name:   0.uk.pool.ntp.org
+Address: 82.219.4.30
+Name:   0.uk.pool.ntp.org
+Address: 89.238.136.135
+Name:   0.uk.pool.ntp.org
+Address: 217.114.59.3
+</code></pre>
+
+<p>Next set the date of the system using the NTP server's IP address:</p>
+
+<pre><code>ntpdate 176.74.25.228
+</code></pre>
+
+<p>Then restart bind and NTP:</p>
+
+<pre><code>/etc/init.d/bind9 start
+/etc/init.d/ntp start
+</code></pre>
+
+<p>For a final test, perform a lookup using the server's name server to confirm operation:</p>
+
+<pre><code>nslookup www.yahoo.co.uk
+</code></pre>
+
+	<p>
+		<i>Last updated: 03/03/2015</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+
