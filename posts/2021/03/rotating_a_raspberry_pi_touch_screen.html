@@ -1,13 +1,14 @@
 
-
 <!DOCTYPE html>
 <html  lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>The Dumb Terminal : Latest Posts</title>
+		<title>The Dumb Terminal : Rotating a Raspberry Pi Touch Screen</title>
 		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
 		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2021/03/rotating_a_raspberry_pi_touch_screen.amp.html">
 			
 
 			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
@@ -20,11 +21,11 @@
 		<meta content="summary" name="twitter:card" />
 		<meta content="@theDumbTerminal" name="twitter:site" />
 		<meta content="@theDumbTerminal" name="twitter:creator" />
-		<meta content="Latest Posts" name="twitter:title" />
+		<meta content="Rotating a Raspberry Pi Touch Screen" name="twitter:title" />
 
 		<meta property="og:site_name" content="The Dumb Terminal" />
-		<meta property="og:url" content="http://www.thedumbterminal.co.uk" />
-		<meta property="og:title" content="Latest Posts" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2021/03/rotating_a_raspberry_pi_touch_screen.html" />
+		<meta property="og:title" content="Rotating a Raspberry Pi Touch Screen" />
 		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
 
 		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
@@ -37,71 +38,70 @@
 			<main>
 				<section>
 
-<h1>Latest Posts</h1>
-</section>
-<section>
+<article>
+	<h1>Rotating a Raspberry Pi Touch Screen</h1>
+	<p>The Raspberry Pi touch screens works great, but they can have a small issue when used with a several screen enclosures.</p>
 
-	<h2>Rotating a Raspberry Pi Touch Screen</h2>
-	<p>
-		<em>Last updated: 06/03/2021</em>
-	</p>
-	<p>
-		
-		The Raspberry Pi touch screens works great, but they can have a small issue when used with a several screen enclosures....
-	</p>
-	<p>
-		<a href="/posts/2021/03/rotating_a_raspberry_pi_touch_screen.html">Read more</a>
-	</p>
-	
-		</section>
-		<section>
-	
+<p>The cases often require the screen to be mounted in a specific orientation such as for wall mounting,
+but this can easily be remedied as follows.</p>
 
-	<h2>Repairing a broken boot disk after converting to APFS</h2>
-	<p>
-		<em>Last updated: 10/10/2020</em>
-	</p>
-	<p>
-		
-		Later versions of Mac OSX require you to be running APFS, amongst other benefits it improves performance....
-	</p>
-	<p>
-		<a href="/posts/2020/10/repairing_a_broken_boot_disk_after_converting_to_apfs.html">Read more</a>
-	</p>
-	
-		</section>
-		<section>
-	
+<p>First, make sure you have a working Pi install, the solution below should be agnostic of linux distribution used.</p>
 
-	<h2>Reporting sizes of databases and tables in MySQL</h2>
-	<p>
-		<em>Last updated: 15/02/2020</em>
-	</p>
-	<p>
-		
-		It's useful to know how much disk space individual tables or entire databases consume. Particularly if resources on the server are limited....
-	</p>
-	<p>
-		<a href="/posts/2020/02/reporting_sizes_of_databases_and_tables_in_mysql.html">Read more</a>
-	</p>
-	
-		</section>
-		<section>
-	
+<p>Next, open a terminal and edit the file <code>/boot/config.txt</code>, this is owned by root so you'll need to use the command:</p>
 
-	<h2>Clearing all keys in a Redis cache</h2>
-	<p>
-		<em>Last updated: 24/10/2019</em>
-	</p>
-	<p>
-		
-		The redis-cli command can be used to remove or clear all the entries on a redis instance. This utility is installed along with the Redis server....
-	</p>
-	<p>
-		<a href="/posts/2019/10/clearing_all_keys_in_a_redis_cache.html">Read more</a>
-	</p>
-	
+<p><code>
+sudo nano /boot/config.txt
+</code></p>
 
+<p>You can use an editor other than <code>nano</code> if you want, but this is installed by default on the Raspberry Pi OS.</p>
+
+<p>The screen can be rotated in increments of 90 degrees using a number as follows:</p>
+
+<ul>
+<li>0 = No rotation</li>
+<li>1 = Screen rotated 90 degrees</li>
+<li>2 = Screen rotated 180 degrees</li>
+<li>3 = Screen rotated 270 degrees</li>
+</ul>
+
+<p>If you have an official Raspberry Pi touch screen you will need to use the <code>lcd_rotate</code> command.
+As otherwise, the display will rotate but not the touchscreen which will cause taps to be detected on the
+wrong part of the screen!</p>
+
+<p>For other touch screen brands, the command <code>display_rotate</code> should be used.</p>
+
+<p>Here are some examples:</p>
+
+<ul>
+<li>Rotate the official touch screen 180 degrees:</li>
+</ul>
+
+<p><code>
+lcd_rotate=2
+</code></p>
+
+<ul>
+<li>Rotate other touch screens 180 degrees:</li>
+</ul>
+
+<p><code>
+display_rotate=2
+</code></p>
+
+<p>Once you have specified the correct rotation command then save the file by pressing ctrl X, Y then enter.</p>
+
+<p>Finally reboot the Pi, from the command this can be done by the following command:</p>
+
+<p><code>
+sudo shutdown -r now
+</code></p>
+
+<p>The screen will now rotate during boot up.</p>
+
+	<p>
+		<i>Last updated: 06/03/2021</i>
+	</p>
+</article>
 				</section>
 			</main>
 			
