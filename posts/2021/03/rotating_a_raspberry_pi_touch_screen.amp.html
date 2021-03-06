@@ -91,9 +91,8 @@ but this can easily be remedied as follows.</p>
 
 <p>Next, open a terminal and edit the file <code>/boot/config.txt</code>, this is owned by root so you'll need to use the command:</p>
 
-<p><code>
-sudo nano /boot/config.txt
-</code></p>
+<pre><code>sudo nano /boot/config.txt
+</code></pre>
 
 <p>You can use an editor other than <code>nano</code> if you want, but this is installed by default on the Raspberry Pi OS.</p>
 
@@ -115,28 +114,20 @@ wrong part of the screen!</p>
 <p>Here are some examples:</p>
 
 <ul>
-<li>Rotate the official touch screen 180 degrees:</li>
+<li><p>Rotate the official touch screen 180 degrees:</p>
+
+<p>lcd_rotate=2</p></li>
+<li><p>Rotate other touch screens 180 degrees:</p>
+
+<p>display_rotate=2</p></li>
 </ul>
-
-<p><code>
-lcd_rotate=2
-</code></p>
-
-<ul>
-<li>Rotate other touch screens 180 degrees:</li>
-</ul>
-
-<p><code>
-display_rotate=2
-</code></p>
 
 <p>Once you have specified the correct rotation command then save the file by pressing ctrl X, Y then enter.</p>
 
 <p>Finally reboot the Pi, from the command this can be done by the following command:</p>
 
-<p><code>
-sudo shutdown -r now
-</code></p>
+<pre><code>sudo shutdown -r now
+</code></pre>
 
 <p>The screen will now rotate during boot up.</p>
 
