@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html amp lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Deploying Javascript functions on Google Big Query</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+					
+			<link rel="canonical" href="http://www.thedumbterminal.co.uk/posts/2021/03/deploying_javascript_functions_on_google_big_query.html" />
+			
+				<script type="application/ld+json">
+				{
+					"@context": "http://schema.org",
+					"@type": "BlogPosting",
+					"headline": "Deploying Javascript functions on Google Big Query",
+					"mainEntityOfPage":{
+						"@type":"WebPage",
+						"@id":"http://www.thedumbterminal.co.uk/posts/2021/03/deploying_javascript_functions_on_google_big_query.html"
+					},
+					"image": {
+						"@type": "ImageObject",
+						"url": "http://www.thedumbterminal.co.uk/images/top_stories_image.png",
+						"width": 696,
+						"height": 522
+					},
+					"datePublished": "2021-03-24T20:32:00Z",
+					"dateModified": "2021-03-24T20:32:00Z",
+					"author": {
+						"@type": "Person",
+						"name": "Mark Terry"
+					},
+					"publisher": {
+					"@type": "Organization",
+						"name": "The Dumb Terminal",
+						"logo": {
+							"@type": "ImageObject",
+							"url": "http://www.thedumbterminal.co.uk/images/top_stories_publisher_logo.png",
+							"width": 600,
+							"height": 60
+						}
+					},
+					"description": "Google BigQuery supports user-defined functions (UDFs) written in Javascript as well as SQL, this opens up a whole new world of capabilities that UDFs could provide...."
+				}
+				</script>
+
+			<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+			<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+			<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+
+			<script async src="https://cdn.ampproject.org/v0.js"></script>
+
+			<style amp-custom>
+				
+				*{box-sizing:border-box}html,body{height:100%;min-height:100%}body{font-family:sans-serif;background:rgba(0,0,0,1);color:#ddd;height:100%;padding-bottom:300px}a:link{color:#00ff00}a:visited{color:#00aa00}a:hover{color:#aaffaa}th{color:black;background-color:white}section{border-bottom:1px solid white}div#images div.clear{float:none;clear:both}div#images div{float:left;padding:5px;font-weight:bold;text-align:center;font-size:1.2em}pre{font-family:monospace;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}nav{font-size:1em;line-height:200%;text-align:center}aside{background:rgba(0,0,0,1);width:100%}aside img{display:block;margin:0 auto}footer{clear:both;height:140px}.nav-link{text-align:center}.container{height:100%;min-height:100%;margin-bottom:-140px}.hljs{background:#FEFFD7}ul.searchResults{display:none}@media (min-width:320px){.hide-mobile{display:none}img{max-width:100%}}@media (min-width:768px){.hide-tablet{display:none}body{background:rgba(0,0,0,1) url('/images/background.jpg') no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover}aside{position:absolute;padding-top:1em;padding-bottom:1em;border:solid thin rgba(255,255,255,1);background:rgba(0,0,0,0.9);width:175px;left:1em}section{padding:1em;border:solid thin rgba(255,255,255,1);background:rgba(0,0,0,0.9);margin-bottom:2em}.ads{position:absolute;padding:0;right:1em;border:0}main{position:absolute;right:200px;left:200px}}
+			</style>
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Deploying Javascript functions on Google Big Query" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2021/03/deploying_javascript_functions_on_google_big_query.html" />
+		<meta property="og:title" content="Deploying Javascript functions on Google Big Query" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Deploying Javascript functions on Google Big Query</h1>
+	<p>Google BigQuery supports user-defined functions (UDFs) written in Javascript as well as SQL, this opens up a whole new world of capabilities that UDFs could provide.</p>
+
+<p>Let's start by running through some basics for using Javascript in UDFs in BigQuery. The example here uses standard SQL mode as that's the preferred syntax.</p>
+
+<p>In the examples below, temporary UDFs are created but this just makes testing and developing easier.</p>
+
+<h2 id="returntypes">Return types</h2>
+
+<p>First, a simple Javascript UDF to return a single boolean value:</p>
+
+<pre><code>CREATE TEMP FUNCTION booleanExample()
+ RETURNS BOOLEAN
+ LANGUAGE js AS r"""
+   return true;
+ """
+;
+
+SELECT booleanExample() AS result;
+</code></pre>
+
+<p>Next a UDF that returns an array of strings:</p>
+
+<pre><code>CREATE TEMP FUNCTION arrayOfStringsExample()
+  RETURNS ARRAY&lt;STRING&gt;
+  LANGUAGE js AS r"""
+    return ['one', 'two', 'three'];
+  """
+;
+
+SELECT arrayOfStringsExample() AS result;
+</code></pre>
+
+<p>Now a UDF that returns a Javascript object:</p>
+
+<pre><code>CREATE TEMP FUNCTION objectExample()
+  RETURNS STRUCT&lt;one INT64, two INT64, three INT64&gt;
+  LANGUAGE js AS r"""
+    return {one: 1, two: 2, three: 3};
+  """
+;
+
+SELECT objectExample() AS result;
+</code></pre>
+
+<p>If you were to specify additional fields in the <code>STRUCT</code>which are not present in the Javascript object they will simply be set as <code>null</code>.
+The reverse is also true, so you can omit fields from the resulting <code>STRUCT</code>, any other fields in the Javascript object will not be returned.</p>
+
+<p>Next, a UDF that returns an array of objects:</p>
+
+<pre><code>CREATE TEMP FUNCTION arrayOfObjectsExample()
+  RETURNS ARRAY&lt;STRUCT&lt;one INT64, two INT64, three INT64&gt;&gt;
+  LANGUAGE js AS r"""
+    return [
+      {one: 1, two: 2, three: 3},
+      {one: 1, two: 2, three: 3}
+    ];
+  """
+;
+
+SELECT arrayOfObjectsExample() AS result;
+</code></pre>
+
+<p>Finally, a UDF that takes a string as input:</p>
+
+<pre><code>CREATE TEMP FUNCTION echo(word STRING)
+  RETURNS STRING
+    LANGUAGE js
+    AS r"""
+      return word;
+    """
+;
+
+SELECT echo('echo') AS result;
+</code></pre>
+
+<p>Using these above examples you should be able to create a Javascript function to return the data types you need. A full list of supported data types is detailed in the <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions#supported-javascript-udf-data-types">Standard SQL user-defined functions documentation</a>.</p>
+
+<h2 id="bundlinganasset">Bundling an asset</h2>
+
+<p>Using inline Javascript is fine for small or simple UDFs, but to leverage Javascript's wide variety of open source modules we will have to create a deployment asset that contains all our logic and code.</p>
+
+<p>A common choice for this process is to use <a href="https://webpack.js.org/">webpack</a> in a similar way that you might for a web application.</p>
+
+<p>The required <code>webpack.config.js</code> is very simple, we just define an entry point and and a resulting output filename:</p>
+
+<pre><code>module.exports = {
+  entry: './src/index.js',
+  mode: 'production',
+  output: {
+    filename: 'dist.js'
+  }
+}
+</code></pre>
+
+<h3 id="entrypoint">Entry point</h3>
+
+<p>We'll create a <code>index.js</code>file which will allow all of our functionality to be surfaced and usable in our BigQuery UDFs:</p>
+
+<pre><code>const typeExamples = require('./typeExamples')
+
+const index = module.exports = {}
+
+index.typeexamples = typeExamples
+index.helloWorld = () =&gt; 'Hello World!'
+
+// Put functionality you need in the global scope for BiqQuery usage
+Object.assign(global, index)
+</code></pre>
+
+<p>In the example above we are including our example functions from another file and defining a simple hello world function. If you have a larger amount of functions you can use npm modules such as <code>requireAll</code>.</p>
+
+<p>Your javascript code can be unit tested in the usual way like any other node.js application.</p>
+
+<h3 id="deployment">Deployment</h3>
+
+<p>To use a prebuilt Javascript asset as a function we will need to first deploy this to Google Cloud Storage (GCS). The simplest solution here is to manually copy the <code>dist.js</code> that webpack creates to a GCS bucket.</p>
+
+<p>For a more formal and orchestrated process, we can create a Javascript script to deploy our asset to GCS. The code below is a quick example of this.</p>
+
+<pre><code>const { Storage } = require('@google-cloud/storage')
+
+const upload = async () =&gt; {
+    const storage = new Storage()
+  try {
+    await storage.createBucket('YOUR_BUCKET')
+  } catch (e) {  // Don't worry if the bucket already exists
+    if (e.message !== 'Sorry, that name is not available. Please try a different one.') throw e
+  }
+  return storage.bucket('YOUR_BUCKET')
+    .upload('dist/dist.js', {
+      destination: 'bigquery-js-udf-example/dist/dist.js'
+    })
+}
+
+upload()
+  .catch((e) =&gt; {
+    console.error(e.message)
+    process.exit(1)
+  })
+  .then(() =&gt; {
+    console.log('...Success')
+  })
+</code></pre>
+
+<h4 id="authentication">Authentication</h4>
+
+<p>All scripts that use GCP features will require that your terminal is already authenticated with GCP.</p>
+
+<p>Consult <a href="https://cloud.google.com/sdk/docs/quickstart">Google's docs</a> for installing the SDK, then the following commands can be used to configure authentication.</p>
+
+<pre><code>gcloud auth login
+gclud auth application-default login
+</code></pre>
+
+<p>Once the Google Cloud SDK has been installed authentication can easily be checked with the command:</p>
+
+<pre><code>gcloud auth list
+</code></pre>
+
+<p>Check your CI provider's documentation for how to configure GCP authentication when deploying it's normally a case of configuring environment variables with a previously created service account.</p>
+
+<h2 id="testing">Testing</h2>
+
+<p>Now we are ready to test our new asset with BigQuery. The simplest manual approach would be to call the UDF in the GCP BigQuery console as follows:</p>
+
+<pre><code>CREATE TEMP FUNCTION booleanExample()
+  RETURNS BOOLEAN
+    LANGUAGE js
+    OPTIONS (
+      library=["gs://YOUR_BUCKET/bigquery-js-udf-example/dist/dist.js"]
+    )
+    AS r"""
+      return typeExamples.boolean();
+    """
+;
+
+SELECT booleanExample() AS result;
+</code></pre>
+
+<p>We can automate testing using the same framework that we wrote the unit tests in.</p>
+
+<pre><code>const { BigQuery } = require('@google-cloud/bigquery')
+
+const runUdf = async (client, returnType, js) =&gt; {
+  const query = `
+    CREATE TEMP FUNCTION testFunction()
+      RETURNS ${returnType}
+        LANGUAGE js
+        OPTIONS (
+          library=["gs://YOUR_BUCKET/bigquery-js-udf-example/dist/dist.js"]
+        )
+        AS r"""
+          ${js}
+        """
+    ;
+
+    SELECT testFunction() AS result;`
+  const [job] = await client.createQueryJob({
+    query
+  })
+  const [rows] = await job.getQueryResults()
+  return rows[0].result
+}
+
+describe('BigQuery tests', () =&gt; {
+  let bigquery
+
+  beforeAll(() =&gt; {
+    bigquery = new BigQuery({
+      projectId: process.env.GCP_PROJECT_ID
+    })
+  })
+
+  it('typeExamples.boolean()', async () =&gt; {
+    const result = await runUdf(bigquery, 'BOOLEAN', 'return typeExamples.boolean();')
+    expect(result).toBe(true)
+  })
+</code></pre>
+
+<h2 id="npmmodules">NPM Modules</h2>
+
+<p>Now that we have our JS asset being built with webpack and a method of deploying our code to GCS, we can include other modules as required. This can be included in the same way as in any other client-side project. However, there are some <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions#limitations">Limitations</a> to what you can use.</p>
+
+<p>The example below uses the <a href="https://www.npmjs.com/package/sillyname">sillyname</a> NPM module, showing that including 3rd party code is just like with any other node.js application:</p>
+
+<pre><code>const generateName = require('sillyname')
+const index = module.exports = {}
+index.sillyName = generateName
+Object.assign(global, index)
+</code></pre>
+
+<p>This can now be accessed in your Javascript UDF in the same way as your code.</p>
+
+<h2 id="wrappingup">Wrapping up</h2>
+
+<p>Javascript UDF's allows you to leverage the large pool of open source modules into your UDF's. These functions can be easily unit and system tested using popular JS testing frameworks such as <a href="https://jestjs.io/">Jest</a> or <a href="https://mochajs.org/">Mocha</a>.</p>
+
+<p>For full working examples, tests, and deployment scripts can be found on the accompanying GitHub Project at:</p>
+
+<p>https://github.com/thedumbterminal/bigquery-js-udf-example</p>
+
+	<p>
+		<i>Last updated: 24/03/2021</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+			<aside>
+				<a href="/"><amp-img src="/images/sign.jpg" alt="Home" height="175" width="152"></amp-img></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<amp-analytics type="googleanalytics" id="analytics1">
+				<script type="application/json">
+					{
+						"vars": {
+							"account": "UA-18281947-1"
+						},
+						"triggers": {
+							"trackPageview": {
+								"on": "visible",
+								"request": "pageview"
+							}
+						}
+					}
+				</script>
+			</amp-analytics>
+			<amp-auto-ads type="adsense" data-ad-client="ca-pub-7361696162492478"></amp-auto-ads>
+		
+	</body>
+</html>
+

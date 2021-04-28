@@ -1,6 +1,6 @@
 [Adblock]
 ! The Dumb Terminal's blocked sites
-! Updated: 03/11/2020 10:18:00 pm
+! Updated: 28/04/2021 10:27:00 pm
 ||ads.gameforgeads.de
 ||ad.jamba.nl
 ||www.sponsorads.de
@@ -2478,3 +2478,4 @@
 ||ads-twitter.com
 ||adswizz.com
 ||teads.tv
+||ad-delivery.net

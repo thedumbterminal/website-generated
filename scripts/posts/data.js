@@ -1010,4 +1010,9 @@ var postData = [
 		link: '/posts/2021/03/rotating_a_raspberry_pi_touch_screen.html'
 	},
 	
+	{
+		title: 'Deploying Javascript functions on Google Big Query',
+		link: '/posts/2021/03/deploying_javascript_functions_on_google_big_query.html'
+	},
+	
 ];
