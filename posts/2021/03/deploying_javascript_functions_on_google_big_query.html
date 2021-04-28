@@ -42,9 +42,9 @@
 	<h1>Deploying Javascript functions on Google Big Query</h1>
 	<p>Google BigQuery supports user-defined functions (UDFs) written in Javascript as well as SQL, this opens up a whole new world of capabilities that UDFs could provide.</p>
 
-<p>Let's start by running through some basics for using Javascript in UDFs in BigQuery. The example here uses standard SQL mode as that's the preferred syntax.</p>
+<p>Let's start by running through some basics for using Javascript in UDFs in BigQuery. The examples here uses standard SQL mode as that's the preferred syntax.</p>
 
-<p>In the examples below, temporary UDFs are created but this just makes testing and developing easier.</p>
+<p>In the examples below, temporary UDFs are created but this just makes testing and development easier.</p>
 
 <h2 id="returntypes">Return types</h2>
 
@@ -271,7 +271,7 @@ index.sillyName = generateName
 Object.assign(global, index)
 </code></pre>
 
-<p>This can now be accessed in your Javascript UDF in the same way as your code.</p>
+<p>The <code>sillyName</code> function can now be accessed in your Javascript UDFs in the same way as the previous functions.</p>
 
 <h2 id="wrappingup">Wrapping up</h2>
 
