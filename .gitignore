@@ -1,1 +1,13 @@
 .project
+*.etag
+*.html.gz
+*.jpg.gz
+*.rss.gz
+*.txt.gz
+*.conf.gz
+*.patch.gz
+*.gif.gz
+*.js.gz
+*.css.gz
+*.min.css
+*.min.js

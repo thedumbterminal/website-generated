@@ -184,7 +184,7 @@ SELECT echo('echo') AS result;
 
 const index = module.exports = {}
 
-index.typeexamples = typeExamples
+index.typeExamples = typeExamples
 index.helloWorld = () =&gt; 'Hello World!'
 
 // Put functionality you need in the global scope for BigQuery usage
@@ -204,13 +204,14 @@ Object.assign(global, index)
 <pre><code>const { Storage } = require('@google-cloud/storage')
 
 const upload = async () =&gt; {
-    const storage = new Storage()
+      const storage = new Storage()
   try {
     await storage.createBucket('YOUR_BUCKET')
   } catch (e) {  // Don't worry if the bucket already exists
     if (e.message !== 'Sorry, that name is not available. Please try a different one.') throw e
   }
-  return storage.bucket('YOUR_BUCKET')
+  return storage
+    .bucket('YOUR_BUCKET')
     .upload('dist/dist.js', {
       destination: 'bigquery-js-udf-example/dist/dist.js'
     })
@@ -233,7 +234,7 @@ upload()
 <p>Consult <a href="https://cloud.google.com/sdk/docs/quickstart">Google's docs</a> for installing the SDK, then the following commands can be used to configure authentication.</p>
 
 <pre><code>gcloud auth login
-gclud auth application-default login
+gcloud auth application-default login
 </code></pre>
 
 <p>Once the Google Cloud SDK has been installed authentication can easily be checked with the command:</p>
@@ -299,6 +300,7 @@ describe('BigQuery tests', () =&gt; {
     const result = await runUdf(bigquery, 'BOOLEAN', 'return typeExamples.boolean();')
     expect(result).toBe(true)
   })
+})
 </code></pre>
 
 <h2 id="npmmodules">NPM Modules</h2>
