@@ -1015,4 +1015,9 @@ var postData = [
 		link: '/posts/2021/03/deploying_javascript_functions_on_google_big_query.html'
 	},
 	
+	{
+		title: 'Using Validation and Replay in a Data Pipeline',
+		link: '/posts/2021/08/using_validation_and_replay_in_a_data_pipeline.html'
+	},
+	
 ];
