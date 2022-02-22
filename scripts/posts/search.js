@@ -10,7 +10,7 @@ postSearch.handler = function(element){
 	if(query !== ''){
 		results = postSearch._search(query);
 		gtag('event', 'search', {
-			event_category: 'posts',
+			event_category: 'engagement',
 			event_label: query
 		});
 	}
