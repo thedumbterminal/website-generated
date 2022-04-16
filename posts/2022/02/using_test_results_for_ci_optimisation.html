@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Using Test Results For CI Optimisation</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2022/02/using_test_results_for_ci_optimisation.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Using Test Results For CI Optimisation" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2022/02/using_test_results_for_ci_optimisation.html" />
+		<meta property="og:title" content="Using Test Results For CI Optimisation" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Using Test Results For CI Optimisation</h1>
+	<p>All modern tech teams use CI as part of their deployment process. Various SaaS providers and
+testing frameworks exist to allow CI processes to be constructed in minutes.</p>
+
+<p>This article addresses looking at CI results historically to highlight problem areas in CI builds.</p>
+
+<p>Once you have a functioning CI process, there is a number of common problems can affect a project:</p>
+
+<ul>
+<li>The number of tests increases, leading to slower build times.</li>
+<li>Missing external mocks, causing flaky behaviour.</li>
+<li>Missing dependency lock files causes a build to fail unexpectedly not related to code changes.</li>
+<li>Previously skipped tests not being re-activated, lowering test coverage.</li>
+</ul>
+
+<p>As projects age, previous build behaviour will be lost and resolving issues such as the above can be time-consuming.</p>
+
+<p>Recording historical test details can help highlight CI problems and allow them to be addressed before they
+affect an engineer's workflow.</p>
+
+<h2 id="testresults">Test Results</h2>
+
+<p>Most test frameworks allow exporting results in addition to displaying them to the terminal.
+Due to Java's popularity and its testing framework JUnit,
+the <a href="https://github.com/windyroad/JUnit-Schema/blob/master/JUnit.xsd">JUnit XML format</a> has become
+the universally accepted format for reporting on test results.</p>
+
+<p>Here are some links that document how to enable XML output on modern testing tools:</p>
+
+<ul>
+<li><a href="https://docs.pytest.org/en/6.2.x/usage.html#creating-junitxml-format-files">Python pytest</a></li>
+<li><a href="https://pypi.org/project/junitxml/">Python unittest</a></li>
+<li><a href="https://github.com/jstemmer/go-junit-report">GoLang test</a></li>
+<li><a href="https://jestjs.io/docs/cli#--outputfilefilename]">Node.js Jest</a></li>
+<li><a href="https://metacpan.org/pod/TAP::Formatter::JUnit">Perl TAP::Harness</a></li>
+<li><a href="https://github.com/kenichiice/test-unit-runner-junitxml">Ruby test-unit</a></li>
+<li><a href="https://phpunit.readthedocs.io/en/9.5/textui.html#command-line-options">PHP phpunit</a></li>
+</ul>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Let's cover some simple setup examples to show how easy it is to start generating test reports.
+After installing the required dependencies from the links above, the report generation is enabled
+by adjusting the arguments when executing your test command.</p>
+
+<p>For example, using Python and its two popular test frameworks we can enable reporting as follows:</p>
+
+<p>With pytest:</p>
+
+<pre><code>pytest --junit-xml=report.xml
+</code></pre>
+
+<p>With unittest:</p>
+
+<pre><code>python -m junitxml.main -s src -p *_test.py
+</code></pre>
+
+<p>Even with perl, the setup is still relativity simple:</p>
+
+<pre><code>PERL_TEST_HARNESS_DUMP_TAP=./test_output prove --timer --formatter TAP::Formatter::JUnit src
+</code></pre>
+
+<h2 id="integrationwithcircleci">Integration with Circle CI</h2>
+
+<p>There are many continuous integration SaaS providers to choose from, I'm liking how <a href="https://circleci.com/">Circle CI</a> gives individual
+test details and insights into your builds on top of the usual features you would expect from a CI tool.</p>
+
+<p>To see your test details from their UI you need to set up two extra steps in your CI config:</p>
+
+<ul>
+<li>Creating a JUnit XML file of your tests results</li>
+<li>Informing CircleCI of the test results location for its processing.</li>
+</ul>
+
+<p>Full information on configuring your project can be found on their <a href="https://circleci.com/docs/2.0/collect-test-data/">extensive docs</a>, but we will just cover configuration regarding test results.</p>
+
+<p>Once you have authorised Circle CI to access your project repositories, create a file named <code>.circleci/config.yml</code> at the root of your project.</p>
+
+<h3 id="orbstotherescue">Orbs to the rescue</h3>
+
+<p>Circle CI supports "orbs" to do the majority of the configuration for us. <a href="https://circleci.com/orbs/">Orbs</a> are prebuilt sections of functionality that make your CI setup simpler and easier to maintain.</p>
+
+<p>Here is a very basic example that will upload your test results:</p>
+
+<pre><code>version: 2.1
+orbs:
+  python: circleci/python@1.5.0
+workflows:
+  main:
+    jobs:
+      - python/test:
+          test-tool: pytest
+          test-tool-args: '--junitxml=test-report/pytest.xml'
+          version: '3.10.4'
+</code></pre>
+
+<p>The lines:</p>
+
+<pre><code>orbs:
+   python: circleci/python@1.5.0
+</code></pre>
+
+<p>Enables the <a href="https://circleci.com/developer/orbs/orb/circleci/python">Python orb</a> and then the lines:</p>
+
+<pre><code>- python/test:
+    test-tool: pytest
+    test-tool-args: '--junitxml=test-report/pytest.xml'
+    version: '3.10.4'
+</code></pre>
+
+<p>Will run our unit tests using pytest and save the results to the file <code>test-report/pytest.xml</code> and finally, it will upload this file to CircleCI for processing.</p>
+
+<h3 id="custompythonsetup">Custom python setup</h3>
+
+<p>The above config is super simple, the python orb does offer more configuration options to tailor it to your needs. We will now cover a more involved setup.</p>
+
+<p>Your CI process will contain a number of steps, the important step related to exporting your test results is <code>store_test_results</code>, this just needs a path to your generated JUnit XML. Lets look at a full python example:</p>
+
+<pre><code>version: 2.1
+orbs:
+  python: circleci/python@1.5.0
+jobs:
+  build_unittest:
+    executor:
+      name: python/default
+      tag: '3.10.4'
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: test
+          command: |
+            python -m junitxml.main -s src -p *_test.py
+      - store_test_results:
+          path: junit.xml
+workflows:
+  main:
+    jobs:
+      - build_unittest
+</code></pre>
+
+<p>In the config above we perform the following steps:</p>
+
+<ol>
+<li>Use a python image</li>
+<li>Checkout code from repo.</li>
+<li>Install dependencies using pip.</li>
+<li>Run unit tests using the junitxml unit test wrapper, this creates a <code>junit.xml</code> file in the root directory of the project.</li>
+<li>Upload test results.</li>
+</ol>
+
+<p>We are still using the Orb here for the installation of dependencies as that's fairly standard, but now running a custom unit test step. As the orb does not support the junitxml wrapper we need.</p>
+
+<h3 id="viewingresults">Viewing results</h3>
+
+<p>I've created two GitHub project examples that have their CI setup using the above method to give example test results:</p>
+
+<ul>
+<li>Python: <a href="https://github.com/thedumbterminal/python-circleci-insights">Code</a> and <a href="https://app.circleci.com/pipelines/github/thedumbterminal/python-circleci-insights?branch=main&amp;filter=all">CI</a></li>
+<li>Perl: <a href="https://github.com/thedumbterminal/perl-circleci-insights">Code</a> and <a href="https://app.circleci.com/pipelines/github/thedumbterminal/perl-circleci-insights?branch=main&amp;filter=all">CI</a></li>
+</ul>
+
+<p>Both of these projects have unit tests configured including one that will randomly fail and another that will take 10 seconds to run to show some examples of results.</p>
+
+<p>Although anyone can view the CI results on open-source projects, the insights CircleCI provides are only available to the project's owner(s), so I have included screenshots of their results below.</p>
+
+<p>We can clearly see that our 10 second test takes the longest amount of time to run in the following screenshot:</p>
+
+<p><img src="/images/posts/2022/02/01/timing.png" alt="" /></p>
+
+<p>We can also see that our randomly failing test has been marked as flaky in the following screenshot:</p>
+
+<p><img src="/images/posts/2022/02/01/flaky.png" alt="" /></p>
+
+<p>Consider implementing test results in your projects to understand your CI times and improve visibility on potential problem areas of your codebase.</p>
+
+<p>Even with the CircleCI features above, there is so much more that could be gathered and reported on using CI builds meta data, I'm hopeful that we will see more CI providers expanding their features in the future to offer more functionality in this area.</p>
+
+	<p>
+		<i>Last updated: 26/02/2022</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+					<a href="/information/">Information</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/software/">Software</a><br>
+					<a href="http://www.slideshare.net/thedumbterminal">Talks</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+

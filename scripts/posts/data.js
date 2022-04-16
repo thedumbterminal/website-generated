@@ -1020,4 +1020,9 @@ var postData = [
 		link: '/posts/2021/08/using_validation_and_replay_in_a_data_pipeline.html'
 	},
 	
+	{
+		title: 'Using Test Results For CI Optimisation',
+		link: '/posts/2022/02/using_test_results_for_ci_optimisation.html'
+	},
+	
 ];
