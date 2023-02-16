@@ -1025,4 +1025,9 @@ var postData = [
 		link: '/posts/2022/02/using_test_results_for_ci_optimisation.html'
 	},
 	
+	{
+		title: 'Showing Hidden Files In MacOS Finder',
+		link: '/posts/2023/02/showing_hidden_files_in_macos_finder.html'
+	},
+	
 ];
