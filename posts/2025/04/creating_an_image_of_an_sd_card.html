@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Dumb Terminal : Creating an image of an SD card</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+		
+			
+				<link rel="amphtml" href="http://www.thedumbterminal.co.uk/posts/2025/04/creating_an_image_of_an_sd_card.amp.html">
+			
+
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+			<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		
+
+		<meta name="Description" content="Development, servers and general geekyness">
+		<meta name="keywords" content="webmysql sniff the dumb terminal answers questions help computer board novice linux windows advice software packet sniffer mysql web frontend three dimensional file manager">
+
+		<meta content="summary" name="twitter:card" />
+		<meta content="@theDumbTerminal" name="twitter:site" />
+		<meta content="@theDumbTerminal" name="twitter:creator" />
+		<meta content="Creating an image of an SD card" name="twitter:title" />
+
+		<meta property="og:site_name" content="The Dumb Terminal" />
+		<meta property="og:url" content="http://www.thedumbterminal.co.uk/posts/2025/04/creating_an_image_of_an_sd_card.html" />
+		<meta property="og:title" content="Creating an image of an SD card" />
+		<meta property="og:image" content="http://www.thedumbterminal.co.uk/images/sign.jpg" />
+
+		<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="The Dumb Terminal's Knowledge Base" href="/posts/feed.rss" />
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="nav-link hide-tablet"><a href="#nav">Menu</a></div>
+			<main>
+				<section>
+
+<article>
+	<h1>Creating an image of an SD card</h1>
+	<p>It is possible to create an disk image of a block device such as a hard drive, USB stick or SD card.
+This can be handy for simple backups or creating clones of disks.</p>
+
+<p>Firstly connect any removable media to the Mac, then open a terminal and use the <code>diskutil</code> command
+to list the current partitions available as follows:</p>
+
+<pre><code>diskutil list
+
+/dev/disk0 (internal, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      GUID_partition_scheme                        *121.3 GB   disk0
+   1:                        EFI ⁨EFI⁩                     209.7 MB   disk0s1
+   2:                 Apple_APFS ⁨Container disk1⁩         121.0 GB   disk0s2
+
+/dev/disk1 (synthesized):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      APFS Container Scheme -                      +121.0 GB   disk1
+                                 Physical Store disk0s2
+   1:                APFS Volume ⁨Macintosh HD - Data⁩     84.2 GB    disk1s1
+   2:                APFS Volume ⁨Preboot⁩                 543.6 MB   disk1s2
+   3:                APFS Volume ⁨Recovery⁩                1.1 GB     disk1s3
+   4:                APFS Volume ⁨VM⁩                      4.3 GB     disk1s4
+   5:                APFS Volume ⁨Macintosh HD⁩            15.4 GB    disk1s5
+   6:              APFS Snapshot ⁨com.apple.os.update-...⁩ 15.4 GB    disk1s5s1
+
+/dev/disk2 (internal, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:     FDisk_partition_scheme                        *15.8 GB    disk2
+   1:             Windows_FAT_32 ⁨boot⁩                    268.4 MB   disk2s1
+   2:                      Linux ⁨⁩                        15.6 GB    disk2s2
+</code></pre>
+
+<p>All of the block devices connected to the system will be shown. In example above <code>/dev/disk2</code> is a
+16Gb SD card we wish to create an image for.</p>
+
+<p>The disk image file size will equal the size of the source disk so ensure that there is enough disk
+space available for the image.</p>
+
+<p>Its recommended to compress the resulting image to save space, in the example below we will use <code>gzip</code>
+with maximum compression enabled.</p>
+
+<p>We will be using the <code>dd</code> command to directly access the source block device, this functionality does
+require admin privileges. Either login as an administrator or use <code>sudo</code> to give <code>dd</code> more privileges
+just for this specific command line.</p>
+
+<pre><code>sudo dd bs=4M if=/dev/disk2 status=progress | gzip -9 -c &gt; /tmp/usb_image.img.gz
+</code></pre>
+
+<p>In the example above we are stating two important options for the <code>dd</code> command, the first which is
+the <code>bs</code> or block size, different values can be used here to increase the imaging speed but the optimum
+block size will vary depending on the system and drive being imaged.</p>
+
+<p>We then use the <code>if</code> or input file parameter to specify the block device to be imaged.</p>
+
+<p>Note that we do not specify an output file or <code>of</code> parameter, this will cause the block device's
+data to be sent to STDOUT which we then pipe into the <code>gzip</code> command for it to be compressed. We then
+also do not specify an output file for this command and redirect it's output to a file with the
+arrow syntax.</p>
+
+<p>A <code>.gz</code> file extension is used to show that the image is compressed. And use the <code>.img</code> extension to
+ensure that imaging tools are automatically associated with the file.</p>
+
+<p>The resulting file can be used to restore data back to a device using <code>dd</code> command or other popular
+imaging tools.</p>
+
+	<p>
+		<i>Last updated: 19/04/2025</i>
+	</p>
+</article>
+				</section>
+			</main>
+			
+				<section class="ads">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Thedumbterminal -->
+					<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7361696162492478" data-ad-slot="8724943620"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</section>
+			
+			<aside>
+				<a href="/"><img src="/images/sign.jpg" alt="Home"></a>
+				<nav id="nav">
+          <a href="/posts/">Blog Posts</a><br>
+          <a href="/software/">Software</a><br>
+					<a href="/services/">Services</a><br>
+					<a href="/vulns/">Vulnerabilities</a><br>
+					<a href="/carpc/">Car PC</a><br>
+					<a href="/links.html">Links</a><br>
+					<a href="/contact/">Contact</a>
+				</nav>
+			</aside>
+		</div>
+		
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18281947-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'UA-18281947-1');
+			</script>
+		
+	</body>
+</html>
+
