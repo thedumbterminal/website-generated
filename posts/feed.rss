@@ -5,7 +5,7 @@
 		<link>http://www.thedumbterminal.co.uk/posts/</link>
 		<description>Helpful computer knowledge</description>
 		<language>en-gb</language>
-		<lastBuildDate>Thu, 16 Feb 2023 20:50:00 +0100</lastBuildDate>
+		<lastBuildDate>Sat, 19 Apr 2025 10:10:00 +0100</lastBuildDate>
 		<docs>http://www.rssboard.org/rss-specification</docs>
 		<image>
 			<url>http://www.thedumbterminal.co.uk/images/sign.jpg</url>
@@ -15,6 +15,14 @@
 		<category>Knowledge</category>
 		<atom:link href="http://www.thedumbterminal.co.uk/posts/feed.rss" rel="self" type="application/rss+xml" />
 		
+			
+				<item>
+					<pubDate>Sat, 19 Apr 2025 10:10:00 +0100</pubDate>
+					<title>Creating an image of an SD card</title>
+					<description>See item link for more info...</description>
+					<link>http://www.thedumbterminal.co.uk/posts/2025/04/creating_an_image_of_an_sd_card.html</link>
+					<guid>http://www.thedumbterminal.co.uk/posts/2025/04/creating_an_image_of_an_sd_card.html</guid>
+				</item>
 			
 				<item>
 					<pubDate>Thu, 16 Feb 2023 20:50:00 +0100</pubDate>

@@ -1030,4 +1030,9 @@ var postData = [
 		link: '/posts/2023/02/showing_hidden_files_in_macos_finder.html'
 	},
 	
+	{
+		title: 'Creating an image of an SD card',
+		link: '/posts/2025/04/creating_an_image_of_an_sd_card.html'
+	},
+	
 ];
